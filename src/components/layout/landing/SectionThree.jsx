@@ -10,7 +10,7 @@ function SectionThree() {
         <h1>Custom <span>MediaHub</span></h1>
         <p>Your favorite streaming platforms on your ENS domain.Generate the ultimate profile that showcases all your video and audio content, seamlessly embedded on your ENS domain. Elevate how your content is discovered - All in one place.</p>
       </div>
-      <img src={sec3Two} alt="" />
+      <img src={sec3Two} alt="" className='coverImg'/>
     </section>
   )
 }

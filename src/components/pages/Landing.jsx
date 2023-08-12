@@ -16,7 +16,6 @@ function Landing() {
         <SectionTwo/>
         <SectionThree/>
         <SectionFour/>
-        {/* <GetInTouch/> */}
         <Footer/>
     </div>
   )

@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AiOutlinePlus } from "react-icons/ai"
+import { AiOutlinePlus ,AiOutlineMenu} from "react-icons/ai"
 import CreatePopup from '../popups/CreatePopup'
 import bg from "../../../assets/images/bg.svg"
+import MobileMenuPopUp from '../popups/MobileMenuPopUp'
 function Header() {
-  const [createPopUp, SetCreatePopUp] = useState(false);
+  const [createPopUp, setCreatePopUp] = useState(false);
+  const [menuPopUp, setMenuPopUp] = useState(false);
+  function popUpCreateMenu() {
+    setCreatePopUp(!createPopUp)
+    setMenuPopUp(false)
+  }
+
+  function popUpMobileMenu() {
+    setMenuPopUp(!menuPopUp)
+    setCreatePopUp(false)
+  }
   return (
     <header>
       <nav>
@@ -17,13 +28,11 @@ function Header() {
             <li><Link to={"/"}>Home</Link></li>
             <li><Link to={"/"}>About Us</Link></li>
           </ul>
-          <button className='create' onClick={() => {
-            SetCreatePopUp(!createPopUp)
-          }}> <AiOutlinePlus /> Create</button>
+          <button className='create' onClick={popUpCreateMenu}> <AiOutlinePlus /> Create</button>
           <button className='connect'>Connect Wallet</button>
         </div>
+        <AiOutlineMenu className="menu" onClick={popUpMobileMenu}/>
       </nav>
-      {createPopUp && <CreatePopup />}
       <div className="box">
         <div className="innerbox">
           <h1>
@@ -44,6 +53,9 @@ function Header() {
           <img src={bg} alt="" />
         </div>
       </div>
+      {createPopUp && <CreatePopup popUpCreateMenu={popUpCreateMenu}/>}
+      {menuPopUp && <MobileMenuPopUp popUpCreateMenu={popUpCreateMenu} popUpMobileMenu={popUpMobileMenu}/>}
+      
     </header>
   )
 }

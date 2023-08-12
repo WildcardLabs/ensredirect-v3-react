@@ -47,6 +47,9 @@ function Footer() {
                             <AiOutlineGithub />
                         </a>
                     </li>
+                    <li>
+                        <p>All rights reserved. 2023</p>
+                    </li>
                 </ul>
             </div>
         </footer>
