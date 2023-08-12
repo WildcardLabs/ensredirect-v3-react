@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlinePlus } from "react-icons/ai"
 import CreatePopup from '../popups/CreatePopup'
 import bg from "../../../assets/images/bg.svg"
 function Header() {
+  const [createPopUp, SetCreatePopUp] = useState(false);
   return (
     <header>
       <nav>
@@ -16,11 +17,13 @@ function Header() {
             <li><Link to={"/"}>Home</Link></li>
             <li><Link to={"/"}>About Us</Link></li>
           </ul>
-          <button className='create'> <AiOutlinePlus /> Create</button>
+          <button className='create' onClick={() => {
+            SetCreatePopUp(!createPopUp)
+          }}> <AiOutlinePlus /> Create</button>
           <button className='connect'>Connect Wallet</button>
         </div>
       </nav>
-      {/* <CreatePopup/> */}
+      {createPopUp && <CreatePopup />}
       <div className="box">
         <div className="innerbox">
           <h1>
@@ -28,10 +31,10 @@ function Header() {
             for your
           </h1>
           <h1 className='color'>
-          ENS name
+            ENS name
           </h1>
           <p>
-          Unlock the true potential of your ENS name with our ultimate all-in-one solution.
+            Unlock the true potential of your ENS name with our ultimate all-in-one solution.
           </p>
           <button>
             Get Started

@@ -95,6 +95,7 @@
     outline: none;
     color: var(--text);
     border: 2px solid #FFF;
+    cursor: pointer;
 }
 
 .landing header nav .sec1 button.connect {
@@ -108,7 +109,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 19.5px;
-    /* 162.5% */
+    cursor: pointer;
     border-radius: 8px;
     border: 1px solid #00B2FF;
     background: var(--cta-blue, #419FFF);
