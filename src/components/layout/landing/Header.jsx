@@ -20,7 +20,7 @@ function Header() {
     <header>
       <nav>
         <div className="sec">
-          <img src="logo.png" alt="logo" />
+          <img src="logo.svg" alt="logo" />
           <h1>ENSRedirect</h1>
         </div>
         <div className="sec1">
