@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ensGroup2 from "../../../../assets/images/ensGroup2.svg"
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import { motion } from 'framer-motion'
-function DomainList({ens}) {
+function DomainList({ ens, setSelectedEnsFunc }) {
     const sliderRef = useRef();
     const [index, setIndex] = useState(0)
     const nextSlide = () => {
@@ -39,15 +39,15 @@ function DomainList({ens}) {
             }
             <div className="slider" ref={sliderRef}>
                 {
-                    ens.map((item,idx)=>(
-                        <div className="box" key={idx}>
-                        <div className="innerBox">
-                            <div className="cover">
-                                <img src={ensGroup2} alt="" />
+                    ens.map((item, idx) => (
+                        <div className="box" key={idx} onClick={() => { setSelectedEnsFunc(item) }}>
+                            <div className="innerBox">
+                                <div className="cover">
+                                    <img src={ensGroup2} alt="" />
+                                </div>
+                                <p>{item}</p>
                             </div>
-                            <p>{item}</p>
                         </div>
-                    </div>
                     ))
                 }
             </div>

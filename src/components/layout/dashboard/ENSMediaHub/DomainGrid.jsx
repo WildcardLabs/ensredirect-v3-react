@@ -1,7 +1,7 @@
 import React from 'react'
 import ensGroup2 from "../../../../assets/images/ensGroup2.svg"
 import { motion } from 'framer-motion'
-function DomainGrid({ ens }) {
+function DomainGrid({ ens, setSelectedEnsFunc }) {
     return (
         <motion.div
             animate={{ opacity: 1 }}
@@ -9,7 +9,7 @@ function DomainGrid({ ens }) {
             className='domianGrid'>
             {
                 ens.map((item, idx) => (
-                    <div className="box" key={idx}>
+                    <div className="box" key={idx} onClick={() => { setSelectedEnsFunc(item) }}>
                         <div className="innerBox">
                             <div className="cover">
                                 <img src={ensGroup2} alt="" />

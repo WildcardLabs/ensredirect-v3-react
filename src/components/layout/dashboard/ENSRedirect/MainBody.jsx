@@ -13,6 +13,7 @@ function MainBody() {
   const [ensGrid, setEnsGrid] = useState(false)
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);
+  const [selectedEns, setSelectedEns] = useState([]);
   const fetchEns = async () => {
     try {
       const res = await axios.get("https://us-central1-matic-services.cloudfunctions.net/domainlist?address=0x1208a26FAa0F4AC65B42098419EB4dAA5e580AC6")
@@ -30,12 +31,17 @@ function MainBody() {
       console.log(error);
     }
   }
+
   const toggleList = () => {
     setEnsGrid(false);
   }
   const toggleGrid = () => {
     setEnsGrid(true);
   }
+  const setSelectedEnsFunc =(txt) =>{
+    setSelectedEns(txt)
+  }
+
   useEffect(() => {
     fetchEns();
   }, [])
@@ -82,9 +88,9 @@ function MainBody() {
         </div>
         {
           ensGrid ?
-            <DomainGrid ens={ens} />
+            <DomainGrid ens={ens} setSelectedEnsFunc={setSelectedEnsFunc}/>
             :
-            <DomainList ens={ens} />
+            <DomainList ens={ens} setSelectedEnsFunc={setSelectedEnsFunc}/>
         }
         <h4>ENSRedirect</h4>
         <div className="child">
@@ -97,7 +103,7 @@ function MainBody() {
             <form action="">
               <p>
                 <img src={ensRedirectForm} alt="" />
-                ensredirect.eth
+                {selectedEns}
               </p>
               <div className="row">
                 <input type="url" placeholder='Enter website url to redirect to' />
