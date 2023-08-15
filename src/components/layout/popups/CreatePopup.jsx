@@ -11,7 +11,7 @@ function CreatePopup({popUpCreateMenu}) {
         initial={{ y: -50, x: "0%" }}
         >
             <li>
-                <Link to="" onClick={popUpCreateMenu}>
+                <Link to="/ensRedirect" onClick={popUpCreateMenu}>
                     <img src={one} alt="" />
                     <p>Redirect Your ENS Domain</p>
                 </Link>

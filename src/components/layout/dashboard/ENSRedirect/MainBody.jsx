@@ -3,8 +3,8 @@ import { BiHomeAlt, BiCalendar } from "react-icons/bi";
 import ensGroup1 from "../../../../assets/images/ensGroup1.svg"
 import listing from "../../../../assets/images/listing.svg"
 import grid from "../../../../assets/images/grid.svg"
-import DomainList from '../ENSMediaHub/DomainList';
-import DomainGrid from '../ENSMediaHub/DomainGrid';
+import DomainList from './DomainList';
+import DomainGrid from './DomainGrid';
 import Rectangle1 from "../../../../assets/images/Rectangle1.png"
 import ensRedirectForm from "../../../../assets/images/ensRedirectForm.svg"
 import { BsArrowRight } from 'react-icons/bs';
