@@ -1,0 +1,636 @@
+.ensRedirect {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-image: url("bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* padding: 2em 0em; */
+}
+
+.ensRedirect .sideBar {
+    width: 25%;
+    min-height: 95vh;
+    padding: 3em;
+    border-right: 1px solid transparent;
+    border-image: linear-gradient(to bottom, rgba(215, 204, 226, 0), rgba(215, 204, 226, 1), rgba(215, 204, 226, 0)) 1;
+}
+
+.ensRedirect .sideBar .head {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ensRedirect .sideBar .head a {
+    display: flex;
+    width: 20px;
+}
+
+.ensRedirect .sideBar .head a img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.ensRedirect .sideBar .head .left {
+    border-radius: 8px;
+    background: var(--01-primary-50, #ECF5FF);
+    display: inline-flex;
+    padding: 7px;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.ensRedirect .sideBar .dp {
+    display: flex;
+    width: 100%;
+    padding: 20px 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    background: linear-gradient(181deg, #F7F3FA 0%, rgba(255, 255, 255, 0.50) 100%);
+    backdrop-filter: blur(35px);
+    margin: 2em 0em;
+}
+
+.ensRedirect .sideBar .dp img {
+    object-fit: cover;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.ensRedirect .sideBar .dp h1 {
+    color: var(rgba(0, 0, 0, 0.87));
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0px;
+}
+
+.ensRedirect .sideBar .dp .address {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid #DADADA;
+    background: var(--text);
+}
+
+.ensRedirect .sideBar .dp .address .icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.ensRedirect .sideBar .links {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 7px;
+    align-self: stretch;
+}
+
+.ensRedirect .sideBar .links a {
+    display: flex;
+    padding: 6px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 99px;
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%), rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+}
+
+.ensRedirect .sideBar .links a .icon {
+    font-size: 14px;
+}
+
+.ensRedirect .sideBar .links a:first-child .icon {
+    color: rgba(29, 155, 240, 1);
+}
+
+.ensRedirect .sideBar .links a:nth-child(2) .icon {
+    color: rgba(52, 130, 209, 1);
+}
+
+.ensRedirect .sideBar .links a:nth-child(3) .icon {
+    color: rgba(88, 101, 242, 1);
+}
+
+.ensRedirect .sideBar .links a:nth-child(4) .icon {
+    color: rgba(25, 23, 23, 1);
+}
+
+.ensRedirect .sideBar .links a:nth-child(5) .icon {
+    color: #229ED9;
+}
+
+.ensRedirect .sideBar .links a span {
+    color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    /* 156.25% */
+}
+
+.ensRedirect .sideBar h1 {
+    color: var(rgba(0, 0, 0, 0.87));
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    /* 125% */
+    letter-spacing: 0.25px;
+    margin: 1.5em 0em;
+    margin-top: 2.5em;
+}
+
+.ensRedirect .sideBar .links .select {
+    width: 100%;
+    cursor: pointer;
+}
+
+.ensRedirect .sideBar .links:last-child {
+    gap: 20px;
+}
+
+.ensRedirect .sideBar .links .btn {
+    display: flex;
+    padding: 8px 20px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 99px;
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%), rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+
+    color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.ensRedirect .sideBar .links .btn .innerBtn {
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.ensRedirect .sideBar .links .btn .innerBtn img {
+    object-fit: contain;
+    height: 20px;
+}
+
+/*•••••••••••••••••• MAIN •••••••••••••••••••••••••*/
+
+.ensRedirect main {
+    width: calc(100% - 25%);
+    min-height: 100vh;
+    margin-left: auto;
+    padding: 0em 2em;
+    padding-top: 3em;
+    padding-bottom: 2em;
+}
+
+.ensRedirect main .banner {
+    width: 100%;
+    height: 220px;
+    flex-shrink: 0;
+    background-image: url(bg1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 15px;
+    padding: 1em 2em;
+}
+
+.ensRedirect main .banner .head {
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(81, 80, 142, 1);
+    padding: 0em 1em;
+}
+
+.ensRedirect main .banner .head ul {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    gap: 4em;
+}
+
+.ensRedirect main .banner .head ul li {
+    padding: 6px 16px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    color: #F7F3FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-right: 1px solid #51508E;
+}
+
+.ensRedirect main .banner .head ul li .icon {
+    font-size: 20px;
+}
+
+.ensRedirect main .banner .head ul .ensBtn {
+    display: flex;
+    padding: 6px 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #48407B;
+}
+
+.ensRedirect main .banner .head ul .ensBtn img {
+    height: 20px;
+}
+
+.ensRedirect main .banner .head ul .ensBtn span {
+    color: #F7F3FF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ensRedirect main .banner .text {
+    padding: 0em 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.ensRedirect main .banner .text h1 {
+    color: var(--text);
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ensRedirect main .banner .text p {
+    color: var(--text);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ensRedirect .ensDomainCont {
+    width: 100%;
+    height: auto;
+    margin-top: 3em;
+}
+
+.ensRedirect .ensDomainCont .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ensRedirect .ensDomainCont .head .sec {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.ensRedirect .ensDomainCont .head span {
+    display: flex;
+    padding: 0px 20px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 16px;
+    background: var(--states-black-overlay-focused, rgba(0, 0, 0, 0.12));
+    color: var(rgba(0, 0, 0, 0.87));
+    font-family: Roboto;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.ensRedirect .ensDomainCont .head h1 {
+    color: var(rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ensRedirect .ensDomainCont .head p {
+    color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    /* 156.25% */
+}
+
+.ensRedirect .ensDomainCont .head .sec1 {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.ensRedirect .ensDomainCont .head .sec1 img.active {
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%), rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+    backdrop-filter: blur(35px);
+}
+
+.ensRedirect .ensDomainCont .head .sec1 img {
+    object-fit: cover;
+    display: flex;
+    padding: 9px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ensRedirect .ensDomainCont .domainList {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.ensRedirect .ensDomainCont .domianGrid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: start;
+    flex-shrink: none;
+    height: auto;
+    margin: 1em 0em;
+    gap: 20px;
+}
+
+.ensRedirect .ensDomainCont .domainList .slider {
+    display: flex;
+    flex-shrink: none;
+    height: auto;
+    margin: 1em 0em;
+    gap: 20px;
+    transform: translateX(0%);
+    transition: transform 500ms ease-in-out;
+}
+
+.ensRedirect .ensDomainCont .box {
+    display: flex;
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid var(--stroke-border, #EFEDEE);
+    background: var(--text);
+    cursor: pointer;
+}
+
+.ensRedirect .ensDomainCont .box .innerBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    height: 60px;
+    background-color: #E2EBFB;
+    border-radius: 10px;
+    /* padding-right: 3em; */
+}
+
+.ensRedirect .ensDomainCont .box .innerBox img {
+    object-fit: cover;
+    height: 70px;
+}
+
+.ensRedirect .ensDomainCont .box .innerBox .cover {
+    width: 25%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    background-color: #DADCFF;
+}
+
+.ensRedirect .ensDomainCont .box .innerBox p {
+    color: #1D222E;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ensRedirect .ensDomainCont .btnCont {
+    position: absolute;
+    width: 51px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: 4;
+}
+
+.ensRedirect .ensDomainCont .btnCont.prev {
+    left: 0%;
+    top: 0%;
+    justify-content: center;
+    background: linear-gradient(270deg, #f0f9f8 0%, rgba(255, 227, 242, 0.00) 100%);
+}
+
+.ensRedirect .ensDomainCont .btnCont.next {
+    right: 0%;
+    top: 0%;
+    justify-content: flex-end;
+    background: linear-gradient(270deg, #FFE3F2 0%, rgba(255, 227, 242, 0.00) 100%);
+}
+
+.ensRedirect .ensDomainCont .btnCont button {
+    border: none;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.ensRedirect h4 {
+    color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.ensRedirect .child {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(181deg, rgba(247, 243, 250, 0.90) 0%, rgba(255, 255, 255, 0.45) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+    margin-top: 1em;
+    gap: 2em;
+}
+
+.ensRedirect .child .cover {
+    width: 30%;
+    height: 100%;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url("../images//Rectangle.png");
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ensRedirect .child .cover img {
+    object-fit: contain;
+    width: 80%;
+    height: 80%;
+}
+
+.ensRedirect .child .text {
+    padding: 2em;
+    padding-top: 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.ensRedirect .child .text h3 {
+    color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ensRedirect .child .text p {
+    color: #7F839D;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    padding-right: 4em;
+}
+
+.ensRedirect .child .text form {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 10px;
+    padding: 2em;
+    border: 1px solid #E1E1E1;
+    background: var(--surface, #FFF);
+    margin-top: 1em;
+}
+
+.ensRedirect .child .text form p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ensRedirect .child .text form p img {
+    object-fit: contain;
+    width: 16px;
+}
+
+.ensRedirect .child .text form .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5em 0em;
+    gap: 10px;
+}
+
+.ensRedirect .child .text form .row button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 50px;
+    gap: 20px;
+    border-radius: 4px;
+    background: var(--01-primary-500, #419FFF);
+    color: var(--03-on-primary-high-emphasis, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.ensRedirect .child .text form .row input {
+    display: flex;
+    height: 50px;
+    width: 80%;
+    padding: 1em 1.5em;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid #DADADA;
+    outline: none;
+}

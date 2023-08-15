@@ -19,10 +19,10 @@ function Header() {
   return (
     <header>
       <nav>
-        <div className="sec">
+        <Link to='/' className="sec">
           <img src="logo.svg" alt="logo" />
           <h1>ENSRedirect</h1>
-        </div>
+        </Link>
         <div className="sec1">
           <ul>
             <li><Link to={"/"}>Home</Link></li>

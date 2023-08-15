@@ -521,8 +521,8 @@
     height: auto;
     display: flex;
     justify-content: space-between;
-    /*  */
     flex-direction: column;
+    gap: 10px;
 }
 
 .landing footer ul li {
@@ -535,6 +535,7 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .landing footer ul li:first-child {
     width: 354px;
     flex-shrink: 0;
@@ -885,6 +886,7 @@
         flex-direction: column;
         gap: 20px;
     }
+
     .landing footer ul:last-child {
         flex-direction: column;
         justify-content: center;

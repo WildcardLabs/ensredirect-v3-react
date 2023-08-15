@@ -10,10 +10,10 @@ function Footer() {
             <div className="box">
                 <ul>
                     <li>
-                        <div className="logo">
+                        <Link to="/"className="logo">
                             <img src="logo.svg" alt="" />
                             <h1>ENSRedirect</h1>
-                        </div>
+                        </Link>
                         <p>
                             Unlock the true potential of your ENS name with our ultimate all-in-one solution.
                         </p>
