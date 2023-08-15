@@ -11,7 +11,7 @@
     /* padding: 2em 0em; */
 }
 
-.ensRedirect .sideBar {
+.sideBar {
     width: 25%;
     min-height: 95vh;
     padding: 3em;
@@ -19,7 +19,7 @@
     border-image: linear-gradient(to bottom, rgba(215, 204, 226, 0), rgba(215, 204, 226, 1), rgba(215, 204, 226, 0)) 1;
 }
 
-.ensRedirect .sideBar .head {
+.sideBar .head {
     width: 100%;
     height: auto;
     display: flex;
@@ -27,17 +27,17 @@
     justify-content: space-between;
 }
 
-.ensRedirect .sideBar .head a {
+.sideBar .head a {
     display: flex;
     width: 20px;
 }
 
-.ensRedirect .sideBar .head a img {
+.sideBar .head a img {
     object-fit: cover;
     width: 100%;
 }
 
-.ensRedirect .sideBar .head .left {
+.sideBar .head .left {
     border-radius: 8px;
     background: var(--01-primary-50, #ECF5FF);
     display: inline-flex;
@@ -48,7 +48,7 @@
     cursor: pointer;
 }
 
-.ensRedirect .sideBar .dp {
+.sideBar .dp {
     display: flex;
     width: 100%;
     padding: 20px 10px;
@@ -62,14 +62,14 @@
     margin: 2em 0em;
 }
 
-.ensRedirect .sideBar .dp img {
+.sideBar .dp img {
     object-fit: cover;
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
 
-.ensRedirect .sideBar .dp h1 {
+.sideBar .dp h1 {
     color: var(rgba(0, 0, 0, 0.87));
     font-size: 20px;
     font-style: normal;
@@ -78,7 +78,7 @@
     margin-top: 0px;
 }
 
-.ensRedirect .sideBar .dp .address {
+.sideBar .dp .address {
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -89,12 +89,12 @@
     background: var(--text);
 }
 
-.ensRedirect .sideBar .dp .address .icon {
+.sideBar .dp .address .icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-.ensRedirect .sideBar .links {
+.sideBar .links {
     width: 100%;
     height: auto;
     display: flex;
@@ -105,7 +105,7 @@
     align-self: stretch;
 }
 
-.ensRedirect .sideBar .links a {
+.sideBar .links a {
     display: flex;
     padding: 6px 20px;
     align-items: center;
@@ -116,31 +116,31 @@
     backdrop-filter: blur(35px);
 }
 
-.ensRedirect .sideBar .links a .icon {
+.sideBar .links a .icon {
     font-size: 14px;
 }
 
-.ensRedirect .sideBar .links a:first-child .icon {
+.sideBar .links a:first-child .icon {
     color: rgba(29, 155, 240, 1);
 }
 
-.ensRedirect .sideBar .links a:nth-child(2) .icon {
+.sideBar .links a:nth-child(2) .icon {
     color: rgba(52, 130, 209, 1);
 }
 
-.ensRedirect .sideBar .links a:nth-child(3) .icon {
+.sideBar .links a:nth-child(3) .icon {
     color: rgba(88, 101, 242, 1);
 }
 
-.ensRedirect .sideBar .links a:nth-child(4) .icon {
+.sideBar .links a:nth-child(4) .icon {
     color: rgba(25, 23, 23, 1);
 }
 
-.ensRedirect .sideBar .links a:nth-child(5) .icon {
+.sideBar .links a:nth-child(5) .icon {
     color: #229ED9;
 }
 
-.ensRedirect .sideBar .links a span {
+.sideBar .links a span {
     color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
     font-family: Inter;
     font-size: 16px;
@@ -150,7 +150,7 @@
     /* 156.25% */
 }
 
-.ensRedirect .sideBar h1 {
+.sideBar h1 {
     color: var(rgba(0, 0, 0, 0.87));
     font-family: Roboto;
     font-size: 16px;
@@ -163,16 +163,16 @@
     margin-top: 2.5em;
 }
 
-.ensRedirect .sideBar .links .select {
+.sideBar .links .select {
     width: 100%;
     cursor: pointer;
 }
 
-.ensRedirect .sideBar .links:last-child {
+.sideBar .links:last-child {
     gap: 20px;
 }
 
-.ensRedirect .sideBar .links .btn {
+.sideBar .links .btn {
     display: flex;
     padding: 8px 20px;
     justify-content: space-between;
@@ -191,13 +191,13 @@
     line-height: 25px;
 }
 
-.ensRedirect .sideBar .links .btn .innerBtn {
+.sideBar .links .btn .innerBtn {
     display: flex;
     align-items: center;
     gap: 1.5em;
 }
 
-.ensRedirect .sideBar .links .btn .innerBtn img {
+.sideBar .links .btn .innerBtn img {
     object-fit: contain;
     height: 20px;
 }
@@ -301,6 +301,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .ensRedirect .ensDomainCont {

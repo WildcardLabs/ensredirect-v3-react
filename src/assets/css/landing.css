@@ -521,7 +521,6 @@
     height: auto;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
     gap: 10px;
 }
 
@@ -533,10 +532,11 @@
 
 .landing footer ul:last-child {
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 0em 2em;
 }
 
-.landing footer ul li:first-child {
+.landing footer ul:first-child li:first-child {
     width: 354px;
     flex-shrink: 0;
 }
@@ -599,7 +599,7 @@
 }
 
 .landing footer .line {
-    width: 80%;
+    width: 90%;
     height: 1px;
     background: rgba(255, 255, 255, 0.15);
     margin-top: 2em;

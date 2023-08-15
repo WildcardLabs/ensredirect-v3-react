@@ -17,7 +17,7 @@ function CreatePopup({popUpCreateMenu}) {
                 </Link>
             </li>
             <li>
-                <Link to="" onClick={popUpCreateMenu}>
+                <Link to="/personalize" onClick={popUpCreateMenu}>
                     <img src={two} alt="" />
                     <p>ENS Profile</p>
                 </Link>
