@@ -9,10 +9,13 @@ import Rectangle1 from "../../../../assets/images/Rectangle1.png"
 import ensRedirectForm from "../../../../assets/images/ensRedirectForm.svg"
 import { BsArrowRight } from 'react-icons/bs';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import DomainGrid from './DomainGrid';
+import DomainList from './DomainList';
 function MainBody() {
+  const [ensGrid, setEnsGrid] = useState(false)
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);
+
   const fetchEns = async () => {
     try {
       const res = await axios.get("https://us-central1-matic-services.cloudfunctions.net/domainlist?address=0x1208a26FAa0F4AC65B42098419EB4dAA5e580AC6")
@@ -30,9 +33,16 @@ function MainBody() {
       console.log(error);
     }
   }
-  useEffect(()=>{
+
+  const toggleList = () => {
+    setEnsGrid(false);
+  }
+  const toggleGrid = () => {
+    setEnsGrid(true);
+  }
+  useEffect(() => {
     fetchEns();
-  },[])
+  }, [])
 
   return (
     <main>
@@ -46,14 +56,14 @@ function MainBody() {
             <div className="ensBtn">
               <img src={ensGroup1} alt="" />
               <span>
-              ENS Profile
+                ENS Profile
               </span>
             </div>
           </ul>
         </div>
         <div className="text">
           <h1>
-          Personalize your ENS Profile
+            Personalize your ENS Profile
           </h1>
           <p>
             <BiCalendar className='icon' />
@@ -70,38 +80,17 @@ function MainBody() {
             <span>{no}</span>
             <p>Select domain name to redirect to</p>
           </div>
+          <div className="sec1">
+            <img src={listing} alt="" className={!ensGrid ? "active" : ""} onClick={toggleList} />
+            <img src={grid} alt="" className={ensGrid ? "active" : ""} onClick={toggleGrid} />
+          </div>
         </div>
-        <motion.div
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            className='domianGrid'>
-            {
-                ens.map((item, idx) => (
-                    <div className="box" key={idx}>
-                        <div className="innerBox">
-                            <div className="cover">
-                                <img src={ensGroup2} alt="" />
-                            </div>
-                           {
-                            idx === 0 ?
-                            <div className="text">
-                            <h3>Primary</h3>
-                          <p>{item}</p>
-                          <Link to="">
-                          Setup ENS Profile
-                          </Link>
-                          </div>
-                          :
-                          <div className="text">
-                        <p>{item}</p>
-                       
-                        </div>
-                           }
-                        </div>
-                    </div>
-                ))
-            }
-        </motion.div>
+        {
+          ensGrid ?
+            <DomainGrid ens={ens} />
+            :
+            <DomainList ens={ens} />
+        }
       </div>
     </main>
   )

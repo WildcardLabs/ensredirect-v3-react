@@ -27,7 +27,7 @@
     width: 100%;
     height: 220px;
     flex-shrink: 0;
-    background-image: url(bg2.png);
+    background-image: url("../images/bg2.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -116,6 +116,7 @@
     gap: 5px;
 }
 
+
 .personalizePage1 .ensDomainCont {
     width: 100%;
     height: auto;
@@ -168,6 +169,56 @@
     font-weight: 400;
     line-height: 25px;
     /* 156.25% */
+}
+
+.personalizePage1 .ensDomainCont .head .sec1 {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.personalizePage1 .ensDomainCont .head .sec1 img.active {
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%), rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+    backdrop-filter: blur(35px);
+}
+
+.personalizePage1 .ensDomainCont .head .sec1 img {
+    object-fit: cover;
+    display: flex;
+    padding: 9px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.personalizePage1 .ensDomainCont .domainList {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.personalizePage1 .ensDomainCont .domianGrid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: start;
+    flex-shrink: none;
+    height: auto;
+    margin: 1em 0em;
+    gap: 20px;
+}
+
+.personalizePage1 .ensDomainCont .domainList .slider {
+    display: flex;
+    flex-shrink: none;
+    height: auto;
+    margin: 1em 0em;
+    gap: 20px;
+    transform: translateX(0%);
+    transition: transform 500ms ease-in-out;
 }
 
 .personalizePage1 .ensDomainCont .domainList {
@@ -279,4 +330,39 @@
     line-height: 16px;
     /* 114.286% */
     letter-spacing: 1.25px;
+}
+.personalizePage1 .ensDomainCont .btnCont {
+    position: absolute;
+    width: 51px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: 4;
+}
+
+.personalizePage1 .ensDomainCont .btnCont.prev {
+    left: 0%;
+    top: 0%;
+    justify-content: center;
+    background: linear-gradient(270deg, #f0f9f8 0%, rgba(255, 227, 242, 0.00) 100%);
+}
+
+.personalizePage1 .ensDomainCont .btnCont.next {
+    right: 0%;
+    top: 0%;
+    justify-content: flex-end;
+    background: linear-gradient(270deg, #FFE3F2 0%, rgba(255, 227, 242, 0.00) 100%);
+}
+
+.personalizePage1 .ensDomainCont .btnCont button {
+    border: none;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

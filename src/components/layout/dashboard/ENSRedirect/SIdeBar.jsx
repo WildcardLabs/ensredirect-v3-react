@@ -53,7 +53,7 @@ function SIdeBar() {
                 </div>
             </div>
             <div className="dp">
-                <img src="dp.png" alt="" />
+                <img src={`${window.location.origin}/dp.png`} alt="" />
                 <h1>Hellenstans.eth</h1>
                 <div className="address">
                     <p>
