@@ -4,7 +4,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background-image: url("bg.png");
+    background-image: url("/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -39,7 +39,7 @@
     height: 60px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(81, 80, 142, 1);
+    border-bottom: 1px solid rgba(14, 143, 132, 1);
     padding: 0em 1em;
 }
 

@@ -23,7 +23,7 @@ function CreatePopup({popUpCreateMenu}) {
                 </Link>
             </li>
             <li>
-                <Link to="" onClick={popUpCreateMenu}>
+                <Link to="/customizeMedia" onClick={popUpCreateMenu}>
                     <img src={three} alt="" />
                     <p>Custom MediaHub</p>
                 </Link>

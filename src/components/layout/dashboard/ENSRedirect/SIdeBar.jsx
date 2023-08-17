@@ -47,7 +47,7 @@ function SIdeBar() {
     return (
         <div className="sideBar">
             <div className="head">
-                <Link to="/"> <img src="logo.png" alt="" /></Link>
+                <Link to="/"> <img src={`${window.location.origin}/logo.png`} alt="" /></Link>
                 <div className="left">
                     <BsChevronDoubleLeft />
                 </div>

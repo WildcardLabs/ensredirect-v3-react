@@ -8,6 +8,7 @@ import PublishPage from './components/pages/PublishPage'
 import ProfilePublished from './components/pages/ProfilePublished'
 import PersonalizePage1 from './components/pages/PersonalizePage1'
 import PersonalizePage2 from './components/pages/PersonalizePage2'
+import MediaHubLandingPage from './components/pages/MediaHubLandingPage'
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/profilepublished" element={<ProfilePublished/>}/>
           <Route exact path="/personalize" element={<PersonalizePage1/>}/>
           <Route exact path="/personalize/:ens" element={<PersonalizePage2/>}/>
+          <Route exact path="/customizeMedia" element={<MediaHubLandingPage/>}/>
         </Routes>
         </div>
     </BrowserRouter>
