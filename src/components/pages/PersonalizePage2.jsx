@@ -1,6 +1,6 @@
 import React from 'react'
 import "../../assets/css/personalizePage2.css"
-import SIdeBar from '../layout/dashboard/ENSRedirect/SIdeBar'
+import SIdeBar from '../layout/dashboard/SIdeBar'
 import MainBody from '../layout/dashboard/personalizePage2/MainBody'
 function PersonalizePage2() {
   return (

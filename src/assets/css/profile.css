@@ -1,0 +1,426 @@
+.profile {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("/bg.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 2em 2em;
+}
+
+.profile .banner {
+    width: 100%;
+    height: 260px;
+    background-image: url("../images/coverContainer.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 2em 2em;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.profile .banner .header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile .banner .header a img {
+    object-fit: cover;
+    height: 20px;
+}
+
+.profile .banner h2 {
+    display: inline-flex;
+    padding: 7px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--surface, #FFF);
+    color: var(--surface, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    /* 114.286% */
+    letter-spacing: 1.25px;
+    cursor: pointer;
+}
+
+.profile .banner h2 .icon {
+    font-size: 20px;
+    color: var(--surface, #FFF);
+}
+
+.profile main {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 4em;
+    padding-left: 4em;
+}
+
+.profile .sidebar {
+    width: 20%;
+    min-height: calc(100vh - 260px);
+    margin-top: -10%;
+}
+
+.profile .sidebar .cover {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.profile .sidebar .cover .imageCont {
+    padding: 0.7em;
+    background-color: var(--text);
+    box-shadow: 0px 2px 2px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+    border-radius: 10px;
+}
+
+.profile .sidebar .cover img {
+    object-fit: cover;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: inherit;
+}
+
+.profile .sidebar .cover h1 {
+    color: var(rgba(0, 0, 0, 0.87));
+    text-align: center;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.profile .sidebar .cover p {
+    color: var(rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.profile .sidebar .cover p .icon {
+    margin-right: 0.4em;
+}
+
+.profile .sidebar .cover .address {
+    display: flex;
+    padding: 6px 10px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    border: 1px solid #DADADA;
+    background: #FFF;
+    color: #38394A;
+    font-family: Roboto;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+}
+
+.profile .sidebar .cover .address .icon {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.profile .sidebar h3 {
+    color: var(rgba(0, 0, 0, 0.87));
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 1em 0em;
+}
+
+.profile .sidebar .links {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.profile .sidebar .links a {
+    display: flex;
+    padding: 6px 20px;
+    align-items: center;
+    gap: 10px 15px;
+    border-radius: 99px;
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%), rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+}
+
+.profile .sidebar .links a .icon {
+    font-size: 14px;
+}
+
+.profile .sidebar .links a:first-child .icon {
+    color: rgba(29, 155, 240, 1);
+}
+
+.profile .sidebar .links a:nth-child(2) .icon {
+    color: rgba(52, 130, 209, 1);
+}
+
+.profile .sidebar .links a:nth-child(3) .icon {
+    color: #2AABEE;
+}
+
+.profile .sidebar .links a:nth-child(4) .icon {
+    color: rgba(88, 101, 242, 1);
+}
+
+.profile .sidebar .links a:nth-child(5) .icon {
+    color: rgba(25, 23, 23, 1);
+}
+
+.profile .sidebar .links a span {
+    color: #00000099;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.profile .mainSec {
+    width: 100%;
+    min-height: calc(100vh - 260px);
+    margin: 2em 0em;
+}
+
+.profile .mainSec .header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4em;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
+    ;
+}
+
+.profile .mainSec .header a {
+    color: rgba(0, 0, 0, 0.87);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: relative;
+}
+
+.profile .mainSec .header a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: -80%;
+    border-radius: 10px;
+    border: 1.5px solid rgba(0, 0, 0, 0.87);
+    transform-origin: left;
+    transition: 500ms ease-in-out;
+    transform: scaleX(0);
+}
+
+.profile .mainSec .header a.active::before {
+    transform: scaleX(1);
+}
+
+.profile .mainSec .collection {
+    width: 100%;
+    height: auto;
+    padding: 2em 0em;
+}
+
+.profile .mainSec .collection .head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2em;
+}
+
+.profile .mainSec .collection .head .btn {
+    display: flex;
+    padding: 8px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 99px;
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%), rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+    backdrop-filter: blur(35px);
+    color: rgba(0, 0, 0, 0.38);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.profile .mainSec .collection .head .btn.active {
+    color: #FFF;
+    background: linear-gradient(184deg, rgba(163, 208, 255, 0.70) 0%, rgba(65, 159, 255, 0.70) 100%), rgba(255, 255, 255, 0.10);
+    box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.25) inset;
+}
+
+.profile .mainSec .collection .nfts ,.profile .mainSec .collection .ens{
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    justify-content: space-between;
+    padding-top: 2em;
+}
+
+.profile .mainSec .collection .nft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.profile .mainSec .collection .nft img {
+    object-fit: cover;
+    width: 222px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 10px;
+
+}
+
+.profile .mainSec .collection .nft p {
+    display: flex;
+    width: 222px;
+    padding: 8px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+    color: rgba(0, 0, 0, 0.38);
+    font-family: Roboto;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    /* 142.857% */
+    letter-spacing: 0.25px;
+}
+.profile .mainSec .collection .ens .box {
+    display: flex;
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid var(--stroke-border, #EFEDEE);
+    background: var(--text);
+}
+
+.profile .mainSec .collection .ens .box .innerBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    height: 110px;
+    background-color: #E2EBFB;
+    border-radius: 10px;
+    /* padding-right: 3em; */
+}
+
+.profile .mainSec .collection .ens .box .innerBox img {
+    object-fit: cover;
+    height: 110px;
+}
+
+.profile .mainSec .collection .ens .box .innerBox .cover {
+    width: 25%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    background-color: #DADCFF;
+}
+
+.profile .mainSec .collection .ens .box .innerBox .text {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.profile .mainSec .collection .ens .box .innerBox h3 {
+    display: flex;
+    width: 80px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: var(--states-black-overlay-focused, rgba(0, 0, 0, 0.12));
+    color: var(rgba(0, 0, 0, 0.87));
+    font-family: Roboto;
+    font-size: 7px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.profile .mainSec .collection .ens .box .innerBox p {
+    color: #1D222E;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile .mainSec .collection .ens .box .innerBox a {
+    display: flex;
+    width: 120px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: var(--01-primary-500, #419FFF);
+    color: var(--03-on-primary-high-emphasis, #FFF);
+    font-family: Roboto;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    /* 114.286% */
+    letter-spacing: 1.25px;
+}

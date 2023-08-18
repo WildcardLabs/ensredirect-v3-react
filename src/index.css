@@ -18,6 +18,7 @@
 body{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none; 
+  background: var(--bg);
 }
   body::-webkit-scrollbar {
     display: none;

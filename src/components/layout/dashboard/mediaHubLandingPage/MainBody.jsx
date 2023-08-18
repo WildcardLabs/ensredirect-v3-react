@@ -9,8 +9,8 @@ import Rectangle1 from "../../../../assets/images/Rectangle1.png"
 import ensRedirectForm from "../../../../assets/images/ensRedirectForm.svg"
 import { BsArrowRight } from 'react-icons/bs';
 import axios from 'axios';
-import DomainGrid from '../personalizePage1/DomainGrid';
-import DomainList from '../personalizePage1/DomainList';
+import DomainGrid from './DomainGrid';
+import DomainList from './DomainList';
 function MainBody() {
   const [ensGrid, setEnsGrid] = useState(false)
   const [no, setNo] = useState(0);

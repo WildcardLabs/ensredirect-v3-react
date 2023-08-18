@@ -1,6 +1,6 @@
 import React from 'react'
 import "../../assets/css/ENSRedirect.css"
-import SIdeBar from '../layout/dashboard/ENSRedirect/SIdeBar'
+import SIdeBar from '../layout/dashboard/SIdeBar'
 import MainBody from '../layout/dashboard/ENSRedirect/MainBody'
 function ENSRedirect() {
     return (

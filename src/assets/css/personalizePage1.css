@@ -40,7 +40,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(14, 143, 132, 1);
-    padding: 0em 1em;
+    /* padding: 0em 1em; */
 }
 
 .personalizePage1 main .banner .head ul {
@@ -331,6 +331,7 @@
     /* 114.286% */
     letter-spacing: 1.25px;
 }
+
 .personalizePage1 .ensDomainCont .btnCont {
     position: absolute;
     width: 51px;

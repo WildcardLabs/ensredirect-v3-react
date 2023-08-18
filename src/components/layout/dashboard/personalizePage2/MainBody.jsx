@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BiHomeAlt, BiCalendar } from "react-icons/bi";
+import { BiArrowBack, BiCalendar } from "react-icons/bi";
 import { PiTrashLight } from "react-icons/pi";
 import { BsArrowRightShort } from "react-icons/bs";
 import ensGroup1 from "../../../../assets/images/personalize.svg"
@@ -16,8 +16,8 @@ function MainBody() {
         <div className="head">
           <ul>
             <li>
-              <BiHomeAlt className="icon" />
-              <span>Home</span>
+              <BiArrowBack className="icon" />
+              <span>Back</span>
             </li>
             <div className="ensBtn">
               <img src={ensGroup1} alt="" />

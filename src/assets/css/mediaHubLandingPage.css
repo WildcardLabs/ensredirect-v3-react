@@ -1,0 +1,358 @@
+.mediaHubLandingPage2 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-image: url("/bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* padding: 2em 0em; */
+}
+
+
+/*•••••••••••••••••• MAIN •••••••••••••••••••••••••*/
+
+.mediaHubLandingPage2 main {
+    width: calc(100% - 25%);
+    min-height: 100vh;
+    margin-left: auto;
+    padding: 0em 2em;
+    padding-top: 3em;
+    padding-bottom: 2em;
+}
+
+.mediaHubLandingPage2 main .banner {
+    width: 100%;
+    height: 220px;
+    flex-shrink: 0;
+    background-image: url("../images/bg2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 15px;
+    padding: 1em 2em;
+}
+
+.mediaHubLandingPage2 main .banner .head {
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(14, 143, 132, 1);
+    /* padding: 0em 1em; */
+}
+
+.mediaHubLandingPage2 main .banner .head ul {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    gap: 4em;
+}
+
+.mediaHubLandingPage2 main .banner .head ul li {
+    padding: 6px 16px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    color: #F7F3FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-right: 1px solid #51508E;
+}
+
+.mediaHubLandingPage2 main .banner .head ul li .icon {
+    font-size: 20px;
+}
+
+.mediaHubLandingPage2 main .banner .head ul .ensBtn {
+    display: flex;
+    padding: 6px 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #0E8F84;
+}
+
+.mediaHubLandingPage2 main .banner .head ul .ensBtn img {
+    height: 20px;
+}
+
+.mediaHubLandingPage2 main .banner .head ul .ensBtn span {
+    color: #F7F3FF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.mediaHubLandingPage2 main .banner .text {
+    padding: 0em 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.mediaHubLandingPage2 main .banner .text h1 {
+    color: var(--text);
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.mediaHubLandingPage2 main .banner .text p {
+    color: var(--text);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mediaHubLandingPage2 .child {
+    width: 100%;
+    height: auto;
+    padding: 2em 0em;
+    margin: 2em 0em;
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+}
+
+.mediaHubLandingPage2 .child .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 4em;
+    align-items: flex-start;
+}
+
+.mediaHubLandingPage2 .child .socialRow {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+.mediaHubLandingPage2 .child .socialRow img {
+    object-fit: contain;
+    height: inherit;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.mediaHubLandingPage2 .child .socialRow .box {
+    width: 70%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.90) 0%, rgba(255, 255, 255, 0.45) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+    padding: 2em;
+}
+
+.mediaHubLandingPage2 .child .socialRow .box .text {
+    width: 70%;
+    height: inherit;
+    padding: 1em 0em;
+}
+
+.mediaHubLandingPage2 .child .socialRow .box .text h1 {
+    color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mediaHubLandingPage2 .child .socialRow .box .text p {
+    color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    /* 156.25% */
+    margin-top: 0.5em;
+}
+
+.mediaHubLandingPage2 .child .socialRow .box a {
+    display: flex;
+    padding: 16px 16px 16px 18px;
+    align-items: flex-start;
+    border-radius: 4px;
+    background: var(--01-primary-500, #419FFF);
+    color: var(--03-on-primary-high-emphasis, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    /* 114.286% */
+    letter-spacing: 1.25px;
+}
+.mediaHubLandingPage2 .child .socialRow .box a .icon{
+   margin-right: 1em;
+}
+
+.mediaHubLandingPage2 .child .row .text {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.mediaHubLandingPage2 .child .row .text h1 {
+    color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mediaHubLandingPage2 .child .row .text p {
+    color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.mediaHubLandingPage2 .child .row .box {
+    width: 75%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(184deg, rgba(247, 243, 250, 0.90) 0%, rgba(255, 255, 255, 0.45) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(35px);
+    padding: 2em;
+}
+
+.mediaHubLandingPage2 .child .row .box .innerBox {
+    width: 100%;
+}
+
+.mediaHubLandingPage2 .child .row .box .innerBox h1 {
+    color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mediaHubLandingPage2 .child .row .box .innerBox .innerRow {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 1em 0em;
+    gap: 0.5em;
+}
+
+.mediaHubLandingPage2 .child .row .box .innerBox .innerRow img {
+    object-fit: contain;
+    width: 8%;
+    height: 40px;
+}
+
+.mediaHubLandingPage2 .child .row .box .innerBox .innerRow input {
+    width: 90%;
+    height: 40px;
+    padding: 20px;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1px solid #DADADA;
+    background: var(--text);
+    outline: none;
+}
+.mediaHubLandingPage2 .child .row .box .innerBox .btns {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2em;
+}
+
+.mediaHubLandingPage2 .child .row .box .innerBox button {
+    display: flex;
+    padding: 10px 15px;
+    align-items: flex-start;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: var(--01-primary-500, #419FFF);
+    color: var(--03-on-primary-high-emphasis, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.mediaHubLandingPage2 .child .row:last-child .box {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2em;
+    background: transparent;
+    box-shadow: none;
+}
+
+.mediaHubLandingPage2 .child .row .box button.preview {
+    display: flex;
+    padding: 16px 26px 16px 25px;
+    align-items: flex-start;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: var(--surface, #FFF);
+    color: var(--01-primary-500, #419FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.mediaHubLandingPage2 .child .row .box button.publish {
+    display: flex;
+    padding: 16px 26px 16px 18px;
+    align-items: flex-start;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: var(--01-primary-500, #419FFF);
+    color: var(--03-on-primary-high-emphasis, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.mediaHubLandingPage2 .child .row .box button.publish .icon {
+    font-size: 14px;
+    margin-right: 0.5em;
+}

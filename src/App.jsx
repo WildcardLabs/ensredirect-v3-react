@@ -9,11 +9,16 @@ import ProfilePublished from './components/pages/ProfilePublished'
 import PersonalizePage1 from './components/pages/PersonalizePage1'
 import PersonalizePage2 from './components/pages/PersonalizePage2'
 import MediaHubLandingPage from './components/pages/MediaHubLandingPage'
+import MediaHubLandingPage2 from './components/pages/MediaHubLandingPage2'
+import AddSocials from './components/pages/AddSocials'
+import ScrollToTop from './components/pages/ScrollToTop'
+import PublishedPage from './components/pages/Profile'
 function App() {
 
   return (
     <BrowserRouter>
        <div className="container">
+        <ScrollToTop/>
         <Routes>
           <Route exact path="/" element={<Landing/>}/>
           <Route exact path="/ensRedirect" element={<ENSRedirect/>}/>
@@ -23,6 +28,9 @@ function App() {
           <Route exact path="/personalize" element={<PersonalizePage1/>}/>
           <Route exact path="/personalize/:ens" element={<PersonalizePage2/>}/>
           <Route exact path="/customizeMedia" element={<MediaHubLandingPage/>}/>
+          <Route exact path="/customizeMedia/:ens" element={<MediaHubLandingPage2/>}/>
+          <Route exact path="/addsocials/:ens" element={<AddSocials/>}/>
+          <Route exact path="/profile/:ens/*" element={<PublishedPage/>}/>
         </Routes>
         </div>
     </BrowserRouter>
