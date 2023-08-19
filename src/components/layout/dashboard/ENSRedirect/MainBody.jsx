@@ -70,7 +70,7 @@ function MainBody() {
         </div>
         <div className="text">
           <h1>
-            Welcome, Hellenstans.eth
+            Welcome, {ens}
           </h1>
           <p>
             <BiCalendar className='icon' />

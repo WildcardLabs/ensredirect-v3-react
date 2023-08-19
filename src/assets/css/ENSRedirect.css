@@ -120,24 +120,27 @@
     font-size: 14px;
 }
 
-.sideBar .links a:first-child .icon {
+.sideBar .links a.twitter .icon {
     color: rgba(29, 155, 240, 1);
 }
 
-.sideBar .links a:nth-child(2) .icon {
+.sideBar .links a.email .icon {
     color: rgba(52, 130, 209, 1);
 }
 
-.sideBar .links a:nth-child(3) .icon {
+.sideBar .links a.discord .icon {
     color: rgba(88, 101, 242, 1);
 }
 
-.sideBar .links a:nth-child(4) .icon {
+.sideBar .links a.github .icon {
     color: rgba(25, 23, 23, 1);
 }
 
-.sideBar .links a:nth-child(5) .icon {
+.sideBar .links a.telegram .icon {
     color: #2AABEE;
+}
+.sideBar .links a.reddit .icon {
+    color: #ED001C;
 }
 
 .sideBar .links a span {

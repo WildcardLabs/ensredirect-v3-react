@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { BsChevronDoubleLeft } from "react-icons/bs"
 import { Link } from 'react-router-dom'
 import { TbCopy } from "react-icons/tb"
-import { FaEnvelope, FaTelegramPlane } from "react-icons/fa"
+import { FaEnvelope, FaTelegramPlane, FaReddit } from "react-icons/fa"
 import { BsDiscord } from "react-icons/bs"
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai"
 import base from "../../../assets/images/base.svg"
-import ens from "../../../assets/images/ens.svg"
+import ensimg from "../../../assets/images/ens.svg"
 import eig from "../../../assets/images/eig.svg"
 import jai from "../../../assets/images/jai.svg"
 import Select from 'react-select';
@@ -14,7 +14,9 @@ import { useSelector } from "react-redux";
 import axios from 'axios'
 function SIdeBar() {
     const { owner } = useSelector((state) => state.ensStore);
-    const [ensRecord,setEnsRecord] = useState(null);
+    const [ensRecord, setEnsRecord] = useState(null);
+    const [ens, setEns] = useState(null);
+    const [ensCount, setEnsCount] = useState(null);
     const options = [
         { value: 'eth', label: 'Ethereum' },
         { value: 'opt', label: 'optimism' },
@@ -51,11 +53,18 @@ function SIdeBar() {
         try {
             const ensdata = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
             const ens = ensdata.data[0];
-            console.log(ens);
+            setEns(ens);
+            setEnsCount(ensdata.data.length);
             const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
-            setEnsRecord(res);
+            setEnsRecord(res.data);
+            console.log(res.data);
         } catch (error) {
             console.log(error);
+        }
+    }
+    const copyAddrress = async () => {
+        if (ensRecord) {
+            await navigator.clipboard.writeText(ensRecord?.longaddress);
         }
     }
 
@@ -74,37 +83,59 @@ function SIdeBar() {
                 </div>
             </div>
             <div className="dp">
-                <img src={`${window.location.origin}/dp.png`} alt="" />
-                <h1>Hellenstans.eth</h1>
+                <img src={`${ensRecord?.avatar ? ensRecord.avatar : window.location.origin}/dp.png`} alt="" />
+                <h1>{ens}</h1>
                 <div className="address">
                     <p>
-                        {truncateAddress("0x7f736235D9b05e8A8dAC7015DC6B2237Ad61de1D")}
+                        {ensRecord?.address}
                     </p>
-                    <TbCopy className='icon' />
+                    <TbCopy className='icon' onClick={copyAddrress} />
                 </div>
                 <input type="text" style={{ display: "none" }} />
             </div>
             <div className="links">
-                <a href="#">
-                    <AiOutlineTwitter className='icon' />
-                    <span>@hellenstans</span>
-                </a>
-                <a href="#">
-                    <FaEnvelope className='icon' />
-                    <span>@hellen1cute@gmail.com</span>
-                </a>
-                <a href="#">
-                    <BsDiscord className='icon' />
-                    <span>elle#9679</span>
-                </a>
-                <a href="#">
-                    <AiFillGithub className='icon' />
-                    <span>@hellenstans97</span>
-                </a>
-                <a href="#">
-                    <FaTelegramPlane className='icon' />
-                    <span>@elle97</span>
-                </a>
+                {
+                    ensRecord?.twitter &&
+                    <a href={`https://twitter.com/${ensRecord.twitter}`} target='_blank' className="twitter">
+                        <AiOutlineTwitter className='icon' />
+                        <span>@{ensRecord.twitter}</span>
+                    </a>
+                }
+                {
+                    ensRecord?.email &&
+                    <a href="#" target='_blank' className="email">
+                        <FaEnvelope className='icon' />
+                        <span>@{ensRecord.email}</span>
+                    </a>
+                }
+                {
+                    ensRecord?.discord &&
+                    <a href="#" target='_blank' className="discord">
+                        <BsDiscord className='icon' />
+                        <span>@{ensRecord.discord}</span>
+                    </a>
+                }
+                {
+                    ensRecord?.github &&
+                    <a href={`https://github.com/${ensRecord.github}`} target='_blank' className="github">
+                        <AiFillGithub className='icon' />
+                        <span>@{ensRecord.github}</span>
+                    </a>
+                }
+                {
+                    ensRecord?.telegram &&
+                    <a href={`https://t.me/${ensRecord.telegram}`} target='_blank' className="telegram">
+                        <FaTelegramPlane className='icon' />
+                        <span>@{ensRecord.telegram}</span>
+                    </a>
+                }
+                {
+                    ensRecord?.reddit &&
+                    <a href="#" target='_blank' className="reddit">
+                        <FaReddit className='icon' />
+                        <span>@{ensRecord.reddit}</span>
+                    </a>
+                }
             </div>
             <h1>Manage Collections</h1>
             <div className="links">
@@ -124,10 +155,10 @@ function SIdeBar() {
                 </div>
                 <div className="btn">
                     <div className="innerBtn">
-                        <img src={ens} alt="" />
+                        <img src={ensimg} alt="" />
                         <span>BENS: Ethereum N...</span>
                     </div>
-                    <span>6</span>
+                    <span>{ensCount}</span>
                 </div>
                 <div className="btn">
                     <div className="innerBtn">
@@ -147,5 +178,4 @@ function SIdeBar() {
         </div>
     )
 }
-
 export default SIdeBar
