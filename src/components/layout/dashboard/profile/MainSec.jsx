@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useLocation, useParams, Route, Routes } from 'react-router-dom'
 import Collection from './Collection';
+import MediaHub from './MediaHub';
 
 function MainSec() {
     const [collectionPath,setCollectionPath]=useState("")
@@ -22,7 +23,7 @@ function MainSec() {
             <div className="child">
             <Routes>
           <Route exact path="/" element={<Collection/>}/>
-          {/* <Route exact path="/ensRedirect" element={<ENSRedirect/>}/> */}
+          <Route exact path="/mediahub" element={<MediaHub/>}/>
         </Routes>
             </div>
         </div>

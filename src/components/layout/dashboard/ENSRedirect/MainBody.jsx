@@ -9,14 +9,17 @@ import Rectangle1 from "../../../../assets/images/Rectangle1.png"
 import ensRedirectForm from "../../../../assets/images/ensRedirectForm.svg"
 import { BsArrowRight } from 'react-icons/bs';
 import axios from 'axios';
+import {  useSelector } from "react-redux";
 function MainBody() {
   const [ensGrid, setEnsGrid] = useState(false)
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);
   const [selectedEns, setSelectedEns] = useState([]);
+  const { owner } = useSelector((state) => state.ensStore);
+
   const fetchEns = async () => {
     try {
-      const res = await axios.get("https://us-central1-matic-services.cloudfunctions.net/domainlist?address=0x1208a26FAa0F4AC65B42098419EB4dAA5e580AC6")
+      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
       if (list.length > 0) {
         let i = 0
@@ -43,8 +46,11 @@ function MainBody() {
   }
 
   useEffect(() => {
+   if (owner) {
     fetchEns();
-  }, [])
+   }
+  }, [owner])
+
   return (
     <main>
       <div className="banner">

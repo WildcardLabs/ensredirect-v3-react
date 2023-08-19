@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsChevronDoubleLeft } from "react-icons/bs"
 import { Link } from 'react-router-dom'
 import { TbCopy } from "react-icons/tb"
@@ -10,8 +10,11 @@ import ens from "../../../assets/images/ens.svg"
 import eig from "../../../assets/images/eig.svg"
 import jai from "../../../assets/images/jai.svg"
 import Select from 'react-select';
+import { useSelector } from "react-redux";
+import axios from 'axios'
 function SIdeBar() {
-
+    const { owner } = useSelector((state) => state.ensStore);
+    const [ensRecord,setEnsRecord] = useState(null);
     const options = [
         { value: 'eth', label: 'Ethereum' },
         { value: 'opt', label: 'optimism' },
@@ -43,6 +46,24 @@ function SIdeBar() {
         }),
         // You can add more styles for other components like option, indicatorSeparator, etc.
     };
+
+    const fetchRecords = async () => {
+        try {
+            const ensdata = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
+            const ens = ensdata.data[0];
+            console.log(ens);
+            const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+            setEnsRecord(res);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        if (owner) {
+            fetchRecords();
+        }
+    }, [owner])
 
     return (
         <div className="sideBar">
