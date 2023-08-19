@@ -3,7 +3,7 @@ import "../../assets/css/addSocials.css"
 import { BiArrowBack } from "react-icons/bi";
 import { PiTrashLight } from "react-icons/pi";
 import twitter from "../../assets/images/twitter.svg"
-import discord from "../../assets/images/discord.svg"
+// import discord from "../../assets/images/discord.svg"
 import Telegram from "../../assets/images/Telegram.svg"
 import Github from "../../assets/images/Github.svg"
 import Reddit from "../../assets/images/Reddit.svg"
@@ -72,7 +72,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Discord</h1>
             <div className="innerRow">
-              <img src={discord} alt="" />
+              <img src={twitter} alt="" />
               <input type="text" placeholder='Enter your Discord username' />
               <PiTrashLight className='icon' />
             </div>
