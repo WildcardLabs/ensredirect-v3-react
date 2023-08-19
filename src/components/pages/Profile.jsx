@@ -7,7 +7,7 @@ import { BiCalendar } from "react-icons/bi";
 import { FaEnvelope, FaTelegramPlane } from "react-icons/fa"
 import { BsDiscord } from "react-icons/bs"
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai"
-import MainSec from '../layout/dashboard/profile/mainSec'
+import MainSec from '../layout/dashboard/profile/MainSec'
 
 function Profile() {
     const truncateAddress = (address, startChars = 5, endChars = 4) => {

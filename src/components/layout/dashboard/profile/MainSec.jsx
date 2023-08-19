@@ -30,4 +30,4 @@ function MainSec() {
     )
 }
 
-export default MainSec
+export default MainSec;
