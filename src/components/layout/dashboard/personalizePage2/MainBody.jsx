@@ -7,7 +7,7 @@ import twitter from "../../../../assets/images/twitter.svg"
 import discord from "../../../../assets/images/Discord.svg"
 import Telegram from "../../../../assets/images/Telegram.svg"
 import Github from "../../../../assets/images/Github.svg"
-import Reddit from "../../../../assets/images/Reddit.svg"
+import Reddit from "../../../../assets/images/reddit.svg"
 import Tiktok from "../../../../assets/images/Tiktok.svg"
 function MainBody() {
   return (
