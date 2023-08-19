@@ -4,7 +4,7 @@ import { PiTrashLight } from "react-icons/pi";
 import { BsArrowRightShort } from "react-icons/bs";
 import ensGroup1 from "../../../../assets/images/personalize.svg"
 import twitter from "../../../../assets/images/twitter.svg"
-import discord from "../../../../assets/images/discord.svg"
+import discord from "../../../../assets/images/Discord.svg"
 import Telegram from "../../../../assets/images/Telegram.svg"
 import Github from "../../../../assets/images/Github.svg"
 import Reddit from "../../../../assets/images/Reddit.svg"
