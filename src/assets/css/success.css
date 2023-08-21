@@ -163,3 +163,24 @@ section.success .box .childCont .links .tweetBtn {
     background: var(--01-primary-500, #419FFF);
     cursor: pointer;
 }
+
+
+/* ••••••••••••••••••••MOBILE RESPONSIVENESS•••••••••••••••••••••••••••• */
+
+@media (max-width:768px) {
+    section.success {
+        padding: 1em;
+    }
+
+    section.success .box {
+        width: 100%;
+    }
+
+    section.success .box .child .update .btn {
+        transform: translateX(-30%);
+    }
+
+    section.success .box .child .update input:checked+.btn {
+        transform: translateX(50%);
+    }
+}

@@ -143,8 +143,9 @@ section.publish .box .child .update .btn {
     background: rgba(65, 159, 255, 1);
     transition: 500ms ease-in-out;
 }
-section.publish .box .child .update input:checked + .btn {
-transform: translateX(95%);
+
+section.publish .box .child .update input:checked+.btn {
+    transform: translateX(95%);
 }
 
 section.publish .box .child .links {
@@ -184,4 +185,27 @@ section.publish .box .child .links .publish {
 
 section.publish .box .child .links .publish .icon {
     font-size: 20px;
+}
+
+
+
+
+/* ••••••••••••••••••••MOBILE RESPONSIVENESS•••••••••••••••••••••••••••• */
+
+@media (max-width:768px) {
+    section.publish {
+        padding: 1em;
+    }
+
+    section.publish .box {
+        width: 100%;
+    }
+
+    section.publish .box .child .update .btn {
+        transform: translateX(-30%);
+    }
+
+    section.publish .box .child .update input:checked+.btn {
+        transform: translateX(50%);
+    }
 }
