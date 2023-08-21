@@ -2,7 +2,8 @@ import React from 'react'
 import ensGroup2 from "../../../../assets/images/ensGroup2.svg"
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom';
-function DomainGrid({ ens }) {
+function DomainGrid({ ens ,primaryens}) {
+    console.log(primaryens);
     return (
         <motion.div
             animate={{ opacity: 1 }}
@@ -16,7 +17,7 @@ function DomainGrid({ ens }) {
                             <img src={ensGroup2} alt="" />
                         </div>
                        {
-                        idx === 0 ?
+                        item ===primaryens?
                         <div className="text">
                         <h3>Primary</h3>
                       <p>{item}</p>

@@ -19,14 +19,13 @@ function MainBody() {
   const [ensGrid, setEnsGrid] = useState(false);
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);
+  const [primaryens, setPrimaryens] = useState(null);
   const [dp, setDp] = useState(null);
   const { owner } = useSelector((state) => state.ensStore);
 
   const fetchEns = async () => {
     try {
-      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
-      setDp(ensTextRecord?.data.avatar);
-      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
+      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=0x81EbE8Ee7b51741fD5DaD31F6987E626A9bb8111`)
       const list = res.data;
       if (list.length > 0) {
         let i = 0
@@ -37,9 +36,11 @@ function MainBody() {
           }
         }
       }
-      const res2 = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
+      const res2 = await axios.get(`https://api.ensideas.com/ens/resolve/0x81EbE8Ee7b51741fD5DaD31F6987E626A9bb8111`)
       const primarydata = res2.data.name ? res2.data.name : list[0];
       setPrimaryens(primarydata);
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${primarydata}`)
+      setDp(ensTextRecord?.data.avatar);
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +61,7 @@ function MainBody() {
 
   return (
     <main>
-        <div className="mobilehead">
+      <div className="mobilehead">
         <a href="/"><img src="/logo.png" alt="" /></a>
         <div className="menu" onClick={togglesideBarFunc}>
           <img src={dp ? dp : "/dp.png"} alt="dp" />
@@ -77,14 +78,14 @@ function MainBody() {
             <div className="ensBtn">
               <img src={mediaHubGroup1} alt="" />
               <span>
-              Custom MediaHub
+                Custom MediaHub
               </span>
             </div>
           </ul>
         </div>
         <div className="text">
           <h1>
-          Customize your MediaHub
+            Customize your MediaHub
           </h1>
           <p>
             <BiCalendar className='icon' />
@@ -108,9 +109,9 @@ function MainBody() {
         </div>
         {
           ensGrid ?
-            <DomainGrid ens={ens} />
+            <DomainGrid ens={ens} primaryens={primaryens} />
             :
-            <DomainList ens={ens} />
+            <DomainList ens={ens} primaryens={primaryens} />
         }
       </div>
     </main>

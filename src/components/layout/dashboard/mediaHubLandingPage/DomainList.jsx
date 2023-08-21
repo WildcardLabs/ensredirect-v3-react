@@ -3,7 +3,7 @@ import ensGroup2 from "../../../../assets/images/ensGroup2.svg"
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom';
-function DomainList({ ens }) {
+function DomainList({ ens, primaryens }) {
     const sliderRef = useRef();
     const [index, setIndex] = useState(0)
     const nextSlide = () => {
@@ -47,7 +47,7 @@ function DomainList({ ens }) {
                                     <img src={ensGroup2} alt="" />
                                 </div>
                                 {
-                                    idx === 0 ?
+                                    item === primaryens ?
                                         <div className="text">
                                             <h3>Primary</h3>
                                             <p>{item}</p>
