@@ -5,6 +5,10 @@ section.success {
     align-items: center;
     justify-content: center;
     background: #eaeaea;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 9;
 }
 
 section.success .box {
@@ -24,7 +28,7 @@ section.success .box .head {
     align-items: center;
     align-self: stretch;
     border-radius: 10px 10px 0px 0px;
-    background: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
+    background: rgba(0, 0, 0, 0.87);
 }
 
 section.success .box .head h1 {
@@ -48,14 +52,14 @@ section.success .box .head .icon {
     background: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
 }
 
-section.success .box .child {
+section.success .box .childCont {
     gap: 25px;
     display: flex;
     flex-direction: column;
     padding: 2em;
 }
 
-section.success .box .child p {
+section.success .box .childCont p {
     color: #7F839D;
     font-family: Inter;
     font-size: 16px;
@@ -64,7 +68,7 @@ section.success .box .child p {
     line-height: 25px;
 }
 
-section.success .box .child .info {
+section.success .box .childCont .info {
     display: flex;
     padding: 20px;
     align-items: center;
@@ -75,7 +79,7 @@ section.success .box .child .info {
     background: #FFFBD3;
 }
 
-section.success .box .child .infoIcon {
+section.success .box .childCont .infoIcon {
     width: 30px;
     height: 30px;
     background-color: var(--text);
@@ -87,7 +91,7 @@ section.success .box .child .infoIcon {
     font-size: 20px;
 }
 
-section.success .box .child .tweet {
+section.success .box .childCont .tweet {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -100,7 +104,7 @@ section.success .box .child .tweet {
     background: #FFF;
 }
 
-section.success .box .child .tweet h1 {
+section.success .box .childCont .tweet h1 {
     color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
     font-family: Inter;
     font-size: 16px;
@@ -110,7 +114,7 @@ section.success .box .child .tweet h1 {
     /* 156.25% */
 }
 
-section.success .box .child .tweet p {
+section.success .box .childCont .tweet p {
     color: #7F839D;
     font-family: Inter;
     font-size: 16px;
@@ -120,19 +124,19 @@ section.success .box .child .tweet p {
     /* 156.25% */
 }
 
-section.success .box .child .tweet p a {
+section.success .box .childCont .tweet p a {
     color: #7F839D;
     text-decoration: underline;
 }
 
-section.success .box .child .links {
+section.success .box .childCont .links {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3em;
 }
 
-section.success .box .child .links .redirect {
+section.success .box .childCont .links .redirect {
     display: flex;
     padding: 16px 16px 16px 18px;
     align-items: flex-start;
@@ -141,9 +145,10 @@ section.success .box .child .links .redirect {
     border: 1px solid var(--outline, rgba(0, 0, 0, 0.12));
     background: var(--surface, --text);
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.87);
 }
 
-section.success .box .child .links .tweetBtn {
+section.success .box .childCont .links .tweetBtn {
     display: flex;
     padding: 16px 16px 16px 18px;
     align-items: flex-start;

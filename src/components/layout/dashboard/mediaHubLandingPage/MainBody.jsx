@@ -8,17 +8,25 @@ import grid from "../../../../assets/images/grid.svg"
 import Rectangle1 from "../../../../assets/images/Rectangle1.png"
 import ensRedirectForm from "../../../../assets/images/ensRedirectForm.svg"
 import { BsArrowRight } from 'react-icons/bs';
+import Caret from "../../../../assets/images/Caret up.svg"
 import axios from 'axios';
 import DomainGrid from './DomainGrid';
 import DomainList from './DomainList';
+import { setSidebarState } from '../../../../redux/ensStore';
+import { useDispatch, useSelector } from 'react-redux';
 function MainBody() {
-  const [ensGrid, setEnsGrid] = useState(false)
+  const dispatch = useDispatch();
+  const [ensGrid, setEnsGrid] = useState(false);
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);
+  const [dp, setDp] = useState(null);
+  const { owner } = useSelector((state) => state.ensStore);
 
   const fetchEns = async () => {
     try {
-      const res = await axios.get("https://us-central1-matic-services.cloudfunctions.net/domainlist?address=0x1208a26FAa0F4AC65B42098419EB4dAA5e580AC6")
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+      setDp(ensTextRecord?.data.avatar);
+      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
       if (list.length > 0) {
         let i = 0
@@ -29,6 +37,9 @@ function MainBody() {
           }
         }
       }
+      const res2 = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
+      const primarydata = res2.data.name ? res2.data.name : list[0];
+      setPrimaryens(primarydata);
     } catch (error) {
       console.log(error);
     }
@@ -40,12 +51,22 @@ function MainBody() {
   const toggleGrid = () => {
     setEnsGrid(true);
   }
+  const togglesideBarFunc = () => {
+    dispatch(setSidebarState(true));
+  }
   useEffect(() => {
     fetchEns();
   }, [])
 
   return (
     <main>
+        <div className="mobilehead">
+        <a href="/"><img src="/logo.png" alt="" /></a>
+        <div className="menu" onClick={togglesideBarFunc}>
+          <img src={dp ? dp : "/dp.png"} alt="dp" />
+          <img src={Caret} alt="caret up" />
+        </div>
+      </div>
       <div className="banner">
         <div className="head">
           <ul>

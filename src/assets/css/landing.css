@@ -910,6 +910,10 @@
         line-height: normal;
     }
 
+    .landing footer ul li p{
+        padding-right: 2em;
+    }
+
     .landing footer ul:last-child li:first-child {
         display: none;
     }

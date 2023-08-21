@@ -211,3 +211,20 @@
     cursor: pointer;
     margin-left: auto;
 }
+
+
+
+
+/* ••••••••••••••••••••MOBILE RESPONSIVENESS•••••••••••••••••••••••••••• */
+
+@media (max-width:768px) {
+    .addSocials .head {
+        width: 90%;
+    }
+    .addSocials .child .row {
+        width: 90%;
+    }
+    .addSocials .child .row .innerBox h1{
+        margin-left: 0em;
+      }
+}

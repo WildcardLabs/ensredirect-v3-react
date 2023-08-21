@@ -48,6 +48,10 @@
     cursor: pointer;
 }
 
+.sideBar .head .cancel {
+    display: none;
+}
+
 .sideBar .dp {
     display: flex;
     width: 100%;
@@ -139,6 +143,7 @@
 .sideBar .links a.telegram .icon {
     color: #2AABEE;
 }
+
 .sideBar .links a.reddit .icon {
     color: #ED001C;
 }
@@ -639,4 +644,206 @@
     border-radius: 4px;
     border: 1px solid #DADADA;
     outline: none;
+}
+
+.mobilehead {
+    display: none;
+}
+
+
+
+
+
+
+/* ••••••••••••••••••••MOBILE RESPONSIVENESS•••••••••••••••••••••••••••• */
+
+@media (max-width:768px) {
+    .sideBar {
+        position: fixed;
+        z-index: 10;
+        width: 100vw;
+        min-height: 100vh;
+        top: 0%;
+        left: 0%;
+        background-color: #fff;
+        transform: translateX(100%);
+        transition: transform 500ms ease-in-out;
+    }
+
+    .sideBar.active {
+        transform: translateX(0%);
+    }
+
+    .sideBar .head a {
+        display: none;
+    }
+
+    .sideBar .head .left {
+        display: none;
+    }
+
+    .sideBar .head .cancel {
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.30);
+        display: inline-flex;
+        padding: 7px;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: var(--text);
+        margin-left: auto;
+    }
+
+    /*•••••••• MIAN •••••••••••••••••*/
+
+    .ensRedirect main {
+        width: 100%;
+        border: 2px solid;
+        padding-bottom: 7em;
+    }
+
+    .ensRedirect main .banner .head ul li:first-child {
+        display: none;
+    }
+
+    .ensRedirect main .banner .head ul .ensBtn {
+        display: flex;
+        width: 100%;
+        padding: 1em 1em;
+    }
+
+    .ensRedirect main .banner .head {
+        padding: 0em 0em;
+    }
+
+    .ensRedirect main .banner .text h1 {
+        font-size: 25px;
+        word-wrap: break-word;
+    }
+
+    main .mobilehead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1em;
+    }
+
+    main .mobilehead img {
+        display: block;
+        object-fit: cover;
+        height: 25px;
+    }
+
+    main .mobilehead .menu {
+        display: flex;
+        padding: 10px 10px 10px 15px;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border-radius: 99px;
+        background: linear-gradient(181deg, #F7F3FA 0%, rgba(255, 255, 255, 0.50) 100%);
+        backdrop-filter: blur(35px);
+        cursor: pointer;
+    }
+
+    main .mobilehead .menu img {
+        object-fit: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    main .mobilehead a{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5em;
+        font-size: 1.4em;
+        color: rgba(0, 0, 0, 0.87);
+        font-family: Roboto;
+     }
+
+    .ensRedirect .ensDomainCont {
+        width: 100%;
+        height: auto;
+        margin-top: 3em;
+    }
+
+    .ensRedirect .ensDomainCont .head {
+        align-items: flex-start;
+    }
+
+    .ensRedirect .ensDomainCont .head .sec {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .ensRedirect .ensDomainCont .head span {
+        padding: 0px;
+        width: 40px;
+        height: 25px;
+        font-size: 10px;
+    }
+
+    .ensRedirect .ensDomainCont .head h1 {
+        font-size: 14px;
+    }
+
+    .ensRedirect .ensDomainCont .head p {
+        font-size: 12px;
+    }
+
+    .ensRedirect .ensDomainCont .head .sec1 {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .ensRedirect h4 {
+        font-size: 14px;
+    }
+
+    .ensRedirect .child {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .ensRedirect .child .cover {
+        display: none;
+    }
+
+    .ensRedirect .child .text {
+        padding: 2em;
+    }
+
+    .ensRedirect .child .text h3 {
+        font-size: 14px;
+    }
+
+    .ensRedirect .child .text p {
+        font-size: 12px;
+        padding-right: 2em;
+    }
+
+    .ensRedirect .child .text form {
+        padding: 2em 1.5em;
+    }
+
+    .ensRedirect .child .text form p {
+        font-size: 14px;
+    }
+
+    .ensRedirect .child .text form .row {
+        flex-direction: column;
+        gap: 1.5em;
+    }
+
+    .ensRedirect .child .text form .row button {
+        width: 100%;
+    }
+
+    .ensRedirect .child .text form .row input {
+        width: 100%;
+    }
 }

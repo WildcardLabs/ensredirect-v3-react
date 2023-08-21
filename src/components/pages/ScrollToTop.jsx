@@ -1,25 +1,25 @@
 import React, { useEffect } from 'react'
 import Web3 from 'web3';
 import { useLocation } from "react-router-dom"
-import { web3Modal } from '../utils/web3Utils';
 import { useDispatch } from "react-redux";
 import { setOwner } from '../../redux/ensStore';
+import { useWalletClient } from 'wagmi'
 function ScrollToTop() {
     const dispatch = useDispatch();
+    const { data: walletClient } = useWalletClient()
     const checkIfConnected = async () => {
-        if (web3Modal.cachedProvider) {
-            const provider = await web3Modal.connect();
-            const web3 = new Web3(provider);
-            const accounts = await web3.eth.getAccounts();
-            const account = accounts[0];
-            dispatch(setOwner(account));
-        }
+        const accounts = await walletClient.getAddresses();
+        dispatch(setOwner(accounts[0]));
     };
     const { pathname } = useLocation();
     useEffect(() => {
         window.scrollTo(0, 0);
-        checkIfConnected();
     }, [pathname])
+    useEffect(() => {
+        if (walletClient) {
+            checkIfConnected();
+        }
+    }, [walletClient])
     return (null)
 }
 

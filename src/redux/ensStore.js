@@ -6,8 +6,8 @@ const initialState = {
     loading: false,
     error: null,
     nfts: [],
-    nft: null,
-    web3Instance: null,
+    sidebarState: false,
+    signer: null,
     owner: null
 };
 
@@ -24,10 +24,10 @@ const ensSlice = createSlice({
                 error: null,
             };
         },
-        setWeb3(state, action) {
+        setSigner(state, action) {
             return {
                 ...state,
-                web3Instance: action.payload
+                signer: action.payload
             };
         },
         setOwner(state, action) {
@@ -43,16 +43,16 @@ const ensSlice = createSlice({
                 nfts: action.payload
             };
         },
-        setNft(state, action) {
+        setSidebarState(state, action) {
             return {
                 ...state,
-                nft: action.payload
+                sidebarState: action.payload
             };
         }
     },
 });
 
-export const { clear, setWeb3, setOwner ,setNfts ,setNft} =
+export const { clear, setSigner, setOwner ,setNfts ,setSidebarState} =
     ensSlice.actions;
 
 export default ensSlice.reducer;

@@ -367,3 +367,107 @@
     justify-content: center;
     cursor: pointer;
 }
+
+
+
+
+
+/* ••••••••••••••••••••MOBILE RESPONSIVENESS•••••••••••••••••••••••••••• */
+
+@media (max-width:768px) {
+    .personalizePage1 main {
+        width: 100%;
+        border: 2px solid;
+        padding-bottom: 7em;
+    }
+
+    .personalizePage1 main .banner .head ul li:first-child {
+        display: none;
+    }
+
+    .personalizePage1 main .banner .head ul .ensBtn {
+        display: flex;
+        width: 100%;
+        padding: 1em 1em;
+    }
+
+    .personalizePage1 main .banner .head {
+        padding: 0em 0em;
+    }
+
+    .personalizePage1 main .banner .text h1 {
+        font-size: 25px;
+        word-wrap: break-word;
+    }
+
+    .personalizePage1 main .mobilehead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1em;
+    }
+
+    .personalizePage1 main .mobilehead img {
+        display: block;
+        object-fit: cover;
+        height: 25px;
+    }
+
+    .personalizePage1 main .mobilehead .menu {
+        display: flex;
+        padding: 10px 10px 10px 15px;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border-radius: 99px;
+        background: linear-gradient(181deg, #F7F3FA 0%, rgba(255, 255, 255, 0.50) 100%);
+        backdrop-filter: blur(35px);
+        cursor: pointer;
+    }
+
+    .personalizePage1 main .mobilehead .menu img {
+        object-fit: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .personalizePage1 .ensDomainCont {
+        width: 100%;
+        height: auto;
+        margin-top: 3em;
+    }
+
+    .personalizePage1 .ensDomainCont .head {
+        align-items: flex-start;
+    }
+
+    .personalizePage1 .ensDomainCont .head .sec {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .personalizePage1 .ensDomainCont .head span {
+        padding: 0px;
+        width: 40px;
+        height: 25px;
+        font-size: 10px;
+    }
+
+    .personalizePage1 .ensDomainCont .head h1 {
+        font-size: 14px;
+    }
+
+    .personalizePage1 .ensDomainCont .head p {
+        font-size: 12px;
+    }
+
+    .personalizePage1 .ensDomainCont .head .sec1 {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+
+}

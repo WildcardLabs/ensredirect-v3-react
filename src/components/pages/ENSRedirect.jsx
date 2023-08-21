@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../../assets/css/ENSRedirect.css"
 import SIdeBar from '../layout/dashboard/SIdeBar'
 import MainBody from '../layout/dashboard/ENSRedirect/MainBody'

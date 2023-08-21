@@ -6,19 +6,36 @@ import grid from "../../../../assets/images/grid.svg"
 import DomainList from './DomainList';
 import DomainGrid from './DomainGrid';
 import Rectangle1 from "../../../../assets/images/Rectangle1.png"
+import Caret from "../../../../assets/images/Caret up.svg"
 import ensRedirectForm from "../../../../assets/images/ensRedirectForm.svg"
 import { BsArrowRight } from 'react-icons/bs';
 import axios from 'axios';
-import {  useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SuccessPage from '../../../pages/SuccessPage';
+import Web3 from 'web3';
+import { domainAbi } from '../../../utils/constants';
+import { useWalletClient } from 'wagmi'
+import { ethers } from 'ethers';
+import { useEthersSigner } from '../../../utils/ethers'
+import { setSidebarState } from '../../../../redux/ensStore';
+
 function MainBody() {
+  const dispatch = useDispatch();
+  const signer = useEthersSigner()
   const [ensGrid, setEnsGrid] = useState(false)
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);
-  const [selectedEns, setSelectedEns] = useState([]);
+  const [primaryens, setPrimaryens] = useState(null);
+  const [selectedEns, setSelectedEns] = useState(null);
+  const [redirectUrl, setRedirectUrl] = useState(null);
+  const [dp, setDp] = useState(null);
+  const [success, setSuccess] = useState(false);
   const { owner } = useSelector((state) => state.ensStore);
 
   const fetchEns = async () => {
     try {
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+      setDp(ensTextRecord?.data.avatar);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
       if (list.length > 0) {
@@ -30,6 +47,9 @@ function MainBody() {
           }
         }
       }
+      const res2 = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
+      const primarydata = res2.data.name ? res2.data.name : list[0];
+      setPrimaryens(primarydata);
     } catch (error) {
       console.log(error);
     }
@@ -41,18 +61,53 @@ function MainBody() {
   const toggleGrid = () => {
     setEnsGrid(true);
   }
-  const setSelectedEnsFunc =(txt) =>{
+  const setSelectedEnsFunc = (txt) => {
     setSelectedEns(txt)
+  }
+  const togglesideBarFunc = () => {
+    dispatch(setSidebarState(true));
+  }
+  const redirectFunc = async (e) => {
+    e.preventDefault();
+    try {
+      const url = e.target.url.value.trim();
+      setRedirectUrl(url)
+      if (url !== "" && selectedEns) {
+        const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${url}.com&ens=${selectedEns}&address=${owner}`);
+        if (res.data) {
+          console.log(signer);
+          const ensContract = new ethers.Contract(
+            res.data.resolver,
+            domainAbi,
+            signer
+          );
+          const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs)
+          // // Wait for 1 confirmation
+          const transactionReceipt = await transaction.wait(1);
+          setSuccess(true);
+          console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
-   if (owner) {
-    fetchEns();
-   }
+    if (owner) {
+      fetchEns();
+    }
   }, [owner])
 
   return (
     <main>
+      <div className="mobilehead">
+        <a href="/"><img src="/logo.png" alt="" /></a>
+        <div className="menu" onClick={togglesideBarFunc}>
+          <img src={dp ? dp : "/dp.png"} alt="dp" />
+          <img src={Caret} alt="caret up" />
+        </div>
+      </div>
       <div className="banner">
         <div className="head">
           <ul>
@@ -70,7 +125,7 @@ function MainBody() {
         </div>
         <div className="text">
           <h1>
-            Welcome, {ens}
+            Welcome, {primaryens}
           </h1>
           <p>
             <BiCalendar className='icon' />
@@ -94,9 +149,9 @@ function MainBody() {
         </div>
         {
           ensGrid ?
-            <DomainGrid ens={ens} setSelectedEnsFunc={setSelectedEnsFunc}/>
+            <DomainGrid ens={ens} setSelectedEnsFunc={setSelectedEnsFunc} />
             :
-            <DomainList ens={ens} setSelectedEnsFunc={setSelectedEnsFunc}/>
+            <DomainList ens={ens} setSelectedEnsFunc={setSelectedEnsFunc} />
         }
         <h4>ENSRedirect</h4>
         <div className="child">
@@ -106,13 +161,13 @@ function MainBody() {
           <div className="text">
             <h3>Enter Your Website URL to Redirect to</h3>
             <p>Redirect your ENS domain to any website of your choice. Effortlessly forward your .eth to any social or professional profile, showcase your work, champion a cause or simply have fun with memes.</p>
-            <form action="">
+            <form action="" onSubmit={redirectFunc}>
               <p>
                 <img src={ensRedirectForm} alt="" />
                 {selectedEns}
               </p>
               <div className="row">
-                <input type="url" placeholder='Enter website url to redirect to' />
+                <input type="url" name='url' placeholder='Enter website url to redirect to' />
                 <button>
                   <BsArrowRight />
                   Redirect
@@ -122,6 +177,10 @@ function MainBody() {
           </div>
         </div>
       </div>
+      {success
+        &&
+        <SuccessPage selectedEns={selectedEns} redirectUrl={redirectUrl} setSuccess={setSuccess} />
+      }
     </main>
   )
 }

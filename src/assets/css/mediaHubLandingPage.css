@@ -142,11 +142,15 @@
     border-radius: 10px;
 }
 
-.mediaHubLandingPage2 .child .socialRow img {
-    object-fit: contain;
+.mediaHubLandingPage2 .child .socialRow .socialCover {
+    width: 20%;
     height: inherit;
-    flex-shrink: 0;
-    align-self: stretch;
+    background-image: url("../images/Rectangle 4201.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
 }
 
 .mediaHubLandingPage2 .child .socialRow .box {
@@ -205,8 +209,9 @@
     /* 114.286% */
     letter-spacing: 1.25px;
 }
-.mediaHubLandingPage2 .child .socialRow .box a .icon{
-   margin-right: 1em;
+
+.mediaHubLandingPage2 .child .socialRow .box a .icon {
+    margin-right: 1em;
 }
 
 .mediaHubLandingPage2 .child .row .text {
@@ -282,6 +287,7 @@
     background: var(--text);
     outline: none;
 }
+
 .mediaHubLandingPage2 .child .row .box .innerBox .btns {
     width: 100%;
     display: flex;
@@ -355,4 +361,82 @@
 .mediaHubLandingPage2 .child .row .box button.publish .icon {
     font-size: 14px;
     margin-right: 0.5em;
+}
+
+
+
+
+/* ••••••••••••••••••••MOBILE RESPONSIVENESS•••••••••••••••••••••••••••• */
+
+@media (max-width:768px) {
+
+    /*•••••••• MIAN •••••••••••••••••*/
+    .mediaHubLandingPage2 main {
+        width: 100%;
+        border: 2px solid;
+        padding-bottom: 7em;
+    }
+
+    .mediaHubLandingPage2 main .banner .head ul li:first-child {
+        display: none;
+    }
+
+    .mediaHubLandingPage2 main .banner .head ul .ensBtn {
+        display: flex;
+        width: 100%;
+        padding: 1em 1em;
+    }
+
+    .mediaHubLandingPage2 main .banner .head {
+        padding: 0em 0em;
+    }
+
+    .mediaHubLandingPage2 main .banner .text h1 {
+        font-size: 25px;
+        word-wrap: break-word;
+    }
+
+
+    .mediaHubLandingPage2 .child {
+        width: 100%;
+        height: auto;
+        padding: 2em 0em;
+        margin: 2em 0em;
+        display: flex;
+        flex-direction: column;
+        gap: 4em;
+    }
+
+    .mediaHubLandingPage2 .child .row {
+        flex-direction: column;
+    }
+
+    .mediaHubLandingPage2 .child .socialRow {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        /*  */
+        flex-direction: column;
+        height: auto;
+        border-radius: 15px;
+    }
+
+
+    .mediaHubLandingPage2 .child .socialRow .socialCover {
+        width: 100%;
+        height: 150px;
+        background-image: url("../images/Rectangle 4201.svg");
+    }
+    .mediaHubLandingPage2 .child .socialRow .box {
+        width: 100%;
+    }
+
+    .mediaHubLandingPage2 .child .row .text {
+        width: 100%;
+    }
+
+    .mediaHubLandingPage2 .child .row .box {
+        width: 100%;
+    }
 }

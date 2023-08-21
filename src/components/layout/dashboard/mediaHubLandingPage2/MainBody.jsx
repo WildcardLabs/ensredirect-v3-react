@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { BiArrowBack, BiCalendar } from "react-icons/bi";
 import { PiTrashLight } from "react-icons/pi";
-import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowRightShort,BsArrowLeft } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
+import Caret from "../../../../assets/images/Caret up.svg"
 import mediaHubGroup1 from "../../../../assets/images/mediaHubGroup1.svg"
 import Youtube from "../../../../assets/images/Youtube.svg"
 import Applepodcast from "../../../../assets/images/Applepodcast.svg"
@@ -10,16 +11,45 @@ import Tiktok from "../../../../assets/images/Tiktok.svg"
 import Spotify from "../../../../assets/images/Spotify.svg"
 import Twitch from "../../../../assets/images/Twitch.svg"
 import Facebook from "../../../../assets/images/Facebook.svg"
-import socialBanner from "../../../../assets/images/Rectangle 4201.png"
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setSidebarState } from '../../../../redux/ensStore';
 function MainBody() {
+  const dispatch = useDispatch();
   const [userEns, setUserEns] = useState(null)
   const { ens } = useParams();
-  useEffect(() => {
-    setUserEns(ens);
-  }, []);
+  const [dp, setDp] = useState(null);
+  const [record, setRecord] = useState(null);
+  const fetchEnsRecords = async () => {
+    try {
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+      setRecord(ensTextRecord?.data);
+      setDp(ensTextRecord?.data.avatar);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const togglesideBarFunc = () => {
+    dispatch(setSidebarState(true));
+  }
+  const goBackFunc = (e) => {
+    e.preventDefault();
+    history.back();
+  }
+  // useEffect(() => {
+  //   setUserEns(ens);
+  // }, []);
   return (
     <main>
+       <div className="mobilehead">
+        <a href="/" onClick={goBackFunc}><BsArrowLeft/> Back</a>
+        <div className="menu" onClick={togglesideBarFunc}>
+          <img src={dp ? dp : "/dp.png"} alt="dp" />
+          <img src={Caret} alt="caret up" />
+        </div>
+      </div>
       <div className="banner">
         <div className="head">
           <ul>
@@ -49,7 +79,7 @@ function MainBody() {
       </div>
       <form className="child">
         <div className="socialRow">
-          <img src={socialBanner} alt="" />
+          <div className="socialCover"></div>
           <div className="box">
             <div className="text">
               <h1>Socials </h1>

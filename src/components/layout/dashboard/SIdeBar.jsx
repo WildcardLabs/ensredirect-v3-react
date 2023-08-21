@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BsChevronDoubleLeft } from "react-icons/bs"
 import { Link } from 'react-router-dom'
 import { TbCopy } from "react-icons/tb"
-import { FaEnvelope, FaTelegramPlane, FaReddit } from "react-icons/fa"
+import { FaEnvelope, FaTelegramPlane, FaReddit, FaTimes } from "react-icons/fa"
 import { BsDiscord } from "react-icons/bs"
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai"
 import base from "../../../assets/images/base.svg"
@@ -10,10 +10,12 @@ import ensimg from "../../../assets/images/ens.svg"
 import eig from "../../../assets/images/eig.svg"
 import jai from "../../../assets/images/jai.svg"
 import Select from 'react-select';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios'
+import { setSidebarState } from '../../../redux/ensStore'
 function SIdeBar() {
-    const { owner } = useSelector((state) => state.ensStore);
+    const dispatch = useDispatch();
+    const { owner, sidebarState } = useSelector((state) => state.ensStore);
     const [ensRecord, setEnsRecord] = useState(null);
     const [ens, setEns] = useState(null);
     const [ensCount, setEnsCount] = useState(null);
@@ -52,12 +54,13 @@ function SIdeBar() {
     const fetchRecords = async () => {
         try {
             const ensdata = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
-            const ens = ensdata.data[0];
+            const primaryens = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
+            const ens = primaryens.data.name ? primaryens.data.name : ensdata.data[0];
             setEns(ens);
             setEnsCount(ensdata.data.length);
             const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
             setEnsRecord(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         } catch (error) {
             console.log(error);
         }
@@ -67,6 +70,9 @@ function SIdeBar() {
             await navigator.clipboard.writeText(ensRecord?.longaddress);
         }
     }
+    const togglesideBarFunc = () => {
+        dispatch(setSidebarState(false));
+    }
 
     useEffect(() => {
         if (owner) {
@@ -75,13 +81,16 @@ function SIdeBar() {
     }, [owner])
 
     return (
-        <div className="sideBar">
-            <div className="head">
+        <div className={sidebarState ? "sideBar active" : "sideBar"}>
+            <div className="head" >
                 <Link to="/"> <img src={`${window.location.origin}/logo.png`} alt="" /></Link>
                 <div className="left">
                     <BsChevronDoubleLeft />
                 </div>
-            </div>
+                <div className="cancel" onClick={togglesideBarFunc}>
+                    <FaTimes />
+                </div>
+            </div >
             <div className="dp">
                 <img src={`${ensRecord?.avatar ? ensRecord.avatar : window.location.origin}/dp.png`} alt="" />
                 <h1>{ens}</h1>
@@ -175,7 +184,7 @@ function SIdeBar() {
                     <span>1</span>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 export default SIdeBar

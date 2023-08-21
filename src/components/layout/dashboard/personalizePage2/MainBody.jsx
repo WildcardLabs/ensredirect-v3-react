@@ -1,17 +1,52 @@
 import React, { useEffect, useState } from 'react'
 import { BiArrowBack, BiCalendar } from "react-icons/bi";
 import { PiTrashLight } from "react-icons/pi";
-import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowRightShort,BsArrowLeft } from "react-icons/bs";
 import ensGroup1 from "../../../../assets/images/personalize.svg"
+import Caret from "../../../../assets/images/Caret up.svg"
 import twitter from "../../../../assets/images/twitter.svg"
 import discord from "../../../../assets/images/Discord.svg"
 import Telegram from "../../../../assets/images/Telegram.svg"
 import Github from "../../../../assets/images/Github.svg"
 import Reddit from "../../../../assets/images/reddit.svg"
 import Tiktok from "../../../../assets/images/Tiktok.svg"
+import { useParams } from 'react-router-dom';
+import { setSidebarState } from '../../../../redux/ensStore';
+import { useDispatch } from 'react-redux';
 function MainBody() {
+  const dispatch = useDispatch();
+  const { ens } = useParams();
+  const [dp, setDp] = useState(null);
+  const [record, setRecord] = useState(null);
+  const fetchEnsRecords = async () => {
+    try {
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+      setRecord(ensTextRecord?.data);
+      setDp(ensTextRecord?.data.avatar);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const togglesideBarFunc = () => {
+    dispatch(setSidebarState(true));
+  }
+  const goBackFunc = (e) => {
+    e.preventDefault();
+    history.back();
+  }
+  // useEffect(() => {
+  //   console.log(ens);
+  // }, [ens])
   return (
     <main>
+      <div className="mobilehead">
+        <a href="/" onClick={goBackFunc}><BsArrowLeft/> Back</a>
+        <div className="menu" onClick={togglesideBarFunc}>
+          <img src={dp ? dp : "/dp.png"} alt="dp" />
+          <img src={Caret} alt="caret up" />
+        </div>
+      </div>
       <div className="banner">
         <div className="head">
           <ul>
@@ -45,7 +80,7 @@ function MainBody() {
             <h1>Profile Picture</h1>
             <p>Link your twitter avatar to your ENS Domain.</p>
           </div>
-          <div className="box">
+          <div className="box tweet">
             <div className="innerBox">
               <h1>Twitter Avatar</h1>
               <div className="innerRow">
@@ -87,7 +122,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={twitter} alt="" />
                 <input type="text" placeholder='Enter your Twitter username' />
-                <PiTrashLight className='icon'/>
+                <PiTrashLight className='icon' />
               </div>
             </div>
           </div>
@@ -101,7 +136,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={discord} alt="" />
                 <input type="text" placeholder='Enter your Discord username' />
-                <PiTrashLight className='icon'/>
+                <PiTrashLight className='icon' />
               </div>
             </div>
           </div>
@@ -115,7 +150,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Telegram} alt="" />
                 <input type="text" placeholder='Enter your Telegram username' />
-                <PiTrashLight className='icon'/>
+                <PiTrashLight className='icon' />
               </div>
             </div>
           </div>
@@ -129,7 +164,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Github} alt="" />
                 <input type="text" placeholder='Enter your Github username' />
-                <PiTrashLight className='icon'/>
+                <PiTrashLight className='icon' />
               </div>
             </div>
           </div>
@@ -143,7 +178,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Reddit} alt="" />
                 <input type="text" placeholder='Enter your Reddit username' />
-                <PiTrashLight className='icon'/>
+                <PiTrashLight className='icon' />
               </div>
             </div>
           </div>
@@ -157,7 +192,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Tiktok} alt="" />
                 <input type="text" placeholder='Enter your Tiktok username' />
-                <PiTrashLight className='icon'/>
+                <PiTrashLight className='icon' />
               </div>
             </div>
           </div>
@@ -167,7 +202,7 @@ function MainBody() {
           </div>
           <div className="box">
             <button className='preview'>Preview</button>
-            <button className='publish'> <BsArrowRightShort className='icon'/>Publish</button>
+            <button className='publish'> <BsArrowRightShort className='icon' />Publish</button>
           </div>
         </div>
       </form>
