@@ -29,6 +29,7 @@ function MainBody() {
   const [selectedEns, setSelectedEns] = useState(null);
   const [redirectUrl, setRedirectUrl] = useState(null);
   const [dp, setDp] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { owner } = useSelector((state) => state.ensStore);
 
@@ -73,23 +74,25 @@ function MainBody() {
       const url = e.target.url.value.trim();
       setRedirectUrl(url)
       if (url !== "" && selectedEns) {
-        const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${url}.com&ens=${selectedEns}&address=${owner}`);
+        const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${url}&ens=${selectedEns}&address=${owner}`);
         if (res.data) {
-          console.log(signer);
           const ensContract = new ethers.Contract(
             res.data.resolver,
             domainAbi,
             signer
           );
+          setLoading(true);
           const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs)
           // // Wait for 1 confirmation
           const transactionReceipt = await transaction.wait(1);
+          setLoading(false);
           setSuccess(true);
           console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
         }
       }
     } catch (error) {
-      console.log(error);
+          setLoading(false);
+          console.log(error);
     }
   }
 
@@ -169,7 +172,12 @@ function MainBody() {
               <div className="row">
                 <input type="url" name='url' placeholder='Enter website url to redirect to' />
                 <button>
+                  {
+                    loading?
+                    <div class="loader"></div>
+                    :
                   <BsArrowRight />
+                }
                   Redirect
                 </button>
               </div>

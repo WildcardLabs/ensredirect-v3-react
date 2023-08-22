@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing/>}/>
           <Route exact path="/ensRedirect" element={<ENSRedirect/>}/>
-          <Route exact path="/success" element={<SuccessPage/>}/>
+          {/* <Route exact path="/success" element={<SuccessPage/>}/> */}
           <Route exact path="/publish" element={<PublishPage/>}/>
           <Route exact path="/profilepublished" element={<ProfilePublished/>}/>
           <Route exact path="/personalize" element={<PersonalizePage1/>}/>
