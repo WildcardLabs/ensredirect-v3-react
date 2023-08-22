@@ -38,9 +38,9 @@ function MainBody() {
     e.preventDefault();
     history.back();
   }
-  // useEffect(() => {
-  //   setUserEns(ens);
-  // }, []);
+  useEffect(() => {
+    setUserEns(ens);
+  }, []);
   return (
     <main>
        <div className="mobilehead">

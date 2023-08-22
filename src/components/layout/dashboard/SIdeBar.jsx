@@ -7,18 +7,24 @@ import { BsDiscord } from "react-icons/bs"
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai"
 import base from "../../../assets/images/base.svg"
 import ensimg from "../../../assets/images/ens.svg"
-import eig from "../../../assets/images/eig.svg"
-import jai from "../../../assets/images/jai.svg"
+import ethLogo from "../../../assets/images/ethereum-logo.svg"
+import optLogo from "../../../assets/images/optimism-logo.svg"
 import Select from 'react-select';
 import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios'
 import { setSidebarState } from '../../../redux/ensStore'
+import { Network, Alchemy } from "alchemy-sdk";
+
 function SIdeBar() {
     const dispatch = useDispatch();
     const { owner, sidebarState } = useSelector((state) => state.ensStore);
     const [ensRecord, setEnsRecord] = useState(null);
     const [ens, setEns] = useState(null);
     const [ensCount, setEnsCount] = useState(null);
+    const [nftCount, setNftCount] = useState({
+        eth: 0,
+        opt: 0,
+    });
     const options = [
         { value: 'eth', label: 'Ethereum' },
         { value: 'opt', label: 'optimism' },
@@ -73,10 +79,43 @@ function SIdeBar() {
     const togglesideBarFunc = () => {
         dispatch(setSidebarState(false));
     }
+    const fetcEthNftCount = (owner) => {
+        const settings = {
+            apiKey: import.meta.env.VITE_ETH_ALCHEMYKey,
+            network: Network.ETH_MAINNET, // Replace with your network.
+        };
+
+        const alchemy = new Alchemy(settings);
+        alchemy.nft.getNftsForOwner(owner).then(nfts => {
+            setNftCount(prevState => ({
+                ...prevState,
+                eth: nfts.totalCount
+            }));
+            // console.log(nftCount);
+            // console.log(nfts.totalCount);
+        });
+    }
+    const fetcOptNftCount = (owner) => {
+        const settings = {
+            apiKey: import.meta.env.VITE_OPT_ALCHEMYKey,
+            network: Network.OPT_MAINNET, // Replace with your network.
+        };
+
+        const alchemy = new Alchemy(settings);
+        alchemy.nft.getNftsForOwner(owner).then(nfts => {
+            setNftCount(prevState => ({
+                ...prevState,
+                opt: nfts.totalCount
+            }));
+        });
+    }
 
     useEffect(() => {
         if (owner) {
             fetchRecords();
+            // Get how many NFTs an address owns.  
+            fetcEthNftCount(owner)
+            fetcOptNftCount(owner);
         }
     }, [owner])
 
@@ -157,10 +196,10 @@ function SIdeBar() {
                 />
                 <div className="btn">
                     <div className="innerBtn">
-                        <img src={base} alt="" />
-                        <span>Base, Introduced</span>
+                        <img src={ethLogo} alt="" />
+                        <span>Etherum</span>
                     </div>
-                    <span>1</span>
+                    <span>{nftCount.eth}</span>
                 </div>
                 <div className="btn">
                     <div className="innerBtn">
@@ -171,17 +210,10 @@ function SIdeBar() {
                 </div>
                 <div className="btn">
                     <div className="innerBtn">
-                        <img src={eig} alt="" />
-                        <span>BEigenLayer Worl...</span>
+                        <img src={optLogo} alt="" />
+                        <span>Optimism</span>
                     </div>
-                    <span>1</span>
-                </div>
-                <div className="btn">
-                    <div className="innerBtn">
-                        <img src={jai} alt="" />
-                        <span>Jia Launch</span>
-                    </div>
-                    <span>1</span>
+                    <span>{nftCount.opt}</span>
                 </div>
             </div>
         </div >

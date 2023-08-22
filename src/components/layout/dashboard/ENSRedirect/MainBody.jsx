@@ -18,6 +18,7 @@ import { useWalletClient } from 'wagmi'
 import { ethers } from 'ethers';
 import { useEthersSigner } from '../../../utils/ethers'
 import { setSidebarState } from '../../../../redux/ensStore';
+import PublishPage from '../../../pages/PublishPage';
 
 function MainBody() {
   const dispatch = useDispatch();
@@ -29,8 +30,10 @@ function MainBody() {
   const [selectedEns, setSelectedEns] = useState(null);
   const [redirectUrl, setRedirectUrl] = useState(null);
   const [dp, setDp] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [gasEnable, setGasEnable] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showPublishPopUp, setShowPublishPopUp] = useState(false);
   const { owner } = useSelector((state) => state.ensStore);
 
   const fetchEns = async () => {
@@ -68,31 +71,39 @@ function MainBody() {
   const togglesideBarFunc = () => {
     dispatch(setSidebarState(true));
   }
-  const redirectFunc = async (e) => {
+  const redirectFunc = (e) => {
     e.preventDefault();
+    const url = e.target.url.value.trim();
+    setRedirectUrl(url);
+    if (url !== "" && selectedEns) {
+      setShowPublishPopUp(true);
+    }
+  }
+
+  const redirect = async () => {
     try {
-      const url = e.target.url.value.trim();
-      setRedirectUrl(url)
-      if (url !== "" && selectedEns) {
-        const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${url}&ens=${selectedEns}&address=${owner}`);
-        if (res.data) {
-          const ensContract = new ethers.Contract(
-            res.data.resolver,
-            domainAbi,
-            signer
-          );
-          setLoading(true);
-          const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs)
-          // // Wait for 1 confirmation
-          const transactionReceipt = await transaction.wait(1);
-          setLoading(false);
-          setSuccess(true);
-          console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
+      if (gasEnable) {
+        if (redirectUrl !== "" && selectedEns) {
+          const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${redirectUrl}&ens=${selectedEns}&address=${owner}`);
+          if (res.data) {
+            const ensContract = new ethers.Contract(
+              res.data.resolver,
+              domainAbi,
+              signer
+            );
+            setLoading(true)
+            const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs);
+            // // Wait for 1 confirmation
+            const transactionReceipt = await transaction.wait(1);
+            setLoading(false);
+            setSuccess(true);
+            // console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
+          }
         }
       }
     } catch (error) {
-          setLoading(false);
-          console.log(error);
+      setLoading(false);
+      setSuccess(false);
     }
   }
 
@@ -172,12 +183,7 @@ function MainBody() {
               <div className="row">
                 <input type="url" name='url' placeholder='Enter website url to redirect to' />
                 <button>
-                  {
-                    loading?
-                    <div class="loader"></div>
-                    :
                   <BsArrowRight />
-                }
                   Redirect
                 </button>
               </div>
@@ -185,9 +191,13 @@ function MainBody() {
           </div>
         </div>
       </div>
+      {showPublishPopUp
+        &&
+        <PublishPage setGasEnable={setGasEnable} gasEnable={gasEnable} redirect={redirect} setShowPublishPopUp={setShowPublishPopUp} loading={loading} />
+      }
       {success
         &&
-        <SuccessPage selectedEns={selectedEns} redirectUrl={redirectUrl} setSuccess={setSuccess} />
+        <SuccessPage setShowPublishPopUp={setShowPublishPopUp} selectedEns={selectedEns} redirectUrl={redirectUrl} setSuccess={setSuccess} />
       }
     </main>
   )

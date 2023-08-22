@@ -5,6 +5,10 @@ section.publish {
     align-items: center;
     justify-content: center;
     background: #eaeaea;
+      position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 9;
 }
 
 section.publish .box {
@@ -48,14 +52,14 @@ section.publish .box .head .icon {
     background: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
 }
 
-section.publish .box .child {
+section.publish .box .childCont {
     gap: 25px;
     display: flex;
     flex-direction: column;
     padding: 2em;
 }
 
-section.publish .box .child p {
+section.publish .box .childCont p {
     color: #7F839D;
     font-family: Inter;
     font-size: 16px;
@@ -64,7 +68,7 @@ section.publish .box .child p {
     line-height: 25px;
 }
 
-section.publish .box .child .info {
+section.publish .box .childCont .info {
     display: flex;
     padding: 20px;
     align-items: center;
@@ -75,7 +79,7 @@ section.publish .box .child .info {
     background: #FFFBD3;
 }
 
-section.publish .box .child .infoIcon {
+section.publish .box .childCont .infoIcon {
     width: 30px;
     height: 30px;
     background-color: var(--text);
@@ -87,7 +91,7 @@ section.publish .box .child .infoIcon {
     font-size: 20px;
 }
 
-section.publish .box .child .update {
+section.publish .box .childCont .update {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -101,7 +105,7 @@ section.publish .box .child .update {
     border: 1px solid var(--outline, rgba(0, 0, 0, 0.12));
 }
 
-section.publish .box .child .update h1 {
+section.publish .box .childCont .update h1 {
     color: var(--00-on-surface-high-emphasis, rgba(0, 0, 0, 0.87));
     font-family: Inter;
     font-size: 16px;
@@ -111,7 +115,7 @@ section.publish .box .child .update h1 {
     /* 156.25% */
 }
 
-section.publish .box .child .update p {
+section.publish .box .childCont .update p {
     color: #7F839D;
     font-family: Inter;
     font-size: 16px;
@@ -121,13 +125,13 @@ section.publish .box .child .update p {
     /* 156.25% */
 }
 
-section.publish .box .child .update .text {
+section.publish .box .childCont .update .text {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-section.publish .box .child .update label {
+section.publish .box .childCont .update label {
     display: flex;
     width: 70px;
     height: 20px;
@@ -136,26 +140,27 @@ section.publish .box .child .update label {
     cursor: pointer;
 }
 
-section.publish .box .child .update .btn {
+section.publish .box .childCont .update .btn {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgba(65, 159, 255, 1);
+    background: rgb(255, 65, 71);
     transition: 500ms ease-in-out;
 }
 
-section.publish .box .child .update input:checked+.btn {
+section.publish .box .childCont .update input:checked+.btn {
     transform: translateX(95%);
+    background: rgba(65, 159, 255, 1);
 }
 
-section.publish .box .child .links {
+section.publish .box .childCont .links {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 3em;
 }
 
-section.publish .box .child .links .close {
+section.publish .box .childCont .links .close {
     display: flex;
     padding: 16px 16px 16px 18px;
     align-items: flex-start;
@@ -166,7 +171,7 @@ section.publish .box .child .links .close {
     cursor: pointer;
 }
 
-section.publish .box .child .links .publish {
+section.publish .box .childCont .links .publish {
     display: flex;
     padding: 16px 16px 16px 18px;
     align-items: center;
@@ -183,7 +188,7 @@ section.publish .box .child .links .publish {
     cursor: pointer;
 }
 
-section.publish .box .child .links .publish .icon {
+section.publish .box .childCont .links .publish .icon {
     font-size: 20px;
 }
 
@@ -201,11 +206,11 @@ section.publish .box .child .links .publish .icon {
         width: 100%;
     }
 
-    section.publish .box .child .update .btn {
+    section.publish .box .childCont .update .btn {
         transform: translateX(-30%);
     }
 
-    section.publish .box .child .update input:checked+.btn {
+    section.publish .box .childCont .update input:checked+.btn {
         transform: translateX(50%);
     }
 }

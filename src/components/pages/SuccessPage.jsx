@@ -2,14 +2,14 @@ import React from 'react'
 import "../../assets/css/success.css"
 import { FaTimes } from "react-icons/fa"
 import { BsInfo } from "react-icons/bs"
-function SuccessPage({ selectedEns, redirectUrl,setSuccess }) {
+function SuccessPage({ selectedEns, redirectUrl, setSuccess, setShowPublishPopUp }) {
     return (
 
         <section className="success">
             <div className="box">
                 <div className="head">
                     <h1>Transaction Successful</h1>
-                    <FaTimes className='icon' onClick={()=>{setSuccess(false)}}/>
+                    <FaTimes className='icon' onClick={() => { setSuccess(false); setShowPublishPopUp(false) }} />
                 </div>
                 <div className="childCont">
                     <p>Test redirect by appending “.limo” on any browser e.g. ensredirect.eth.limo</p>
