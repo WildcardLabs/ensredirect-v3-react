@@ -16,13 +16,14 @@ import { useDispatch } from 'react-redux';
 import { setTextAbi } from '../../../utils/constants';
 import { ethers } from 'ethers';
 import axios from 'axios';
+import SuccessPopUp from '../../popups/SuccessPopUp';
 function MainBody() {
   const dispatch = useDispatch();
   const { ens } = useParams();
   const [dp, setDp] = useState(null);
   const [record, setRecord] = useState(null);
   const [success, setSuccess] = useState(false);
-  const [formtTxt, setFormTxt] = useState({
+  const [formTxt, setFormTxt] = useState({
     ens: ens,
     avatar: "",
     bio: "",
@@ -33,7 +34,7 @@ function MainBody() {
     reddit: "",
     tiktok: ""
   })
-  const { avatar, bio, twitter, discord, telegram, github, reddit, tiktok } = formtTxt;
+  const { avatar, bio, twitter, discord, telegram, github, reddit, tiktok } = formTxt;
   const fetchEnsRecords = async () => {
     try {
       const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
@@ -53,17 +54,25 @@ function MainBody() {
   }
 
   const setTxtRecord = (e) => {
-    setFormTxt({ ...formtTxt, [e.target.name]: e.target.value })
+    setFormTxt({ ...formTxt, [e.target.name]: e.target.value })
   }
   const emptyTxt = (e) => {
-    const key = e.target.getAttribute("data-txtRecord")
-    setFormTxt({ ...formtTxt, [key]: "" })
+    const key = e.target.getAttribute("data-txtrecord")
+    setFormTxt({ ...formTxt, [key]: "" })
   }
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", formtTxt);
+      const nonEmptyFields = {};
+
+      for (const key in formTxt) {
+        if (formTxt.hasOwnProperty(key) && formTxt[key] !== "") {
+          nonEmptyFields[key] = formTxt[key];
+        }
+      }
+      setFormTxt(nonEmptyFields);
+      const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", nonEmptyFields);
       setSuccess(true);
       setFormTxt({
         ens: ens,
@@ -76,12 +85,9 @@ function MainBody() {
         reddit: "",
         tiktok: ""
       })
-      // console.log("vccvvccv");
-      // const iface = new ethers.utils.Interface(setTextAbi);
-      // const node = new ethers.utils.namehash("vinchbat.eth");
-      // console.log(node);
     } catch (error) {
       console.log(error);
+      setSuccess(false);
     }
   }
 
@@ -155,7 +161,7 @@ function MainBody() {
               </div>
               <p>500 characters</p>
               <div className="btns">
-                <div className='clear' data-txtRecord="bio" onClick={emptyTxt}>clear</div>
+                <div className='clear' data-txtrecord="bio" onClick={emptyTxt}>clear</div>
                 <button>save</button>
               </div>
             </div>
@@ -172,7 +178,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Twitter} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Twitter username' name='twitter' value={twitter} />
-                <PiTrashLight className='icon' data-txtRecord="twitter" onClick={emptyTxt} />
+                <PiTrashLight className='icon' data-txtrecord="twitter" onClick={emptyTxt} />
               </div>
             </div>
           </div>
@@ -186,7 +192,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Discord} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Discord username' name='discord' value={discord} />
-                <PiTrashLight className='icon' data-txtRecord="discord" onClick={emptyTxt} />
+                <PiTrashLight className='icon' data-txtrecord="discord" onClick={emptyTxt} />
               </div>
             </div>
           </div>
@@ -200,7 +206,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Telegram} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Telegram username' name='telegram' value={telegram} />
-                <PiTrashLight className='icon' data-txtRecord="telegram" onClick={emptyTxt} />
+                <PiTrashLight className='icon' data-txtrecord="telegram" onClick={emptyTxt} />
               </div>
             </div>
           </div>
@@ -214,7 +220,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Github} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Github username' name='github' value={github} />
-                <PiTrashLight className='icon' data-txtRecord="github" onClick={emptyTxt} />
+                <PiTrashLight className='icon' data-txtrecord="github" onClick={emptyTxt} />
               </div>
             </div>
           </div>
@@ -228,7 +234,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Reddit} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Reddit username' name='reddit' value={reddit} />
-                <PiTrashLight className='icon' data-txtRecord="reddit" onClick={emptyTxt} />
+                <PiTrashLight className='icon' data-txtrecord="reddit" onClick={emptyTxt} />
               </div>
             </div>
           </div>
@@ -242,7 +248,7 @@ function MainBody() {
               <div className="innerRow">
                 <img src={Tiktok} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Tiktok username' name='tiktok' value={tiktok} />
-                <PiTrashLight className='icon' data-txtRecord="tiktok" onClick={emptyTxt} />
+                <PiTrashLight className='icon' data-txtrecord="tiktok" onClick={emptyTxt} />
               </div>
             </div>
           </div>
@@ -256,6 +262,10 @@ function MainBody() {
           </div>
         </div>
       </form>
+      {success
+        &&
+        <SuccessPopUp setSuccess={setSuccess} msg={"Social Links saved successfully"}/>
+      }
     </main>
   )
 }

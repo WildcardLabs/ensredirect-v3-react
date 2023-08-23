@@ -22,7 +22,7 @@ import PublishPage from '../../../pages/PublishPage';
 
 function MainBody() {
   const dispatch = useDispatch();
-  const signer = useEthersSigner()
+  const signer = useEthersSigner();
   const [ensGrid, setEnsGrid] = useState(false)
   const [no, setNo] = useState(0);
   const [ens, setEns] = useState([]);

@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../assets/css/publish.css"
 import { FaTimes } from "react-icons/fa"
 import { BsInfo, BsArrowRightShort } from "react-icons/bs"
-function PublishPage({ setGasEnable, gasEnable ,redirect,setShowPublishPopUp,loading}) {
-
+import { useLocation } from 'react-router-dom'
+function PublishPage({ setGasEnable, gasEnable, redirect, setShowPublishPopUp, loading}) {
+    const {pathname} = useLocation();
+    const [redirectPage,setRedirectPage] = useState(false)
+    useEffect(()=>{
+        setRedirectPage(pathname.includes("ensRedirect"));
+    },[])
     const handleCheckboxChange = () => {
         setGasEnable(!gasEnable);
     };
@@ -15,7 +20,7 @@ function PublishPage({ setGasEnable, gasEnable ,redirect,setShowPublishPopUp,loa
             <div className="box">
                 <div className="head">
                     <h1>Publish</h1>
-                    <FaTimes className='icon' onClick={togglePopUp}/>
+                    <FaTimes className='icon' onClick={togglePopUp} />
                 </div>
                 <div className="childCont">
                     <div className="update">
@@ -23,7 +28,7 @@ function PublishPage({ setGasEnable, gasEnable ,redirect,setShowPublishPopUp,loa
                         <div className="text">
                             <p>Note that you will be required to pay gas fee only once for your initial transaction. All future transactions will be completely gasless and free.</p>
                             <label htmlFor="agree">
-                                <input type="checkbox" name="agree" id="agree" style={{ display: "none" }} onChange={handleCheckboxChange}   checked={gasEnable}/>
+                                <input type="checkbox" name="agree" id="agree" style={{ display: "none" }} onChange={handleCheckboxChange} checked={gasEnable} />
                                 <div className="btn"></div>
                             </label>
                         </div>
@@ -39,7 +44,14 @@ function PublishPage({ setGasEnable, gasEnable ,redirect,setShowPublishPopUp,loa
                                     :
                                     <BsArrowRightShort className='icon' />
                             }
-                            Redirect
+                            {
+                                redirectPage?
+                                    " Redirect"
+                                    :
+                                    " Publish"
+
+                            }
+
                         </div>
                     </div>
                 </div>

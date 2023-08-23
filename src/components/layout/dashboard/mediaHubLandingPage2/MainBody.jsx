@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BiArrowBack, BiCalendar } from "react-icons/bi";
 import { PiTrashLight } from "react-icons/pi";
-import { BsArrowRightShort,BsArrowLeft } from "react-icons/bs";
+import { BsArrowRightShort, BsArrowLeft } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import Caret from "../../../../assets/images/Caret up.svg"
 import mediaHubGroup1 from "../../../../assets/images/mediaHubGroup1.svg"
@@ -13,14 +13,34 @@ import Twitch from "../../../../assets/images/Twitch.svg"
 import Facebook from "../../../../assets/images/Facebook.svg"
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useWalletClient } from 'wagmi'
+import { ethers } from 'ethers';
+import { useEthersSigner } from '../../../utils/ethers'
 import { useDispatch } from 'react-redux';
 import { setSidebarState } from '../../../../redux/ensStore';
+import PublishPage from '../../../pages/PublishPage';
+import { domainAbi } from '../../../utils/constants';
 function MainBody() {
   const dispatch = useDispatch();
+  const signer = useEthersSigner();
   const [userEns, setUserEns] = useState(null)
   const { ens } = useParams();
   const [dp, setDp] = useState(null);
   const [record, setRecord] = useState(null);
+  const [redirectUrl, setRedirectUrl] = useState(null);
+  const [gasEnable, setGasEnable] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showPublishPopUp, setShowPublishPopUp] = useState(false);
+  const [formtTxt, setFormtTxt] = useState({
+    facebook: "",
+    youtube: "",
+    twitch: "",
+    tiktok: "",
+    apple: "",
+    spotify: ""
+  });
+  const { facebook, youtube, twitch, tiktok, apple, spotify } = formtTxt;
   const fetchEnsRecords = async () => {
     try {
       const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
@@ -31,6 +51,10 @@ function MainBody() {
     }
   }
 
+  const setTxtRecord = (e) => {
+    setFormtTxt({ ...formtTxt, [e.target.name]: e.target.value })
+  }
+
   const togglesideBarFunc = () => {
     dispatch(setSidebarState(true));
   }
@@ -38,13 +62,41 @@ function MainBody() {
     e.preventDefault();
     history.back();
   }
+  const redirectFunc = (e) => {
+    e.preventDefault();
+    setShowPublishPopUp(true);
+  }
+
+  const publishSocials = async () => {
+    try {
+      if (gasEnable) {
+        setLoading(true);
+        const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile?ens=${ens}&facebook=${facebook}&youtube=${youtube}&twitch=${twitch}&tiktok=${tiktok}&apple=${apple}&spotify=${spotify}`);
+        if (res.data) {
+          const ensContract = new ethers.Contract(
+            res.data.resolver,
+            domainAbi,
+            signer
+          );
+          const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs);
+          // // Wait for 1 confirmation
+          const transactionReceipt = await transaction.wait(1);
+          setLoading(false);
+          setSuccess(true);
+        }
+      }
+    } catch (error) {
+      setLoading(false);
+      setSuccess(false);
+    }
+  }
   useEffect(() => {
     setUserEns(ens);
   }, []);
   return (
     <main>
-       <div className="mobilehead">
-        <a href="/" onClick={goBackFunc}><BsArrowLeft/> Back</a>
+      <div className="mobilehead">
+        <a href="/" onClick={goBackFunc}><BsArrowLeft /> Back</a>
         <div className="menu" onClick={togglesideBarFunc}>
           <img src={dp ? dp : "/dp.png"} alt="dp" />
           <img src={Caret} alt="caret up" />
@@ -77,7 +129,7 @@ function MainBody() {
           </p>
         </div>
       </div>
-      <form className="child">
+      <form className="child" onSubmit={redirectFunc}>
         <div className="socialRow">
           <div className="socialCover"></div>
           <div className="box">
@@ -98,7 +150,7 @@ function MainBody() {
               <h1>Youtube</h1>
               <div className="innerRow">
                 <img src={Youtube} alt="" />
-                <input type="url" placeholder='Enter your Youtube Link' />
+                <input type="url" placeholder='Enter your Youtube Link' name='youtube' value={youtube} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -113,7 +165,7 @@ function MainBody() {
               <h1>Applepodcast</h1>
               <div className="innerRow">
                 <img src={Applepodcast} alt="" />
-                <input type="url" placeholder='Enter your Applepodcast Link' />
+                <input type="url" placeholder='Enter your Applepodcast Link' name='apple' value={apple} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -128,7 +180,7 @@ function MainBody() {
               <h1>Tiktok</h1>
               <div className="innerRow">
                 <img src={Tiktok} alt="" />
-                <input type="url" placeholder='Enter your Tiktok Link' />
+                <input type="url" placeholder='Enter your Tiktok Link' name='tiktok' value={tiktok} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -143,7 +195,7 @@ function MainBody() {
               <h1>Spotify</h1>
               <div className="innerRow">
                 <img src={Spotify} alt="" />
-                <input type="url" placeholder='Enter your Spotify Link' />
+                <input type="url" placeholder='Enter your Spotify Link' name='spotify' value={spotify} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -158,7 +210,7 @@ function MainBody() {
               <h1>Twitch</h1>
               <div className="innerRow">
                 <img src={Twitch} alt="" />
-                <input type="text" placeholder='Enter your Twitch username' />
+                <input type="text" placeholder='Enter your Twitch username' name='twitch' value={twitch} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -173,7 +225,7 @@ function MainBody() {
               <h1>Facebook Media</h1>
               <div className="innerRow">
                 <img src={Facebook} alt="" />
-                <input type="url" placeholder='Enter your Facebook Media Link' />
+                <input type="url" placeholder='Enter your Facebook Media Link' name='facebook' value={facebook} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -185,11 +237,19 @@ function MainBody() {
           <div className="text">
           </div>
           <div className="box">
-            <button className='preview'>Preview</button>
+            <a className='preview'>Preview</a>
             <button className='publish'> <BsArrowRightShort className='icon' />Publish</button>
           </div>
         </div>
       </form>
+      {showPublishPopUp
+        &&
+        <PublishPage setGasEnable={setGasEnable} gasEnable={gasEnable} redirect={publishSocials} setShowPublishPopUp={setShowPublishPopUp} loading={loading} />
+      }
+      {/* {success
+        &&
+        <SuccessPage setShowPublishPopUp={setShowPublishPopUp} selectedEns={selectedEns} redirectUrl={redirectUrl} setSuccess={setSuccess} />
+      } */}
     </main>
   )
 }

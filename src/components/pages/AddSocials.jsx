@@ -3,18 +3,20 @@ import "../../assets/css/addSocials.css"
 import { BiArrowBack } from "react-icons/bi";
 import { PiTrashLight } from "react-icons/pi";
 import Twitter from "../../assets/images/twitter.svg"
-import Discord from "../../assets/images/discord.svg"
+import Discord from "../../assets/images/Discord.svg"
 import Telegram from "../../assets/images/Telegram.svg"
 import Github from "../../assets/images/Github.svg"
 import Reddit from "../../assets/images/reddit.svg"
 import Tiktok from "../../assets/images/Tiktok.svg"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import SuccessPopUp from '../layout/popups/SuccessPopUp';
 function AddSocials() {
   const [userEns, setUserEns] = useState(null)
   const { ens } = useParams();
   const navigate = useNavigate();
-  const [formtTxt, setFormTxt] = useState({
+  const [success, setSuccess] = useState(false);
+  const [formTxt, setFormTxt] = useState({
     ens: ens,
     avatar: "",
     bio: "",
@@ -25,7 +27,7 @@ function AddSocials() {
     reddit: "",
     tiktok: ""
   })
-  const { avatar, bio, twitter, discord, telegram, github, reddit, tiktok } = formtTxt;
+  const { avatar, bio, twitter, discord, telegram, github, reddit, tiktok } = formTxt;
   useEffect(() => {
     setUserEns(ens);
   }, []);
@@ -37,17 +39,25 @@ function AddSocials() {
   }
 
   const settxtrecord = (e) => {
-    setFormTxt({ ...formtTxt, [e.target.name]: e.target.value })
+    setFormTxt({ ...formTxt, [e.target.name]: e.target.value })
   }
   const emptyTxt = (e) => {
     const key = e.target.getAttribute("data-txtrecord")
-    setFormTxt({ ...formtTxt, [key]: "" })
+    setFormTxt({ ...formTxt, [key]: "" })
   }
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", formtTxt);
-      // setSuccess(true);
+      const nonEmptyFields = {};
+
+      for (const key in formTxt) {
+        if (formTxt.hasOwnProperty(key) && formTxt[key] !== "") {
+          nonEmptyFields[key] = formTxt[key];
+        }
+      }
+      setFormTxt(nonEmptyFields);
+      const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", nonEmptyFields);
+      setSuccess(true);
       setFormTxt({
         ens: ens,
         avatar: "",
@@ -59,11 +69,18 @@ function AddSocials() {
         reddit: "",
         tiktok: ""
       });
-      navigate(-1)
     } catch (error) {
       console.log(error);
+      setSuccess(false);
     }
   }
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        navigate(-1);
+      }, 5000);
+    }
+  }, [success])
 
   return (
     <div className="addSocials">
@@ -164,6 +181,10 @@ function AddSocials() {
           <button className='submit'>save</button>
         </div>
       </form>
+      {success
+        &&
+        <SuccessPopUp setSuccess={setSuccess} msg={"Social Links saved successfully"}/>
+      }
     </div>
   )
 }

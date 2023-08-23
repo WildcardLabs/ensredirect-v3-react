@@ -322,7 +322,7 @@
     box-shadow: none;
 }
 
-.mediaHubLandingPage2 .child .row .box button.preview {
+.mediaHubLandingPage2 .child .row .box .preview {
     display: flex;
     padding: 16px 26px 16px 25px;
     align-items: flex-start;
@@ -428,6 +428,7 @@
         height: 150px;
         background-image: url("../images/Rectangle 4201.svg");
     }
+
     .mediaHubLandingPage2 .child .socialRow .box {
         width: 100%;
     }
