@@ -24,7 +24,7 @@ function Profile() {
             <div className="banner">
                 <div className="header">
                     <Link to="">
-                        <img src="/logo.png" alt="" />
+                        <img loading="lazy" src="/logo.png" alt="" />
                     </Link>
                 </div>
                 <h2>Share Profile <RiShareBoxLine className='icon' /></h2>
@@ -33,7 +33,7 @@ function Profile() {
                 <div className="sidebar">
                     <div className="cover">
                        <div className="imageCont">
-                       <img src='/dp.png' alt="" />
+                       <img loading="lazy" src='/dp.png' alt="" />
                        </div>
                         <h1>Hellenstans.eth</h1>
                         <p><BiCalendar className='icon' />Onchain since July 15, 2023</p>

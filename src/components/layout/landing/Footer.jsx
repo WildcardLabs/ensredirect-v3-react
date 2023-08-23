@@ -11,7 +11,7 @@ function Footer() {
                 <ul>
                     <li>
                         <Link to="/"className="logo">
-                            <img src="logo.svg" alt="" />
+                            <img src="logo.svg" alt="" loading="lazy"/>
                             <h1>ENSRedirect</h1>
                         </Link>
                         <p>

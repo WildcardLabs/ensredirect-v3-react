@@ -14,7 +14,7 @@ function DomainGrid({ ens ,primaryens}) {
                     <div className="box" key={idx}>
                     <Link to={`/personalize/${item}`} className="innerBox">
                         <div className="cover">
-                            <img src={ensGroup2} alt="" />
+                            <img src={ensGroup2} alt="" loading="lazy"/>
                         </div>
                        {
                         item ===primaryens?

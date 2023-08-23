@@ -103,8 +103,8 @@ function MainBody() {
             <p>Select domain name to redirect to</p>
           </div>
           <div className="sec1">
-            <img src={listing} alt="" className={!ensGrid ? "active" : ""} onClick={toggleList} />
-            <img src={grid} alt="" className={ensGrid ? "active" : ""} onClick={toggleGrid} />
+            <img loading="lazy" src={listing} alt="" className={!ensGrid ? "active" : ""} onClick={toggleList} />
+            <img loading="lazy" src={grid} alt="" className={ensGrid ? "active" : ""} onClick={toggleGrid} />
           </div>
         </div>
         {

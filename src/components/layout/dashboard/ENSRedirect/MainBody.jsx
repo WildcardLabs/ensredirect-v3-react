@@ -118,8 +118,8 @@ function MainBody() {
       <div className="mobilehead">
         <a href="/"><img src="/logo.png" alt="" /></a>
         <div className="menu" onClick={togglesideBarFunc}>
-          <img src={dp ? dp : "/dp.png"} alt="dp" />
-          <img src={Caret} alt="caret up" />
+          <img loading="lazy" src={dp ? dp : "/dp.png"} alt="dp" />
+          <img loading="lazy" src={Caret} alt="caret up"/>
         </div>
       </div>
       <div className="banner">
@@ -130,7 +130,7 @@ function MainBody() {
               <span>Home</span>
             </li>
             <div className="ensBtn">
-              <img src={ensGroup1} alt="" />
+              <img loading="lazy" src={ensGroup1} alt="" />
               <span>
                 Redirect Your ENS Domain
               </span>
@@ -157,8 +157,8 @@ function MainBody() {
             <p>Select domain name to redirect to</p>
           </div>
           <div className="sec1">
-            <img src={listing} alt="" className={!ensGrid ? "active" : ""} onClick={toggleList} />
-            <img src={grid} alt="" className={ensGrid ? "active" : ""} onClick={toggleGrid} />
+            <img loading="lazy" src={listing} alt="" className={!ensGrid ? "active" : ""} onClick={toggleList} />
+            <img loading="lazy" src={grid} alt="" className={ensGrid ? "active" : ""} onClick={toggleGrid} />
           </div>
         </div>
         {
@@ -170,14 +170,14 @@ function MainBody() {
         <h4>ENSRedirect</h4>
         <div className="child">
           <div className="cover">
-            <img src={Rectangle1} alt="" />
+            <img loading="lazy" src={Rectangle1} alt="" />
           </div>
           <div className="text">
             <h3>Enter Your Website URL to Redirect to</h3>
             <p>Redirect your ENS domain to any website of your choice. Effortlessly forward your .eth to any social or professional profile, showcase your work, champion a cause or simply have fun with memes.</p>
             <form action="" onSubmit={redirectFunc}>
               <p>
-                <img src={ensRedirectForm} alt="" />
+                <img loading="lazy" src={ensRedirectForm} alt="" />
                 {selectedEns}
               </p>
               <div className="row">

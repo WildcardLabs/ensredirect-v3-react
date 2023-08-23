@@ -98,8 +98,8 @@ function MainBody() {
       <div className="mobilehead">
         <a href="/" onClick={goBackFunc}><BsArrowLeft /> Back</a>
         <div className="menu" onClick={togglesideBarFunc}>
-          <img src={dp ? dp : "/dp.png"} alt="dp" />
-          <img src={Caret} alt="caret up" />
+          <img loading="lazy" src={dp ? dp : "/dp.png"} alt="dp" />
+          <img loading="lazy" src={Caret} alt="caret up" />
         </div>
       </div>
       <div className="banner">
@@ -110,7 +110,7 @@ function MainBody() {
               <span>Back</span>
             </li>
             <div className="ensBtn">
-              <img src={mediaHubGroup1} alt="" />
+              <img loading="lazy" src={mediaHubGroup1} alt="" />
               <span>
                 Custom MediaHub
               </span>
@@ -149,7 +149,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Youtube</h1>
               <div className="innerRow">
-                <img src={Youtube} alt="" />
+                <img loading="lazy" src={Youtube} alt="" />
                 <input type="url" placeholder='Enter your Youtube Link' name='youtube' value={youtube} onChange={setTxtRecord} />
               </div>
               <div className="btns">
@@ -164,7 +164,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Applepodcast</h1>
               <div className="innerRow">
-                <img src={Applepodcast} alt="" />
+                <img loading="lazy" src={Applepodcast} alt="" />
                 <input type="url" placeholder='Enter your Applepodcast Link' name='apple' value={apple} onChange={setTxtRecord} />
               </div>
               <div className="btns">
@@ -179,7 +179,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Tiktok</h1>
               <div className="innerRow">
-                <img src={Tiktok} alt="" />
+                <img loading="lazy" src={Tiktok} alt="" />
                 <input type="url" placeholder='Enter your Tiktok Link' name='tiktok' value={tiktok} onChange={setTxtRecord} />
               </div>
               <div className="btns">
@@ -194,7 +194,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Spotify</h1>
               <div className="innerRow">
-                <img src={Spotify} alt="" />
+                <img loading="lazy" src={Spotify} alt="" />
                 <input type="url" placeholder='Enter your Spotify Link' name='spotify' value={spotify} onChange={setTxtRecord} />
               </div>
               <div className="btns">
@@ -209,7 +209,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Twitch</h1>
               <div className="innerRow">
-                <img src={Twitch} alt="" />
+                <img loading="lazy" src={Twitch} alt="" />
                 <input type="text" placeholder='Enter your Twitch username' name='twitch' value={twitch} onChange={setTxtRecord} />
               </div>
               <div className="btns">
@@ -224,7 +224,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Facebook Media</h1>
               <div className="innerRow">
-                <img src={Facebook} alt="" />
+                <img loading="lazy" src={Facebook} alt="" />
                 <input type="url" placeholder='Enter your Facebook Media Link' name='facebook' value={facebook} onChange={setTxtRecord} />
               </div>
               <div className="btns">

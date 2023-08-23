@@ -6,7 +6,7 @@ function SectionFour() {
         <section className='sectionFour'>
             <div className="child">
                 <div className="innerChild">
-                    <img src={sec4} alt="" />
+                    <img src={sec4} alt="" loading="lazy"/>
                 </div>
                 <div className="innerChild">
                     <h1>About ENSRedirect</h1>

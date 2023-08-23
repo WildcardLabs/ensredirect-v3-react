@@ -12,7 +12,7 @@ function DomainGrid({ ens, setSelectedEnsFunc }) {
                     <div className="box" key={idx} onClick={() => { setSelectedEnsFunc(item) }}>
                         <div className="innerBox">
                             <div className="cover">
-                                <img src={ensGroup2} alt="" />
+                                <img src={ensGroup2} alt="" loading="lazy"/>
                             </div>
                             <p>{item}</p>
                         </div>

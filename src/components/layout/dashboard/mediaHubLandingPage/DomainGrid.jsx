@@ -13,7 +13,7 @@ function DomainGrid({ ens, primaryens }) {
                     <Link to={`/customizeMedia/${item}`} className="box" key={idx}>
                         <div className="innerBox">
                             <div className="cover">
-                                <img src={ensGroup2} alt="" />
+                                <img src={ensGroup2} alt="" loading="lazy"/>
                             </div>
                             {
                                 item === primaryens ?

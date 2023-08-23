@@ -95,7 +95,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Twitter Avatar</h1>
             <div className="innerRow">
-              <img src={Twitter} alt="" />
+              <img loading="lazy" src={Twitter} alt="" />
               <input type="text" placeholder='Enter your Twitter username' name={"avatar"} value={avatar} onChange={settxtrecord} />
             </div>
             <div className="btns">
@@ -121,7 +121,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Twitter</h1>
             <div className="innerRow">
-              <img src={Twitter} alt="" />
+              <img loading="lazy" src={Twitter} alt="" />
               <input type="text" placeholder='Enter your Twitter username' name={"twitter"} value={twitter} onChange={settxtrecord} />
               <PiTrashLight className='icon' data-txtrecord="twitter" onClick={emptyTxt} />
             </div>
@@ -131,7 +131,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Discord</h1>
             <div className="innerRow">
-              <img src={Discord} alt="" />
+              <img loading="lazy" src={Discord} alt="" />
               <input type="text" placeholder='Enter your Discord username' name={"discord"} value={discord} onChange={settxtrecord} />
               <PiTrashLight className='icon' data-txtrecord="discord" onClick={emptyTxt} />
             </div>
@@ -141,7 +141,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Telegram</h1>
             <div className="innerRow">
-              <img src={Telegram} alt="" />
+              <img loading="lazy" src={Telegram} alt="" />
               <input type="text" placeholder='Enter your Telegram username' name={"telegram"} value={telegram} onChange={settxtrecord} />
               <PiTrashLight className='icon' data-txtrecord="telegram" onClick={emptyTxt} />
             </div>
@@ -151,7 +151,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Github</h1>
             <div className="innerRow">
-              <img src={Github} alt="" />
+              <img loading="lazy" src={Github} alt="" />
               <input type="text" placeholder='Enter your Github username' name={"github"} value={github} onChange={settxtrecord} />
               <PiTrashLight className='icon' data-txtrecord="github" onClick={emptyTxt} />
             </div>
@@ -161,7 +161,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Reddit</h1>
             <div className="innerRow">
-              <img src={Reddit} alt="" />
+              <img loading="lazy" src={Reddit} alt="" />
               <input type="text" placeholder='Enter your Reddit username' name={"reddit"} value={reddit} onChange={settxtrecord} />
               <PiTrashLight className='icon' data-txtrecord="reddit" onClick={emptyTxt} />
             </div>
@@ -171,7 +171,7 @@ function AddSocials() {
           <div className="innerBox">
             <h1>Tiktok</h1>
             <div className="innerRow">
-              <img src={Tiktok} alt="" />
+              <img loading="lazy" src={Tiktok} alt="" />
               <input type="text" placeholder='Enter your Tiktok username' name={"tiktok"} value={tiktok} onChange={settxtrecord} />
               <PiTrashLight className='icon' data-txtrecord="tiktok" onClick={emptyTxt} />
             </div>

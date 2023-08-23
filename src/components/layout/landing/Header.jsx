@@ -28,7 +28,7 @@ function Header() {
     <header>
       <nav>
         <Link to='/' className="sec">
-          <img src="logo.svg" alt="logo" />
+          <img src="logo.svg" alt="logo" loading="lazy"/>
           <h1>ENSRedirect</h1>
         </Link>
         <div className="sec1">
@@ -94,7 +94,8 @@ function Header() {
           </ConnectButton.Custom>
         </div>
         <div className="innerbox">
-          <img src={bg} alt="" />
+
+          <img src={bg} alt="" loading="lazy"/>
         </div>
       </div>
       {createPopUp && <CreatePopup popUpCreateMenu={popUpCreateMenu} />}

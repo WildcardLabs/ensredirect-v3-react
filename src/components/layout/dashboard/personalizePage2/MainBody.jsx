@@ -99,8 +99,8 @@ function MainBody() {
       <div className="mobilehead">
         <a href="/" onClick={goBackFunc}><BsArrowLeft /> Back</a>
         <div className="menu" onClick={togglesideBarFunc}>
-          <img src={dp ? dp : "/dp.png"} alt="dp" />
-          <img src={Caret} alt="caret up" />
+          <img loading="lazy" src={dp ? dp : "/dp.png"} alt="dp" />
+          <img loading="lazy" src={Caret} alt="caret up" />
         </div>
       </div>
       <div className="banner">
@@ -111,7 +111,7 @@ function MainBody() {
               <span>Back</span>
             </li>
             <div className="ensBtn">
-              <img src={ensGroup1} alt="" />
+              <img loading="lazy" src={ensGroup1} alt="" />
               <span>
                 ENS Profile
               </span>
@@ -140,7 +140,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Twitter Avatar</h1>
               <div className="innerRow">
-                <img src={Twitter} alt="" />
+                <img loading="lazy" src={Twitter} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Twitter username' name='avatar' value={avatar} />
               </div>
               <div className="btns">
@@ -176,7 +176,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Twitter</h1>
               <div className="innerRow">
-                <img src={Twitter} alt="" />
+                <img loading="lazy" src={Twitter} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Twitter username' name='twitter' value={twitter} />
                 <PiTrashLight className='icon' data-txtrecord="twitter" onClick={emptyTxt} />
               </div>
@@ -190,7 +190,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Discord</h1>
               <div className="innerRow">
-                <img src={Discord} alt="" />
+                <img loading="lazy" src={Discord} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Discord username' name='discord' value={discord} />
                 <PiTrashLight className='icon' data-txtrecord="discord" onClick={emptyTxt} />
               </div>
@@ -204,7 +204,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Telegram</h1>
               <div className="innerRow">
-                <img src={Telegram} alt="" />
+                <img loading="lazy" src={Telegram} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Telegram username' name='telegram' value={telegram} />
                 <PiTrashLight className='icon' data-txtrecord="telegram" onClick={emptyTxt} />
               </div>
@@ -218,7 +218,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Github</h1>
               <div className="innerRow">
-                <img src={Github} alt="" />
+                <img loading="lazy" src={Github} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Github username' name='github' value={github} />
                 <PiTrashLight className='icon' data-txtrecord="github" onClick={emptyTxt} />
               </div>
@@ -232,7 +232,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Reddit</h1>
               <div className="innerRow">
-                <img src={Reddit} alt="" />
+                <img loading="lazy" src={Reddit} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Reddit username' name='reddit' value={reddit} />
                 <PiTrashLight className='icon' data-txtrecord="reddit" onClick={emptyTxt} />
               </div>
@@ -246,7 +246,7 @@ function MainBody() {
             <div className="innerBox">
               <h1>Tiktok</h1>
               <div className="innerRow">
-                <img src={Tiktok} alt="" />
+                <img loading="lazy" src={Tiktok} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Tiktok username' name='tiktok' value={tiktok} />
                 <PiTrashLight className='icon' data-txtrecord="tiktok" onClick={emptyTxt} />
               </div>

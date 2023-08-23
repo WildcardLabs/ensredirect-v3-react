@@ -45,7 +45,7 @@ function Collection() {
                         {
                             counts.map(count => (
                                 <div className="nft">
-                                    <img src="/dp.png" alt="" />
+                                    <img src="/dp.png" alt="" loading="lazy"/>
                                     <p>{count}</p>
                                 </div>
                             ))
@@ -59,7 +59,7 @@ function Collection() {
                                 <div className="box" key={idx}>
                                     <div className="innerBox">
                                         <div className="cover">
-                                            <img src={ensGroup2} alt="" />
+                                            <img src={ensGroup2} alt="" loading="lazy"/>
                                         </div>
                                         {
                                             item === ens ?

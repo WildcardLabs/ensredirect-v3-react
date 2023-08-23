@@ -126,7 +126,7 @@ function SIdeBar() {
     return (
         <div className={sidebarState ? "sideBar active" : "sideBar"}>
             <div className="head" >
-                <Link to="/"> <img src={`${window.location.origin}/logo.png`} alt="" /></Link>
+                <Link to="/"> <img loading="lazy" src={`${window.location.origin}/logo.png`} alt="" /></Link>
                 <div className="left">
                     <BsChevronDoubleLeft onClick={goBackToPrevPage}/>
                 </div>
@@ -137,9 +137,9 @@ function SIdeBar() {
             <div className="dp">
             {
                     ensRecord?.avatar ?
-                        <img src={`${ensRecord.avatar}`} alt="" />
+                        <img loading="lazy" src={`${ensRecord.avatar}`} alt="" />
                         :
-                        <img src={`${window.location.origin}/dp.png`} alt="" />
+                        <img loading="lazy" src={`${window.location.origin}/dp.png`} alt="" />
                 }
                 <h1>{ens}</h1>
                 <div className="address">
@@ -205,21 +205,21 @@ function SIdeBar() {
                 />
                 <div className="btn">
                     <div className="innerBtn">
-                        <img src={ethLogo} alt="" />
+                        <img loading="lazy" src={ethLogo} alt="" />
                         <span>Etherum</span>
                     </div>
                     <span>{nftCount.eth}</span>
                 </div>
                 <div className="btn">
                     <div className="innerBtn">
-                        <img src={ensimg} alt="" />
+                        <img loading="lazy" src={ensimg} alt="" />
                         <span>BENS: Ethereum N...</span>
                     </div>
                     <span>{ensCount}</span>
                 </div>
                 <div className="btn">
                     <div className="innerBtn">
-                        <img src={optLogo} alt="" />
+                        <img loading="lazy" src={optLogo} alt="" />
                         <span>Optimism</span>
                     </div>
                     <span>{nftCount.opt}</span>
