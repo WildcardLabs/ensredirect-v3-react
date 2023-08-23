@@ -131,7 +131,12 @@ function SIdeBar() {
                 </div>
             </div >
             <div className="dp">
-                <img src={`${ensRecord?.avatar ? ensRecord.avatar : window.location.origin}/dp.png`} alt="" />
+            {
+                    ensRecord?.avatar ?
+                        <img src={`${ensRecord.avatar}`} alt="" />
+                        :
+                        <img src={`${window.location.origin}/dp.png`} alt="" />
+                }
                 <h1>{ens}</h1>
                 <div className="address">
                     <p>
