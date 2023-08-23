@@ -2,7 +2,7 @@ import React from 'react'
 import ensGroup2 from "../../../../assets/images/ensGroup2.svg"
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom';
-function DomainGrid({ ens ,primaryens}) {
+function DomainGrid({ ens, primaryens }) {
     return (
         <motion.div
             animate={{ opacity: 1 }}
@@ -10,28 +10,28 @@ function DomainGrid({ ens ,primaryens}) {
             className='domianGrid'>
             {
                 ens.map((item, idx) => (
-                    <div className="box" key={idx}>
-                    <div className="innerBox">
-                        <div className="cover">
-                            <img src={ensGroup2} alt="" />
+                    <Link to={`/customizeMedia/${item}`} className="box" key={idx}>
+                        <div className="innerBox">
+                            <div className="cover">
+                                <img src={ensGroup2} alt="" />
+                            </div>
+                            {
+                                item === primaryens ?
+                                    <div className="text">
+                                        <h3>Primary</h3>
+                                        <p>{item}</p>
+                                        <Link to={`/customizeMedia/${item}`}>
+                                            Setup ENS Profile
+                                        </Link>
+                                    </div>
+                                    :
+                                    <div className="text">
+                                        <p>{item}</p>
+
+                                    </div>
+                            }
                         </div>
-                       {
-                        item ===primaryens ?
-                        <div className="text">
-                        <h3>Primary</h3>
-                      <p>{item}</p>
-                      <Link to={`/customizeMedia/${item}`}>
-                      Setup ENS Profile
-                      </Link>
-                      </div>
-                      :
-                      <div className="text">
-                    <p>{item}</p>
-                   
-                    </div>
-                       }
-                    </div>
-                </div>
+                    </Link>
                 ))
             }
         </motion.div>

@@ -12,7 +12,7 @@ function DomainGrid({ ens ,primaryens}) {
             {
                 ens.map((item, idx) => (
                     <div className="box" key={idx}>
-                    <div className="innerBox">
+                    <Link to={`/personalize/${item}`} className="innerBox">
                         <div className="cover">
                             <img src={ensGroup2} alt="" />
                         </div>
@@ -31,7 +31,7 @@ function DomainGrid({ ens ,primaryens}) {
                    
                     </div>
                        }
-                    </div>
+                    </Link>
                 </div>
                 ))
             }

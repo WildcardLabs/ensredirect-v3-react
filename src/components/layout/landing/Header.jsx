@@ -53,9 +53,45 @@ function Header() {
           <p>
             Unlock the true potential of your ENS name with our ultimate all-in-one solution.
           </p>
-          <button>
-            Get Started
-          </button>
+          <ConnectButton.Custom>
+            {({
+              account,
+              chain,
+              openConnectModal,
+              authenticationStatus,
+              mounted,
+            }) => {
+              // Note: If your app doesn't use authentication, you
+              // can remove all 'authenticationStatus' checks
+              const ready = mounted && authenticationStatus !== 'loading';
+              const connected =
+                ready &&
+                account &&
+                chain &&
+                (!authenticationStatus ||
+                  authenticationStatus === 'authenticated');
+
+              return (
+                <div
+                  {...(!ready && {
+                    'aria-hidden': true,
+                    'style': {
+                      opacity: 0,
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                      cursor: 'pointer',
+                    },
+                  })}
+                >
+                  {(() =>
+                    <button onClick={openConnectModal} type="button">
+                      Get Started
+                    </button>
+                  )()}
+                </div>
+              );
+            }}
+          </ConnectButton.Custom>
         </div>
         <div className="innerbox">
           <img src={bg} alt="" />

@@ -110,6 +110,10 @@ function SIdeBar() {
         });
     }
 
+    const goBackToPrevPage = () =>{
+        history.back();
+    }
+
     useEffect(() => {
         if (owner) {
             fetchRecords();
@@ -124,7 +128,7 @@ function SIdeBar() {
             <div className="head" >
                 <Link to="/"> <img src={`${window.location.origin}/logo.png`} alt="" /></Link>
                 <div className="left">
-                    <BsChevronDoubleLeft />
+                    <BsChevronDoubleLeft onClick={goBackToPrevPage}/>
                 </div>
                 <div className="cancel" onClick={togglesideBarFunc}>
                     <FaTimes />

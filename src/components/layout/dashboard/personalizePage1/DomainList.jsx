@@ -41,7 +41,7 @@ function DomainList({ ens, primaryens }) {
             <div className="slider" ref={sliderRef}>
                 {
                     ens.map((item, idx) => (
-                        <div className="box" key={idx}>
+                        <Link to={`/personalize/${item}`} className="box" key={idx}>
                             <div className="innerBox">
                                 <div className="cover">
                                     <img src={ensGroup2} alt="" />
@@ -62,7 +62,7 @@ function DomainList({ ens, primaryens }) {
                                         </div>
                                 }
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>
