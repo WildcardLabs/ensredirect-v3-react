@@ -3,7 +3,7 @@ import sec4 from "../../../assets/images/sec4.png"
 
 function SectionFour() {
     return (
-        <section className='sectionFour'>
+        <section className='sectionFour' id='aboutus'>
             <div className="child">
                 <div className="innerChild">
                     <img src={sec4} alt="" loading="lazy"/>

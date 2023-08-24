@@ -3,6 +3,7 @@ import GetInTouch from './GetInTouch'
 import { Link } from 'react-router-dom'
 import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai"
 import { BsFillEnvelopeFill } from "react-icons/bs"
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 function Footer() {
     return (
         <footer>
@@ -22,8 +23,45 @@ function Footer() {
                         <h1>NAVIGATION</h1>
                         <div className="links">
                             <Link to="/">Home</Link>
-                            <Link to="/">About Us</Link>
-                            <Link to="/">+ Create</Link>
+                            <a href={"#aboutus"}>About Us</a>
+                            <ConnectButton.Custom>
+            {({
+              account,
+              chain,
+              openConnectModal,
+              authenticationStatus,
+              mounted,
+            }) => {
+              // Note: If your app doesn't use authentication, you
+              // can remove all 'authenticationStatus' checks
+              const ready = mounted && authenticationStatus !== 'loading';
+              const connected =
+                ready &&
+                account &&
+                chain &&
+                (!authenticationStatus ||
+                  authenticationStatus === 'authenticated');
+
+              return (
+                <div
+                  {...(!ready && {
+                    'aria-hidden': true,
+                    'style': {
+                      opacity: 0,
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                      cursor: 'pointer',
+                    },
+                  })}
+                >
+                  {(() =>
+                     <Link  onClick={openConnectModal}>+ Create</Link>
+                  )()}
+                </div>
+              );
+            }}
+          </ConnectButton.Custom>
+                          
                         </div>
                     </li>
                     <li>
@@ -40,7 +78,7 @@ function Footer() {
                         <a href="#">
                             <BsFillEnvelopeFill />
                         </a>
-                        <a href="#">
+                        <a href="https://twitter.com/@ensredirect" target='_blank'>
                             <AiOutlineTwitter />
                         </a>
                         <a href="#">

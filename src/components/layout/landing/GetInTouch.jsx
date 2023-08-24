@@ -12,7 +12,7 @@ function GetInTouch() {
             <BsEnvelopeFill/>
             team@ensredirect.xyz
         </a>
-        <a href='#' target='_blank'>
+        <a href="https://twitter.com/@ensredirect" target='_blank'>
             <FaTwitter/>
             @ensredirect
         </a>

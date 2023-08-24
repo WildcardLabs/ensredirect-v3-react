@@ -34,7 +34,7 @@ function Header() {
         <div className="sec1">
           <ul>
             <li><Link to={"/"}>Home</Link></li>
-            <li><Link to={"/"}>About Us</Link></li>
+            <li><a href={"#aboutus"}>About Us</a></li>
           </ul>
           <button className='create' onClick={popUpCreateMenu}> <AiOutlinePlus /> Create</button>
           <ConnectButton />
