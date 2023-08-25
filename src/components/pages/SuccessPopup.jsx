@@ -21,13 +21,13 @@ function SuccessPopUp({ ens, redirectUrl, setSuccess }) {
                     </div>
                     <div className="tweet">
                         <h1>Tweet</h1>
-                        <p>Hi! I just redirected my name via @ensredirect! {ens} now seemlessly redirects to <a href="#">{redirectUrl}</a>. Check it out: {ens}.limo</p>
+                        <p>Hi! I just published my web3 profile via @ensredirect.<a href="#">{redirectUrl}</a>. Check it out: {ens}.limo</p>
                     </div>
                     <div className="links">
                         <a href={`https://${ens}.limo`} target="_blank" rel="noopener noreferrer" className='redirect'>
                             Visit Profile
                         </a>
-                        <a href={`https://twitter.com/intent/tweet?text=Hi! I just redirected my name via @ensredirect! ${ens} now seamlessly redirects to ${redirectUrl}. Check it out: ${ens}.limo to forward it to his tweet.`} target="_blank" rel="noopener noreferrer" className='tweetBtn'>
+                        <a href={`https://twitter.com/intent/tweet?textHi! I just published my web3 profile via @ensredirect. Check it out: ${ens}.limo to forward it to his tweet.`} target="_blank" rel="noopener noreferrer" className='tweetBtn'>
                             Tweet
                         </a>
                     </div>

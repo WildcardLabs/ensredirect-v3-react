@@ -198,7 +198,7 @@ function SIdeBar() {
             <div className="links">
                 <Select
                     styles={customStyles}
-                    defaultValue={{ value: 'eth', label: 'Ethereum' }}
+                    // defaultValue={{ value: 'eth', label: 'Ethereum' }}
                     // onChange={setSelectedOption}
                     options={options}
                     className='select'
