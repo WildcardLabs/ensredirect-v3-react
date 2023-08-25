@@ -14,6 +14,7 @@ import DomainGrid from './DomainGrid';
 import DomainList from './DomainList';
 import { setSidebarState } from '../../../../redux/ensStore';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 function MainBody() {
   const dispatch = useDispatch();
   const [ensGrid, setEnsGrid] = useState(false);
@@ -71,10 +72,10 @@ function MainBody() {
       <div className="banner">
         <div className="head">
           <ul>
-            <li>
+            <Link to="/">
               <BiHomeAlt className="icon" />
               <span>Home</span>
-            </li>
+            </Link>
             <div className="ensBtn">
               <img loading="lazy" src={mediaHubGroup1} alt="" />
               <span>

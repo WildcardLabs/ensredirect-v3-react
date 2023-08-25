@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 import { setTextAbi } from '../../../utils/constants';
 import { ethers } from 'ethers';
 import axios from 'axios';
-import SuccessPopUp from '../../popups/SuccessPopUp';
+import SuccessPopUp from '../../../pages/SuccessPopup';
 function MainBody() {
   const dispatch = useDispatch();
   const { ens } = useParams();
@@ -106,7 +106,7 @@ function MainBody() {
       <div className="banner">
         <div className="head">
           <ul>
-            <li>
+            <li onClick={goBackFunc}>
               <BiArrowBack className="icon" />
               <span>Back</span>
             </li>
@@ -264,7 +264,7 @@ function MainBody() {
       </form>
       {success
         &&
-        <SuccessPopUp setSuccess={setSuccess} msg={"Social Links saved successfully"}/>
+        <SuccessPopUp ens={ens} redirectUrl={`https://${ens}.limo`} setSuccess={setSuccess} />
       }
     </main>
   )

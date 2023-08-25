@@ -50,7 +50,7 @@
     gap: 4em;
 }
 
-.mediaHubLandingPage2 main .banner .head ul li {
+.mediaHubLandingPage2 main .banner .head ul li{
     padding: 6px 16px;
     gap: 10px;
     display: flex;
@@ -61,9 +61,10 @@
     font-weight: 400;
     line-height: normal;
     border-right: 1px solid #51508E;
+    cursor: pointer;
 }
 
-.mediaHubLandingPage2 main .banner .head ul li .icon {
+.mediaHubLandingPage2 main .banner .head ul li.icon {
     font-size: 20px;
 }
 

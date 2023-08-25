@@ -61,6 +61,7 @@
     font-weight: 400;
     line-height: normal;
     border-right: 1px solid #51508E;
+    cursor: pointer;
 }
 
 .personalizePage2 main .banner .head ul li .icon {

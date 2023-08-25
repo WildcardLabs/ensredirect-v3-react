@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import "../../assets/css/profile.css"
 import { RiShareBoxLine } from "react-icons/ri"
 import { TbCopy } from "react-icons/tb"
@@ -8,16 +8,37 @@ import { FaEnvelope, FaTelegramPlane } from "react-icons/fa"
 import { BsDiscord } from "react-icons/bs"
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai"
 import MainSec from '../layout/dashboard/profile/MainSec'
-
+import { ethers } from 'ethers'
+import axios from 'axios'
 function Profile() {
-    const truncateAddress = (address, startChars = 5, endChars = 4) => {
-        if (!address) return '';
-
-        const start = address.slice(0, startChars);
-        const end = address.slice(-endChars);
-
-        return `${start}...${end}`;
-    };
+    const [ensRecord, setEnsRecord] = useState(null);
+    const { ens } = useParams();
+    // const [ens, setEns] = useState(null);
+    const [ensCount, setEnsCount] = useState(null);
+    const fetchRecords = async () => {
+        try {
+            const provider = new ethers.providers.JsonRpcProvider("https://eth.llamarpc.com");
+            const owner = await provider.resolveName(ens);
+            const ensdata = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`);
+            const primaryens = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
+            // const ens = primaryens.data.name ? primaryens.data.name : ensdata.data[0];
+            // setEns(ens);
+            setEnsCount(ensdata.data.length);
+            const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+            setEnsRecord(res.data);
+            // console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    const copyAddrress = async () => {
+        if (ensRecord) {
+            await navigator.clipboard.writeText(ensRecord?.longaddress);
+        }
+    }
+    useEffect(() => {
+        fetchRecords();
+    }, [])
 
     return (
         <div className='profile'>
@@ -32,41 +53,63 @@ function Profile() {
             <main>
                 <div className="sidebar">
                     <div className="cover">
-                       <div className="imageCont">
-                       <img loading="lazy" src='/dp.png' alt="" />
-                       </div>
-                        <h1>Hellenstans.eth</h1>
+                        <div className="imageCont">
+                            <img loading="lazy" src='/dp.png' alt="" />
+                        </div>
+                        <h1>{ens}</h1>
                         <p><BiCalendar className='icon' />Onchain since July 15, 2023</p>
                         <div className="address">
-                            <span>  {truncateAddress("0x7f736235D9b05e8A8dAC7015DC6B2237Ad61de1D")}</span>
-                            <TbCopy className='icon' />
+                            <span>  {ensRecord?.address}</span>
+                            <TbCopy className='icon' onClick={copyAddrress} />
                         </div>
                     </div>
                     <h3>ensredirect.xyz</h3>
                     <div className="links">
-                        <a href="#">
-                            <AiOutlineTwitter className='icon' />
-                            <span>@hellenstans</span>
-                        </a>
-                        <a href="#">
-                            <FaEnvelope className='icon' />
-                            <span>@hellen1cute@gmail.com</span>
-                        </a>
-                        <a href="#">
-                            <FaTelegramPlane className='icon' />
-                            <span>@elle97</span>
-                        </a>
-                        <a href="#">
-                            <BsDiscord className='icon' />
-                            <span>elle#9679</span>
-                        </a>
-                        <a href="#">
-                            <AiFillGithub className='icon' />
-                            <span>@hellenstans97</span>
-                        </a>
+                        {
+                            ensRecord?.twitter &&
+                            <a href={`https://twitter.com/${ensRecord.twitter}`} target='_blank' className="twitter">
+                                <AiOutlineTwitter className='icon' />
+                                <span>@{ensRecord.twitter}</span>
+                            </a>
+                        }
+                        {
+                            ensRecord?.email &&
+                            <a href="#" target='_blank' className="email">
+                                <FaEnvelope className='icon' />
+                                <span>@{ensRecord.email}</span>
+                            </a>
+                        }
+                        {
+                            ensRecord?.telegram &&
+                            <a href={`https://t.me/${ensRecord.telegram}`} target='_blank' className="telegram">
+                                <FaTelegramPlane className='icon' />
+                                <span>@{ensRecord.telegram}</span>
+                            </a>
+                        }
+                        {
+                            ensRecord?.discord &&
+                            <a href="#" target='_blank' className="discord">
+                                <BsDiscord className='icon' />
+                                <span>@{ensRecord.discord}</span>
+                            </a>
+                        }
+                        {
+                            ensRecord?.github &&
+                            <a href={`https://github.com/${ensRecord.github}`} target='_blank' className="github">
+                                <AiFillGithub className='icon' />
+                                <span>@{ensRecord.github}</span>
+                            </a>
+                        }
+                        {
+                            ensRecord?.reddit &&
+                            <a href="#" target='_blank' className="reddit">
+                                <FaReddit className='icon' />
+                                <span>@{ensRecord.reddit}</span>
+                            </a>
+                        }
                     </div>
                 </div>
-                <MainSec/>
+                <MainSec />
             </main>
         </div>
     )

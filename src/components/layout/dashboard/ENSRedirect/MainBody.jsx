@@ -19,6 +19,7 @@ import { ethers } from 'ethers';
 import { useEthersSigner } from '../../../utils/ethers'
 import { setSidebarState } from '../../../../redux/ensStore';
 import PublishPage from '../../../pages/PublishPage';
+import { Link } from 'react-router-dom';
 
 function MainBody() {
   const dispatch = useDispatch();
@@ -125,10 +126,10 @@ function MainBody() {
       <div className="banner">
         <div className="head">
           <ul>
-            <li>
+            <Link to='/'>
               <BiHomeAlt className="icon" />
               <span>Home</span>
-            </li>
+            </Link>
             <div className="ensBtn">
               <img loading="lazy" src={ensGroup1} alt="" />
               <span>

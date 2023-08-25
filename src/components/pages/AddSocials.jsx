@@ -10,7 +10,7 @@ import Reddit from "../../assets/images/reddit.svg"
 import Tiktok from "../../assets/images/Tiktok.svg"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import SuccessPopUp from '../layout/popups/SuccessPopUp';
+import SuccessPopUp from './SuccessPopup';
 function AddSocials() {
   const [userEns, setUserEns] = useState(null)
   const { ens } = useParams();
@@ -45,6 +45,7 @@ function AddSocials() {
     const key = e.target.getAttribute("data-txtrecord")
     setFormTxt({ ...formTxt, [key]: "" })
   }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -74,13 +75,13 @@ function AddSocials() {
       setSuccess(false);
     }
   }
-  useEffect(() => {
-    if (success) {
-      setTimeout(() => {
-        navigate(-1);
-      }, 5000);
-    }
-  }, [success])
+  // useEffect(() => {
+  //   if (success) {
+  //     setTimeout(() => {
+  //       navigate(-1);
+  //     }, 5000);
+  //   }
+  // }, [success])
 
   return (
     <div className="addSocials">
@@ -183,7 +184,7 @@ function AddSocials() {
       </form>
       {success
         &&
-        <SuccessPopUp setSuccess={setSuccess} msg={"Social Links saved successfully"}/>
+        <SuccessPopUp ens={ens} redirectUrl={`https://${ens}.limo`} setSuccess={setSuccess} />
       }
     </div>
   )

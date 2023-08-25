@@ -11,8 +11,8 @@ function Footer() {
             <div className="box">
                 <ul>
                     <li>
-                        <Link to="/"className="logo">
-                            <img src="logo.svg" alt="" loading="lazy"/>
+                        <Link to="/" className="logo">
+                            <img src="logo.svg" alt="" loading="lazy" />
                             <h1>ENSRedirect</h1>
                         </Link>
                         <p>
@@ -25,43 +25,43 @@ function Footer() {
                             <Link to="/">Home</Link>
                             <a href={"#aboutus"}>About Us</a>
                             <ConnectButton.Custom>
-            {({
-              account,
-              chain,
-              openConnectModal,
-              authenticationStatus,
-              mounted,
-            }) => {
-              // Note: If your app doesn't use authentication, you
-              // can remove all 'authenticationStatus' checks
-              const ready = mounted && authenticationStatus !== 'loading';
-              const connected =
-                ready &&
-                account &&
-                chain &&
-                (!authenticationStatus ||
-                  authenticationStatus === 'authenticated');
+                                {({
+                                    account,
+                                    chain,
+                                    openConnectModal,
+                                    authenticationStatus,
+                                    mounted,
+                                }) => {
+                                    // Note: If your app doesn't use authentication, you
+                                    // can remove all 'authenticationStatus' checks
+                                    const ready = mounted && authenticationStatus !== 'loading';
+                                    const connected =
+                                        ready &&
+                                        account &&
+                                        chain &&
+                                        (!authenticationStatus ||
+                                            authenticationStatus === 'authenticated');
 
-              return (
-                <div
-                  {...(!ready && {
-                    'aria-hidden': true,
-                    'style': {
-                      opacity: 0,
-                      pointerEvents: 'none',
-                      userSelect: 'none',
-                      cursor: 'pointer',
-                    },
-                  })}
-                >
-                  {(() =>
-                     <Link  onClick={openConnectModal}>+ Create</Link>
-                  )()}
-                </div>
-              );
-            }}
-          </ConnectButton.Custom>
-                          
+                                    return (
+                                        <div
+                                            {...(!ready && {
+                                                'aria-hidden': true,
+                                                'style': {
+                                                    opacity: 0,
+                                                    pointerEvents: 'none',
+                                                    userSelect: 'none',
+                                                    cursor: 'pointer',
+                                                },
+                                            })}
+                                        >
+                                            {(() =>
+                                                <Link onClick={openConnectModal}>+ Create</Link>
+                                            )()}
+                                        </div>
+                                    );
+                                }}
+                            </ConnectButton.Custom>
+
                         </div>
                     </li>
                     <li>

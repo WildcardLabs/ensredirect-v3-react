@@ -23,6 +23,7 @@ section.success .box {
 
 section.success .box .head {
     display: flex;
+    width: 100%;
     padding: 20px;
     justify-content: space-between;
     align-items: center;

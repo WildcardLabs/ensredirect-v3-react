@@ -50,7 +50,7 @@
     gap: 4em;
 }
 
-.personalizePage1 main .banner .head ul li {
+.personalizePage1 main .banner .head ul a {
     padding: 6px 16px;
     gap: 10px;
     display: flex;
@@ -63,7 +63,7 @@
     border-right: 1px solid #51508E;
 }
 
-.personalizePage1 main .banner .head ul li .icon {
+.personalizePage1 main .banner .head ul a .icon {
     font-size: 20px;
 }
 

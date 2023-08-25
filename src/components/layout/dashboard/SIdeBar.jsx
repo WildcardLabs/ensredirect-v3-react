@@ -30,14 +30,14 @@ function SIdeBar() {
         { value: 'opt', label: 'optimism' },
     ];
 
-    const truncateAddress = (address, startChars = 10, endChars = 4) => {
-        if (!address) return '';
+    // const truncateAddress = (address, startChars = 10, endChars = 4) => {
+    //     if (!address) return '';
 
-        const start = address.slice(0, startChars);
-        const end = address.slice(-endChars);
+    //     const start = address.slice(0, startChars);
+    //     const end = address.slice(-endChars);
 
-        return `${start}...${end}`;
-    };
+    //     return `${start}...${end}`;
+    // };
     const customStyles = {
         control: (provided, state) => ({
             ...provided,
@@ -213,7 +213,7 @@ function SIdeBar() {
                 <div className="btn">
                     <div className="innerBtn">
                         <img loading="lazy" src={ensimg} alt="" />
-                        <span>BENS: Ethereum N...</span>
+                        <span>ENS: Ethereum N...</span>
                     </div>
                     <span>{ensCount}</span>
                 </div>

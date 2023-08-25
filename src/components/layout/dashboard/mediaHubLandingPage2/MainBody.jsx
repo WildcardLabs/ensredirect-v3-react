@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import { setSidebarState } from '../../../../redux/ensStore';
 import PublishPage from '../../../pages/PublishPage';
 import { domainAbi } from '../../../utils/constants';
+import SuccessPopUp from '../../../pages/SuccessPopup';
 function MainBody() {
   const dispatch = useDispatch();
   const signer = useEthersSigner();
@@ -105,7 +106,7 @@ function MainBody() {
       <div className="banner">
         <div className="head">
           <ul>
-            <li>
+            <li onClick={goBackFunc}>
               <BiArrowBack className="icon" />
               <span>Back</span>
             </li>
@@ -162,10 +163,10 @@ function MainBody() {
           <div className="text"></div>
           <div className="box">
             <div className="innerBox">
-              <h1>Applepodcast</h1>
+              <h1>Appleprodcast</h1>
               <div className="innerRow">
                 <img loading="lazy" src={Applepodcast} alt="" />
-                <input type="url" placeholder='Enter your Applepodcast Link' name='apple' value={apple} onChange={setTxtRecord} />
+                <input type="url" placeholder='Enter your Appleprodcast Link' name='apple' value={apple} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
@@ -246,10 +247,10 @@ function MainBody() {
         &&
         <PublishPage setGasEnable={setGasEnable} gasEnable={gasEnable} redirect={publishSocials} setShowPublishPopUp={setShowPublishPopUp} loading={loading} />
       }
-      {/* {success
+     {success
         &&
-        <SuccessPage setShowPublishPopUp={setShowPublishPopUp} selectedEns={selectedEns} redirectUrl={redirectUrl} setSuccess={setSuccess} />
-      } */}
+        <SuccessPopUp ens={ens} redirectUrl={`https://${ens}.limo`} setSuccess={setSuccess} />
+      }
     </main>
   )
 }

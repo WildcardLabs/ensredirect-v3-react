@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ensGroup2 from "../../../../assets/images/ensGroup2.svg"
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-
+import { ethers } from 'ethers';
 function Collection() {
     const { ens } = useParams();
     const [secState, setSecState] = useState(true);
@@ -10,8 +10,10 @@ function Collection() {
     const [counts] = useState(["Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817", "Bored Ape Yacht Club #8817"]);
 
     const fetchEns = async () => {
+        const provider = new ethers.providers.JsonRpcProvider("https://eth.llamarpc.com");
+        const address = await provider.resolveName(ens);
         try {
-            const res = await axios.get("https://us-central1-matic-services.cloudfunctions.net/domainlist?address=0x1208a26FAa0F4AC65B42098419EB4dAA5e580AC6")
+            const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${address}`)
             const list = res.data;
             if (list.length > 0) {
                 let i = 0
@@ -43,9 +45,9 @@ function Collection() {
                 secState ?
                     <div className="nfts">
                         {
-                            counts.map(count => (
-                                <div className="nft">
-                                    <img src="/dp.png" alt="" loading="lazy"/>
+                            counts.map((count, idx) => (
+                                <div className="nft" key={idx}>
+                                    <img src="/dp.png" alt="" loading="lazy" />
                                     <p>{count}</p>
                                 </div>
                             ))
@@ -59,16 +61,13 @@ function Collection() {
                                 <div className="box" key={idx}>
                                     <div className="innerBox">
                                         <div className="cover">
-                                            <img src={ensGroup2} alt="" loading="lazy"/>
+                                            <img src={ensGroup2} alt="" loading="lazy" />
                                         </div>
                                         {
                                             item === ens ?
                                                 <div className="text">
                                                     <h3>Primary</h3>
                                                     <p>{item}</p>
-                                                    <Link to={`/personalize/${item}`}>
-                                                        Setup ENS Profile
-                                                    </Link>
                                                 </div>
                                                 :
                                                 <div className="text">

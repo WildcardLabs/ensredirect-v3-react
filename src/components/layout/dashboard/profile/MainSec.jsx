@@ -9,7 +9,7 @@ function MainSec() {
     const { pathname } = useLocation();
 
     useEffect(()=>{
-       console.log(pathname); 
+    //    console.log(pathname); 
        if(!pathname.includes("mediahub")){
         setCollectionPath(pathname);
        }

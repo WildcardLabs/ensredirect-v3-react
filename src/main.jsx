@@ -11,8 +11,6 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
     mainnet,
-    polygon,
-    optimism,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
