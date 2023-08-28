@@ -16,7 +16,7 @@ function GetInTouch() {
             <FaTwitter/>
             @ensredirect
         </a>
-        <a href='#' target='_blank'>
+        <a href='https://github.com/ENS-Redirect' target='_blank'>
             <FaGithub/>
             Github
         </a>

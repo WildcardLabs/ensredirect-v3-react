@@ -163,10 +163,10 @@ function MainBody() {
           <div className="text"></div>
           <div className="box">
             <div className="innerBox">
-              <h1>Appleprodcast</h1>
+              <h1>Apple podcast</h1>
               <div className="innerRow">
                 <img loading="lazy" src={Applepodcast} alt="" />
-                <input type="url" placeholder='Enter your Appleprodcast Link' name='apple' value={apple} onChange={setTxtRecord} />
+                <input type="url" placeholder='Enter your Apple podcast Link' name='apple' value={apple} onChange={setTxtRecord} />
               </div>
               <div className="btns">
                 <button>Add</button>
