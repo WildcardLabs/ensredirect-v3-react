@@ -21,9 +21,9 @@ function DomainGrid({ ens ,primaryens}) {
                         <div className="text">
                         <h3>Primary</h3>
                       <p>{item}</p>
-                      <Link to={`/personalize/${item}`}>
+                      <div className='btn'>
                       Setup ENS Profile
-                      </Link>
+                      </div>
                       </div>
                       :
                       <div className="text">

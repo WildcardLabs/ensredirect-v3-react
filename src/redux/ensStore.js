@@ -7,7 +7,7 @@ const initialState = {
     error: null,
     nfts: [],
     sidebarState: false,
-    signer: null,
+    network: "all",
     owner: null
 };
 
@@ -24,10 +24,10 @@ const ensSlice = createSlice({
                 error: null,
             };
         },
-        setSigner(state, action) {
+        setNetwork(state, action) {
             return {
                 ...state,
-                signer: action.payload
+                network: action.payload
             };
         },
         setOwner(state, action) {
@@ -52,7 +52,9 @@ const ensSlice = createSlice({
     },
 });
 
-export const { clear, setSigner, setOwner ,setNfts ,setSidebarState} =
+export const { clear, /* `setNetwork` is not defined in the given code. It seems to be a mistake or an
+omission. */
+setNetwork, setOwner ,setNfts ,setSidebarState} =
     ensSlice.actions;
 
 export default ensSlice.reducer;

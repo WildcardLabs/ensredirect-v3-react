@@ -51,9 +51,9 @@ function DomainList({ ens, primaryens }) {
                                         <div className="text">
                                             <h3>Primary</h3>
                                             <p>{item}</p>
-                                            <Link to={`/customizeMedia/${item}`}>
+                                            <div className='btn'>
                                                 Setup ENS Profile
-                                            </Link>
+                                            </div>
                                         </div>
                                         :
                                         <div className="text">

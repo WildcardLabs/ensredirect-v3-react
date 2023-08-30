@@ -316,7 +316,7 @@
     word-break: break-all;
 }
 
-.personalizePage1 .ensDomainCont .box .innerBox a {
+.personalizePage1 .ensDomainCont .box .innerBox .btn {
     display: flex;
     width: 120px;
     height: 30px;

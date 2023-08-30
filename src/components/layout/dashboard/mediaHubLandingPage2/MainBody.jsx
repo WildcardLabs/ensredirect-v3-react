@@ -16,13 +16,14 @@ import axios from 'axios';
 import { useWalletClient } from 'wagmi'
 import { ethers } from 'ethers';
 import { useEthersSigner } from '../../../utils/ethers'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSidebarState } from '../../../../redux/ensStore';
 import PublishPage from '../../../pages/PublishPage';
 import { domainAbi } from '../../../utils/constants';
 import SuccessPopUp from '../../../pages/SuccessPopup';
 function MainBody() {
   const dispatch = useDispatch();
+  const { network } = useSelector((state) => state.ensStore);
   const signer = useEthersSigner();
   const [userEns, setUserEns] = useState(null)
   const { ens } = useParams();
@@ -70,9 +71,10 @@ function MainBody() {
 
   const publishSocials = async () => {
     try {
+      setLoading(true);
+      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile?ens=${ens}&facebook=${facebook}&youtube=${youtube}&twitch=${twitch}&tiktok=${tiktok}&apple=${apple}&spotify=${spotify}&gasless=${!gasEnable}&network=${network}`);
+      // if (res?.data.gasless) {
       if (gasEnable) {
-        setLoading(true);
-        const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile?ens=${ens}&facebook=${facebook}&youtube=${youtube}&twitch=${twitch}&tiktok=${tiktok}&apple=${apple}&spotify=${spotify}`);
         if (res.data) {
           const ensContract = new ethers.Contract(
             res.data.resolver,
@@ -85,6 +87,9 @@ function MainBody() {
           setLoading(false);
           setSuccess(true);
         }
+      } else {
+        setLoading(false);
+        setSuccess(true);
       }
     } catch (error) {
       setLoading(false);
@@ -247,7 +252,7 @@ function MainBody() {
         &&
         <PublishPage setGasEnable={setGasEnable} gasEnable={gasEnable} redirect={publishSocials} setShowPublishPopUp={setShowPublishPopUp} loading={loading} />
       }
-     {success
+      {success
         &&
         <SuccessPopUp ens={ens} redirectUrl={`https://${ens}.limo`} setSuccess={setSuccess} />
       }

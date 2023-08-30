@@ -26,6 +26,7 @@ function Profile() {
             setEnsCount(ensdata.data.length);
             const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
             setEnsRecord(res.data);
+            console.log(res.data);
             // console.log(res.data);
         } catch (error) {
             console.log(error);

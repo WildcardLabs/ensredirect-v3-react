@@ -35,16 +35,6 @@ function MainBody() {
     tiktok: ""
   })
   const { avatar, bio, twitter, discord, telegram, github, reddit, tiktok } = formTxt;
-  const fetchEnsRecords = async () => {
-    try {
-      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
-      setRecord(ensTextRecord?.data);
-      setDp(ensTextRecord?.data.avatar);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const togglesideBarFunc = () => {
     dispatch(setSidebarState(true));
   }
@@ -64,27 +54,34 @@ function MainBody() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const nonEmptyFields = {};
+      if (avatar !== "" || bio !== "" || twitter !== "" || discord !== "" || telegram !== "" || github !== "" || reddit !== "" || tiktok !== "") {
+        const nonEmptyFields = {};
 
-      for (const key in formTxt) {
-        if (formTxt.hasOwnProperty(key) && formTxt[key] !== "") {
-          nonEmptyFields[key] = formTxt[key];
+        for (const key in formTxt) {
+          if (formTxt.hasOwnProperty(key) && formTxt[key] !== "") {
+            if (key === "avatar") {
+              nonEmptyFields[key] = "https://avatar-twitter-cv4s4om35q-uc.a.run.app/?user=" + formTxt[key];
+            } else {
+              nonEmptyFields[key] = formTxt[key];
+            }
+          }
         }
+        const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", nonEmptyFields);
+        setSuccess(true);
+        setFormTxt({
+          ens: ens,
+          avatar: "",
+          bio: "",
+          twitter: "",
+          discord: "",
+          telegram: "",
+          github: "",
+          reddit: "",
+          tiktok: ""
+        })
+      }else{
+        // console.log("Dd");
       }
-      setFormTxt(nonEmptyFields);
-      const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", nonEmptyFields);
-      setSuccess(true);
-      setFormTxt({
-        ens: ens,
-        avatar: "",
-        bio: "",
-        twitter: "",
-        discord: "",
-        telegram: "",
-        github: "",
-        reddit: "",
-        tiktok: ""
-      })
     } catch (error) {
       console.log(error);
       setSuccess(false);

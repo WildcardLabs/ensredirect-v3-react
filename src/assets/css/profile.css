@@ -441,13 +441,13 @@
 }
 
 .profile .mainSec .mediahub .box {
-    width: 389px;
+    width: 340px;
     height: 270px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     position: relative;
-    border-radius: 16px;
+    border-radius: 10px;
     font-family: Roboto;
 }
 

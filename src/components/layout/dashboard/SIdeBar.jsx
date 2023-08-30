@@ -12,7 +12,7 @@ import optLogo from "../../../assets/images/optimism-logo.svg"
 import Select from 'react-select';
 import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios'
-import { setSidebarState } from '../../../redux/ensStore'
+import { setSidebarState, setNetwork } from '../../../redux/ensStore'
 import { Network, Alchemy } from "alchemy-sdk";
 
 function SIdeBar() {
@@ -27,7 +27,7 @@ function SIdeBar() {
     });
     const options = [
         {
-            value: "eth",
+            value: "ethereum",
             text: 'Ethereum',
             icon: <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="15px" height="15px" version="1.1" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" viewBox="0 0 784.37 1277.39" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns: xodm="http://www.corel.com/coreldraw/odm/2003">
                 <g id="Layer_x0020_1">
@@ -45,7 +45,7 @@ function SIdeBar() {
             </svg>
         },
         {
-            value: "opt",
+            value: "optimism",
             text: 'Optimism',
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 2500 2500">
                 <g id="Layer_x0020_1">
@@ -129,6 +129,10 @@ function SIdeBar() {
                 opt: nfts.totalCount
             }));
         });
+    }
+
+    const setSelectedOption = (e) => {
+        dispatch(setNetwork(e.value));
     }
 
     const goBackToPrevPage = () => {
@@ -219,7 +223,7 @@ function SIdeBar() {
             <div className="links">
                 <Select
                     styles={customStyles}
-                    // onChange={setSelectedOption}
+                    onChange={setSelectedOption}
                     options={options}
                     className='select'
                     getOptionLabel={e => (
