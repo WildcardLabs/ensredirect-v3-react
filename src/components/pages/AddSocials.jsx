@@ -75,13 +75,13 @@ function AddSocials() {
       setSuccess(false);
     }
   }
-  // useEffect(() => {
-  //   if (success) {
-  //     setTimeout(() => {
-  //       navigate(-1);
-  //     }, 5000);
-  //   }
-  // }, [success])
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        navigate(-1);
+      }, 500);
+    }
+  }, [success])
 
   return (
     <div className="addSocials">
@@ -182,10 +182,10 @@ function AddSocials() {
           <button className='submit'>save</button>
         </div>
       </form>
-      {success
+      {/* {success
         &&
         <SuccessPopUp ens={ens} redirectUrl={`https://${ens}.limo`} setSuccess={setSuccess} />
-      }
+      } */}
     </div>
   )
 }
