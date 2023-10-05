@@ -39,8 +39,6 @@ function MainBody() {
 
   const fetchEns = async () => {
     try {
-      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
-      setDp(ensTextRecord?.data.avatar);
       console.log(owner);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
@@ -57,6 +55,8 @@ function MainBody() {
       const res2 = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
       const primarydata = res2.data.name ? res2.data.name : list[0];
       setPrimaryens(primarydata);
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${primarydata}`)
+      setDp(ensTextRecord?.data.avatar);
     } catch (error) {
       console.log(error);
     }
