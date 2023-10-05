@@ -74,8 +74,8 @@ function MainBody() {
       setLoading(true);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile?ens=${ens}&facebook=${facebook}&youtube=${youtube}&twitch=${twitch}&tiktok=${tiktok}&apple=${apple}&spotify=${spotify}&gasless=${!gasEnable}&network=${network}`);
       // if (res?.data.gasless) {
-      if (gasEnable) {
-        if (res.data) {
+      
+        if (res.data.gasless == "false") {
           const ensContract = new ethers.Contract(
             res.data.resolver,
             domainAbi,
@@ -87,7 +87,7 @@ function MainBody() {
           setLoading(false);
           setSuccess(true);
         }
-      } else {
+       else {
         setLoading(false);
         setSuccess(true);
       }
