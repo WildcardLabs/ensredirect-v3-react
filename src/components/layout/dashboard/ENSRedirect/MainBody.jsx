@@ -47,6 +47,7 @@ function MainBody() {
         let i = 0
         for await (const data of list) {
           if (data.includes("eth")) {
+            console.log(data);
             setNo(no => no + 1);
             setEns(ens => [...ens, data]);
           }
