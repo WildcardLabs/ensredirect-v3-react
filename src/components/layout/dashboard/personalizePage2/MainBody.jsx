@@ -135,9 +135,7 @@ function MainBody() {
                 <img loading="lazy" src={Twitter} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Twitter username' name='avatar' value={avatar} />
               </div>
-              <div className="btns">
-                <button>save</button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -152,10 +150,7 @@ function MainBody() {
                 <textarea onChange={setTxtRecord} placeholder='Short bio...' name='bio' value={bio}></textarea>
               </div>
               <p>500 characters</p>
-              <div className="btns">
-                <div className='clear' data-txtrecord="bio" onClick={emptyTxt}>clear</div>
-                <button>save</button>
-              </div>
+              
             </div>
           </div>
         </div>
