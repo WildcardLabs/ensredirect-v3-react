@@ -17,7 +17,8 @@ import { setTextAbi } from '../../../utils/constants';
 import axios from 'axios';
 import { useWalletClient } from 'wagmi'
 import { ethers } from 'ethers';
-import { useEthersSigner } from '../../../utils/ethers'
+import { useEthersSigner } from '../../../utils/ethers';
+import { useDispatch, useSelector } from 'react-redux';
 import PublishPage from '../../../pages/PublishPage';
 import { domainAbi } from '../../../utils/constants';
 import SuccessPopUp from '../../../pages/SuccessPopup';
