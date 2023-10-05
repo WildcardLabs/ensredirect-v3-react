@@ -39,14 +39,14 @@ function MainBody() {
 
   const fetchEns = async () => {
     try {
-      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
-      setDp(ensTextRecord?.data.avatar);
+      console.log(owner);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
       if (list.length > 0) {
         let i = 0
         for await (const data of list) {
           if (data.includes("eth")) {
+            console.log(data);
             setNo(no => no + 1);
             setEns(ens => [...ens, data]);
           }
@@ -55,6 +55,8 @@ function MainBody() {
       const res2 = await axios.get(`https://api.ensideas.com/ens/resolve/${owner}`)
       const primarydata = res2.data.name ? res2.data.name : list[0];
       setPrimaryens(primarydata);
+      const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${primarydata}`)
+      setDp(ensTextRecord?.data.avatar);
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +85,7 @@ function MainBody() {
 
   const redirect = async () => {
     try {
-      if (gasEnable) {
+      
         if (redirectUrl !== "" && selectedEns) {
           const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${redirectUrl}&ens=${selectedEns}&address=${owner}`);
           if (res.data) {
@@ -100,7 +102,7 @@ function MainBody() {
             setSuccess(true);
             // console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
           }
-        }
+        
       }
     } catch (error) {
       setLoading(false);
@@ -109,10 +111,8 @@ function MainBody() {
   }
 
   useEffect(() => {
-    if (owner) {
-      fetchEns();
-    }
-  }, [owner])
+    fetchEns();
+  }, [])
 
   return (
     <main>

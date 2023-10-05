@@ -12,17 +12,28 @@ import Reddit from "../../../../assets/images/reddit.svg"
 import Tiktok from "../../../../assets/images/Tiktok.svg"
 import { useParams } from 'react-router-dom';
 import { setSidebarState } from '../../../../redux/ensStore';
-import { useDispatch } from 'react-redux';
 import { setTextAbi } from '../../../utils/constants';
-import { ethers } from 'ethers';
 import axios from 'axios';
+import { useWalletClient } from 'wagmi'
+import { ethers } from 'ethers';
+import { useEthersSigner } from '../../../utils/ethers';
+import { useDispatch, useSelector } from 'react-redux';
+import PublishPage from '../../../pages/PublishPage';
+import { domainAbi } from '../../../utils/constants';
 import SuccessPopUp from '../../../pages/SuccessPopup';
 function MainBody() {
+  const { network } = useSelector((state) => state.ensStore);
+  const signer = useEthersSigner();
+  const [userEns, setUserEns] = useState(null)
   const dispatch = useDispatch();
   const { ens } = useParams();
   const [dp, setDp] = useState(null);
   const [record, setRecord] = useState(null);
+  const [redirectUrl, setRedirectUrl] = useState(null);
+  const [gasEnable, setGasEnable] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showPublishPopUp, setShowPublishPopUp] = useState(false);
   const [formTxt, setFormTxt] = useState({
     ens: ens,
     avatar: "",
@@ -51,6 +62,34 @@ function MainBody() {
     setFormTxt({ ...formTxt, [key]: "" })
   }
 
+  const publishSocials = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile?ens=${ens}&gasless=${!gasEnable}&network=${network}`);
+      // if (res?.data.gasless) {
+      
+        if (res.data.gasless == "false") {
+          const ensContract = new ethers.Contract(
+            res.data.resolver,
+            domainAbi,
+            signer
+          );
+          const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs);
+          // // Wait for 1 confirmation
+          const transactionReceipt = await transaction.wait(1);
+          setLoading(false);
+          setSuccess(true);
+        }
+       else {
+        setLoading(false);
+        setSuccess(true);
+      }
+    } catch (error) {
+      setLoading(false);
+      setSuccess(false);
+    }
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -67,7 +106,6 @@ function MainBody() {
           }
         }
         const res = await axios.post("https://us-central1-matic-services.cloudfunctions.net/saverecords", nonEmptyFields);
-        setSuccess(true);
         setFormTxt({
           ens: ens,
           avatar: "",
@@ -79,6 +117,7 @@ function MainBody() {
           reddit: "",
           tiktok: ""
         })
+        setShowPublishPopUp(true);
       }else{
         // console.log("Dd");
       }
@@ -119,12 +158,7 @@ function MainBody() {
           <h1>
             Personalize your ENS Profile
           </h1>
-          <p>
-            <BiCalendar className='icon' />
-            <span>
-              Onchain since July 15, 2023
-            </span>
-          </p>
+          
         </div>
       </div>
       <form className="child" onSubmit={onSubmit}>
@@ -140,9 +174,7 @@ function MainBody() {
                 <img loading="lazy" src={Twitter} alt="" />
                 <input type="text" onChange={setTxtRecord} placeholder='Enter your Twitter username' name='avatar' value={avatar} />
               </div>
-              <div className="btns">
-                <button>save</button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -157,10 +189,7 @@ function MainBody() {
                 <textarea onChange={setTxtRecord} placeholder='Short bio...' name='bio' value={bio}></textarea>
               </div>
               <p>500 characters</p>
-              <div className="btns">
-                <div className='clear' data-txtrecord="bio" onClick={emptyTxt}>clear</div>
-                <button>save</button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -259,6 +288,10 @@ function MainBody() {
           </div>
         </div>
       </form>
+      {showPublishPopUp
+        &&
+        <PublishPage setGasEnable={setGasEnable} gasEnable={gasEnable} redirect={publishSocials} setShowPublishPopUp={setShowPublishPopUp} loading={loading} />
+      }
       {success
         &&
         <SuccessPopUp ens={ens} redirectUrl={`https://${ens}.limo`} setSuccess={setSuccess} />
