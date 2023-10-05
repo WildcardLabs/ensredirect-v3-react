@@ -85,7 +85,7 @@ function MainBody() {
 
   const redirect = async () => {
     try {
-      if (gasEnable) {
+      
         if (redirectUrl !== "" && selectedEns) {
           const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${redirectUrl}&ens=${selectedEns}&address=${owner}`);
           if (res.data) {
@@ -102,7 +102,7 @@ function MainBody() {
             setSuccess(true);
             // console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
           }
-        }
+        
       }
     } catch (error) {
       setLoading(false);
