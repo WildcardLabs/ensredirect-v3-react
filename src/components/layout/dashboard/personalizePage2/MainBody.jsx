@@ -12,7 +12,6 @@ import Reddit from "../../../../assets/images/reddit.svg"
 import Tiktok from "../../../../assets/images/Tiktok.svg"
 import { useParams } from 'react-router-dom';
 import { setSidebarState } from '../../../../redux/ensStore';
-import { useDispatch } from 'react-redux';
 import { setTextAbi } from '../../../utils/constants';
 import axios from 'axios';
 import { useWalletClient } from 'wagmi'
