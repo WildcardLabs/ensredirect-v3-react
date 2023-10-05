@@ -34,7 +34,6 @@ function MainBody() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPublishPopUp, setShowPublishPopUp] = useState(false);
-  const [record, setRecord] = useState(null);
   const [formTxt, setFormTxt] = useState({
     ens: ens,
     avatar: "",
