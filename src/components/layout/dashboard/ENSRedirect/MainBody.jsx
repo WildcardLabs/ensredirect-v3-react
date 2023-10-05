@@ -109,10 +109,8 @@ function MainBody() {
   }
 
   useEffect(() => {
-    if (owner) {
-      fetchEns();
-    }
-  }, [owner])
+    fetchEns();
+  }, [])
 
   return (
     <main>
