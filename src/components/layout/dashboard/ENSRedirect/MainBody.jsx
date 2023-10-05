@@ -142,12 +142,7 @@ function MainBody() {
           <h1>
             Welcome, {primaryens}
           </h1>
-          <p>
-            <BiCalendar className='icon' />
-            <span>
-              Onchain since July 15, 2023
-            </span>
-          </p>
+          
         </div>
       </div>
       <div className="ensDomainCont">
