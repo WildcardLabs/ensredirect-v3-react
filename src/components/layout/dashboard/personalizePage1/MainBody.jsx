@@ -88,12 +88,7 @@ function MainBody() {
           <h1>
             Personalize your ENS Profile
           </h1>
-          <p>
-            <BiCalendar className='icon' />
-            <span>
-              Onchain since July 15, 2023
-            </span>
-          </p>
+          
         </div>
       </div>
       <div className="ensDomainCont">
