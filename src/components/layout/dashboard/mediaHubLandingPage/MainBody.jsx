@@ -26,12 +26,14 @@ function MainBody() {
 
   const fetchEns = async () => {
     try {
+      // console.log(owner);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
       if (list.length > 0) {
         let i = 0
         for await (const data of list) {
           if (data.includes("eth")) {
+            console.log(data);
             setNo(no => no + 1);
             setEns(ens => [...ens, data]);
           }
@@ -88,12 +90,7 @@ function MainBody() {
           <h1>
             Customize your MediaHub
           </h1>
-          <p>
-            <BiCalendar className='icon' />
-            <span>
-              Onchain since July 15, 2023
-            </span>
-          </p>
+          
         </div>
       </div>
       <div className="ensDomainCont">
@@ -101,7 +98,7 @@ function MainBody() {
           <div className="sec">
             <h1>My Names</h1>
             <span>{no}</span>
-            <p>Select domain name to redirect to</p>
+            <p>Select domain name</p>
           </div>
           <div className="sec1">
             <img loading="lazy" src={listing} alt="" className={!ensGrid ? "active" : ""} onClick={toggleList} />
