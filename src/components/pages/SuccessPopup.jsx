@@ -27,7 +27,7 @@ function SuccessPopUp({ ens, redirectUrl, setSuccess }) {
                         <a href={`https://${ens}.limo`} target="_blank" rel="noopener noreferrer" className='redirect'>
                             Visit Profile
                         </a>
-                        <a href={`https://twitter.com/intent/tweet?textHi! I just published my web3 profile via @ensredirect. Check it out: ${ens}.limo to forward it to his tweet.`} target="_blank" rel="noopener noreferrer" className='tweetBtn'>
+                        <a href={`https://twitter.com/intent/tweet?text=Hi! I just published my web3 profile via @ensredirect. Check it out: ${ens}.limo`} target="_blank" rel="noopener noreferrer" className='tweetBtn'>
                             Tweet
                         </a>
                     </div>
