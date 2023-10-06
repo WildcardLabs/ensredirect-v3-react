@@ -87,8 +87,8 @@ function MainBody() {
     try {
       
         if (redirectUrl !== "" && selectedEns) {
-          const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect?web=${redirectUrl}&ens=${selectedEns}&address=${owner}`);
-          if (res.data) {
+          const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect-3?web=${redirectUrl}&ens=${selectedEns}&gasless=${gasEnable}&address=${owner}`);
+          if (res.data.gasless == "false") {
             const ensContract = new ethers.Contract(
               res.data.resolver,
               domainAbi,
@@ -102,6 +102,10 @@ function MainBody() {
             setSuccess(true);
             // console.log('Transaction receipt after 1 confirmation:', transactionReceipt);
           }
+          else {
+        setLoading(false);
+        setSuccess(true);
+      }
         
       }
     } catch (error) {
