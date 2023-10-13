@@ -4,11 +4,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background-image: url("/bg.png");
+    /* background-image: url("/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center; */
     /* padding: 2em 0em; */
+    background: linear-gradient(to bottom, #FFF6EF 0%, #F0F7F8 18.8262%);
 }
 
 .sideBar {
@@ -645,26 +646,39 @@
     border: 1px solid #DADADA;
     outline: none;
 }
+
 .loader {
     border: 2px solid #f3f3f3;
     border-radius: 50%;
     border-top: 2px solid #419FFF;
     width: 14px;
     height: 14px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
     animation: spin 2s linear infinite;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .mobilehead {
     display: none;
 }
@@ -772,7 +786,8 @@
         height: 30px;
         border-radius: 50%;
     }
-    main .mobilehead a{
+
+    main .mobilehead a {
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -780,7 +795,7 @@
         font-size: 1.4em;
         color: rgba(0, 0, 0, 0.87);
         font-family: Roboto;
-     }
+    }
 
     .ensRedirect .ensDomainCont {
         width: 100%;
