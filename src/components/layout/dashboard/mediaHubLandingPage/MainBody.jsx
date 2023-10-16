@@ -26,7 +26,7 @@ function MainBody() {
 
   const fetchEns = async () => {
     try {
-      console.log(owner);
+      // console.log(owner);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
       if (list.length > 0) {

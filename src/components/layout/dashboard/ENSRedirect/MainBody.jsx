@@ -39,14 +39,16 @@ function MainBody() {
 
   const fetchEns = async () => {
     try {
-      console.log(owner);
+      // const ensTextRecord = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/textrecords?ens=${ens}`)
+      // setDp(ensTextRecord?.data.avatar);
       const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/domainlist?address=${owner}`)
       const list = res.data;
+      // console.log(list);
       if (list.length > 0) {
         let i = 0
         for await (const data of list) {
           if (data.includes("eth")) {
-            console.log(data);
+            // console.log(data);
             setNo(no => no + 1);
             setEns(ens => [...ens, data]);
           }
@@ -124,7 +126,7 @@ function MainBody() {
         <a href="/"><img src="/logo.png" alt="" /></a>
         <div className="menu" onClick={togglesideBarFunc}>
           <img loading="lazy" src={dp ? dp : "/dp.png"} alt="dp" />
-          <img loading="lazy" src={Caret} alt="caret up"/>
+          <img loading="lazy" src={Caret} alt="caret up" />
         </div>
       </div>
       <div className="banner">
@@ -163,9 +165,9 @@ function MainBody() {
         </div>
         {
           ensGrid ?
-            <DomainGrid ens={ens} setSelectedEnsFunc={setSelectedEnsFunc} />
+            <DomainGrid ens={ens} primaryens={primaryens} setSelectedEnsFunc={setSelectedEnsFunc} />
             :
-            <DomainList ens={ens} setSelectedEnsFunc={setSelectedEnsFunc} />
+            <DomainList ens={ens} primaryens={primaryens} setSelectedEnsFunc={setSelectedEnsFunc} />
         }
         <h4>ENSRedirect</h4>
         <div className="child">

@@ -4,11 +4,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background-image: url("/bg.png");
+    /* background-image: url("/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center; */
     /* padding: 2em 0em; */
+    background: linear-gradient(to bottom, #FFF6EF 0%, #F0F7F8 18.8262%);
 }
 
 
