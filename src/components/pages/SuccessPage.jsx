@@ -27,7 +27,7 @@ function SuccessPage({ selectedEns, redirectUrl, setSuccess, setShowPublishPopUp
                         <a href={`https://${selectedEns}.limo`} target="_blank" rel="noopener noreferrer" className='redirect'>
                             Test Redirect
                         </a>
-                        <a href={`https://twitter.com/intent/tweet?text=Hi! I just redirected my name via @ensredirect! ${selectedEns} now seamlessly redirects to ${redirectUrl}. Check it out: ${selectedEns}.limo to forward it to his tweet.`} target="_blank" rel="noopener noreferrer" className='tweetBtn'>
+                        <a href={`https://twitter.com/intent/tweet?text=Hi! I just redirected my name via @ensredirect! ${selectedEns} now seamlessly redirects to ${redirectUrl}. Check it out: ${selectedEns}.limo`} target="_blank" rel="noopener noreferrer" className='tweetBtn'>
                             Tweet
                         </a>
                     </div>

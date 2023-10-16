@@ -72,7 +72,7 @@ function MainBody() {
   const publishSocials = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile?ens=${ens}&facebook=${facebook}&youtube=${youtube}&twitch=${twitch}&tiktok=${tiktok}&apple=${apple}&spotify=${spotify}&gasless=${!gasEnable}&network=${network}`);
+      const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/ensprofile-2?ens=${ens}&facebook=${facebook}&youtube=${youtube}&twitch=${twitch}&tiktok=${tiktok}&apple=${apple}&spotify=${spotify}&gasless=${gasEnable}&network=${network}`);
       // if (res?.data.gasless) {
       
         if (res.data.gasless == "false") {
