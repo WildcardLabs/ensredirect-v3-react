@@ -89,6 +89,7 @@ function MainBody() {
     try {
       
         if (redirectUrl !== "" && selectedEns) {
+          setLoading(true)
           const res = await axios.get(`https://us-central1-matic-services.cloudfunctions.net/redirect-3?web=${redirectUrl}&ens=${selectedEns}&gasless=${gasEnable}&address=${owner}`);
           if (res.data.gasless == "false") {
             const ensContract = new ethers.Contract(
@@ -96,7 +97,6 @@ function MainBody() {
               domainAbi,
               signer
             );
-            setLoading(true)
             const transaction = await ensContract.setContenthash(res.data.node, res.data.ipfs);
             // // Wait for 1 confirmation
             const transactionReceipt = await transaction.wait(1);
